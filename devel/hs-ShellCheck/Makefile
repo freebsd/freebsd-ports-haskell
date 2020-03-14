@@ -10,6 +10,8 @@ COMMENT=	Shell script analysis tool
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
+BROKEN=		Doesn't build with recent GHC
+
 USES=		cabal
 
 USE_CABAL=	aeson-1.4.6.0 \
