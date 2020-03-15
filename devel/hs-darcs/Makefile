@@ -11,6 +11,8 @@ COMMENT=	Distributed, interactive, smart revision control system
 
 LICENSE=	GPLv2
 
+BROKEN=		Doesn't build with recent Cabal
+
 USES=		cabal pkgconfig
 
 USE_CABAL=	HTTP-4000.3.12_2 async-2.2.1_1 attoparsec-0.13.2.2_2 \
