@@ -16,7 +16,7 @@ USES=		cabal gnome pkgconfig
 
 USE_GNOME=	cairo gdkpixbuf2 glib20 gtk20
 
-USE_CABAL=	 alex-3.2.5 \
+USE_CABAL=	alex-3.2.5 \
 		cairo-0.13.8.0 \
 		exceptions-0.10.4 \
 		file-embed-0.0.11.2 \
