@@ -9,6 +9,8 @@ COMMENT=	Functional language that compiles to JavaScript
 
 LICENSE=	BSD3CLAUSE
 
+BROKEN=		Doesn't build with recent GHC
+
 USES=		cabal
 
 # workaround cabal-install bug
