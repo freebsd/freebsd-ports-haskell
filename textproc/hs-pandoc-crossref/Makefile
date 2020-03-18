@@ -1,13 +1,15 @@
 # $FreeBSD$
 
 PORTNAME=	pandoc-crossref
-PORTVERSION=	0.3.6.1
+PORTVERSION=	0.3.6.2
 CATEGORIES=	textproc haskell
 
 MAINTAINER=	haskell@FreeBSD.org
 COMMENT=	Pandoc filter for numbering figures and tables
 
 LICENSE=	BSD3CLAUSE
+
+BROKEN=		Doesn't build with recent GHC
 
 USES=		cabal
 
