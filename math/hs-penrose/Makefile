@@ -12,13 +12,13 @@ COMMENT=	Create diagrams by typing mathematical notation in plain text
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	hs-network==2.8.0.1:net/hs-network
+BROKEN=		docopt dependency doesn't build with recent GHC
+
 LIB_DEPENDS=	libgfortran.so:lang/gcc${GCC_DEFAULT}
 
 USES=		blaslapack cabal
 USE_GITHUB=	yes
-USE_CABAL=	\
-		MonadRandom-0.5.1.2 \
+USE_CABAL=	MonadRandom-0.5.1.2 \
 		SHA-1.6.4.4 \
 		StateVar-1.2 \
 		ad-4.4 \
