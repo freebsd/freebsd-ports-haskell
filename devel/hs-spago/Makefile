@@ -7,7 +7,6 @@ MASTER_SITES=	https://github.com/spacchetti/purescript-docs-search/releases/down
 		https://github.com/spacchetti/purescript-docs-search/releases/download/v${PURESCRIPT_DOCS_SEARCH_VERSION}/:purescript_docs_search
 DISTFILES=	docs-search-app.js:docs_search_app \
 		purescript-docs-search:purescript_docs_search
-EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
 MAINTAINER=	haskell@FreeBSD.org
 COMMENT=	PureScript package manager and build tool

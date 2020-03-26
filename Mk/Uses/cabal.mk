@@ -74,10 +74,12 @@ LIB_DEPENDS+=	libgmp.so:math/gmp \
 
 DIST_SUBDIR?=	cabal
 
+.  if !defined(USE_GITHUB) && !defined(USE_GITLAB)
 MASTER_SITES?=	https://hackage.haskell.org/package/${PORTNAME}-${PORTVERSION}/ \
 		http://hackage.haskell.org/package/${PORTNAME}-${PORTVERSION}/
 DISTFILES?=	${PORTNAME}-${PORTVERSION}${CABAL_EXTRACT_SUFX}
 EXTRACT_ONLY?=	${PORTNAME}-${PORTVERSION}${CABAL_EXTRACT_SUFX}
+.  endif
 
 _USES_extract=	701:cabal-post-extract
 _USES_patch=	701:cabal-post-patch
