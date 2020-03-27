@@ -292,6 +292,7 @@
     SUBDIR += sessreg
     SUBDIR += setlayout
     SUBDIR += setxkbmap
+    SUBDIR += showkeys
     SUBDIR += simdock
     SUBDIR += simplestroke
     SUBDIR += sisctrl
@@ -468,6 +469,7 @@
     SUBDIR += xorg-minimal
     SUBDIR += xorgproto
     SUBDIR += xpr
+    SUBDIR += xpra
     SUBDIR += xprintidle
     SUBDIR += xprompt
     SUBDIR += xprop

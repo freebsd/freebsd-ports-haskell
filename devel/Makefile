@@ -450,6 +450,7 @@
     SUBDIR += date
     SUBDIR += dbus
     SUBDIR += dbus-c++
+    SUBDIR += dbus-java
     SUBDIR += dbus-glib
     SUBDIR += dbus-sharp
     SUBDIR += dbus-sharp-glib
@@ -1242,6 +1243,7 @@
     SUBDIR += liblxqt
     SUBDIR += libmaa
     SUBDIR += libmatheval
+    SUBDIR += libmatthew
     SUBDIR += libmba
     SUBDIR += libmill
     SUBDIR += libmimedir
@@ -1310,6 +1312,7 @@
     SUBDIR += librolegen
     SUBDIR += libruin
     SUBDIR += libs11n
+    SUBDIR += libsavitar
     SUBDIR += libscca
     SUBDIR += libsearpc
     SUBDIR += libserialport
@@ -4028,7 +4031,6 @@
     SUBDIR += py-akismet
     SUBDIR += py-amalgamate
     SUBDIR += py-aniso8601
-    SUBDIR += py-antlr4-python2-runtime
     SUBDIR += py-antlr4-python3-runtime
     SUBDIR += py-anyconfig
     SUBDIR += py-anyjson
@@ -5073,6 +5075,7 @@
     SUBDIR += py-transaction
     SUBDIR += py-transitions
     SUBDIR += py-tree-format
+    SUBDIR += py-trimesh
     SUBDIR += py-trollius
     SUBDIR += py-ttystatus
     SUBDIR += py-tvrage
@@ -6525,9 +6528,9 @@
     SUBDIR += snorenotify
     SUBDIR += soapui
     SUBDIR += socket_wrapper
-    SUBDIR += sonar-ant-task
     SUBDIR += sonar-scanner-cli
-    SUBDIR += sonarqube
+    SUBDIR += sonarqube-ant-task
+    SUBDIR += sonarqube-community
     SUBDIR += sope2
     SUBDIR += sope4
     SUBDIR += sord

@@ -180,6 +180,7 @@
     SUBDIR += clblast
     SUBDIR += clfft
     SUBDIR += clingo
+    SUBDIR += cliquer
     SUBDIR += cln
     SUBDIR += cloog
     SUBDIR += clp
@@ -226,6 +227,7 @@
     SUBDIR += dune-typetree
     SUBDIR += dune-uggrid
     SUBDIR += e
+    SUBDIR += eclib
     SUBDIR += ecos
     SUBDIR += edenmath
     SUBDIR += eigen2
@@ -244,6 +246,7 @@
     SUBDIR += facile
     SUBDIR += fann
     SUBDIR += fcl
+    SUBDIR += fcl05
     SUBDIR += fflas-ffpack
     SUBDIR += fftw
     SUBDIR += fftw-float
@@ -368,6 +371,7 @@
     SUBDIR += lrslib
     SUBDIR += ltl
     SUBDIR += ltl2ba
+    SUBDIR += m4ri
     SUBDIR += mate-calc
     SUBDIR += math77
     SUBDIR += mathgl
@@ -786,6 +790,7 @@
     SUBDIR += py-pysparse
     SUBDIR += py-pystan
     SUBDIR += py-pysym
+    SUBDIR += py-python-fcl
     SUBDIR += py-python-louvain
     SUBDIR += py-pyvtk
     SUBDIR += py-quadprog
