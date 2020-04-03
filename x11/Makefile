@@ -353,6 +353,7 @@
     SUBDIR += wmxss
     SUBDIR += wofi
     SUBDIR += workrave
+    SUBDIR += wshowkeys
     SUBDIR += x11perf
     SUBDIR += x3270
     SUBDIR += xaniroc
@@ -498,6 +499,7 @@
     SUBDIR += xtermcontrol
     SUBDIR += xtermset
     SUBDIR += xtestpicture
+    SUBDIR += xtitle
     SUBDIR += xtoolwait
     SUBDIR += xtrans
     SUBDIR += xtrlock

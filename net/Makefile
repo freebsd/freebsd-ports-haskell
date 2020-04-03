@@ -156,8 +156,8 @@
     SUBDIR += fb
     SUBDIR += fiche
     SUBDIR += file2pcap
-    SUBDIR += findomain
     SUBDIR += findmtu
+    SUBDIR += findomain
     SUBDIR += flent
     SUBDIR += flower
     SUBDIR += flowgrep
@@ -399,7 +399,7 @@
     SUBDIR += libproxy-python
     SUBDIR += libproxy-webkit3
     SUBDIR += librdkafka
-    SUBDIR += librsync2
+    SUBDIR += librsync
     SUBDIR += libsignal
     SUBDIR += libsocket++
     SUBDIR += libsrtp2
@@ -1143,7 +1143,6 @@
     SUBDIR += py-zeep
     SUBDIR += py-zeroconf
     SUBDIR += py-zope.proxy
-    SUBDIR += pygopherd
     SUBDIR += pynids
     SUBDIR += pyrad
     SUBDIR += qadsl

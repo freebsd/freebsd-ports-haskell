@@ -450,8 +450,8 @@
     SUBDIR += date
     SUBDIR += dbus
     SUBDIR += dbus-c++
-    SUBDIR += dbus-java
     SUBDIR += dbus-glib
+    SUBDIR += dbus-java
     SUBDIR += dbus-sharp
     SUBDIR += dbus-sharp-glib
     SUBDIR += dbus-tcl
@@ -3437,6 +3437,7 @@
     SUBDIR += p5-Test-utf8
     SUBDIR += p5-Test2-Harness
     SUBDIR += p5-Test2-Plugin-DBIProfile
+    SUBDIR += p5-Test2-Plugin-IOEvents
     SUBDIR += p5-Test2-Plugin-MemUsage
     SUBDIR += p5-Test2-Plugin-NoWarnings
     SUBDIR += p5-Test2-Plugin-UUID
@@ -4159,6 +4160,7 @@
     SUBDIR += py-banal
     SUBDIR += py-bandit
     SUBDIR += py-bcdoc
+    SUBDIR += py-beautifultable
     SUBDIR += py-bidict
     SUBDIR += py-billiard
     SUBDIR += py-binaryornot
@@ -4321,6 +4323,7 @@
     SUBDIR += py-docopt
     SUBDIR += py-dogpile.cache
     SUBDIR += py-doit
+    SUBDIR += py-dotted
     SUBDIR += py-dtfabric
     SUBDIR += py-durus
     SUBDIR += py-dynrules
@@ -4859,7 +4862,6 @@
     SUBDIR += py-pytest-isort
     SUBDIR += py-pytest-localserver
     SUBDIR += py-pytest-mock
-    SUBDIR += py-pytest-verbose-parametrize
     SUBDIR += py-pytest-pep8
     SUBDIR += py-pytest-pycodestyle
     SUBDIR += py-pytest-relaxed
@@ -4870,6 +4872,7 @@
     SUBDIR += py-pytest-timeout
     SUBDIR += py-pytest-tornado
     SUBDIR += py-pytest-translations
+    SUBDIR += py-pytest-verbose-parametrize
     SUBDIR += py-pytest-virtualenv
     SUBDIR += py-pytest-xdist
     SUBDIR += py-pytest-xprocess
@@ -5141,6 +5144,7 @@
     SUBDIR += py-whistle
     SUBDIR += py-widgetsnbextension
     SUBDIR += py-wlc
+    SUBDIR += py-woops
     SUBDIR += py-wrapt
     SUBDIR += py-wsgi_intercept
     SUBDIR += py-wsgi_xmlrpc
@@ -5296,6 +5300,7 @@
     SUBDIR += replay
     SUBDIR += replxx
     SUBDIR += resolv_wrapper
+    SUBDIR += revive
     SUBDIR += rhtvision
     SUBDIR += riscv32-unknown-elf-gcc
     SUBDIR += riscv64-gcc
@@ -5745,6 +5750,8 @@
     SUBDIR += rubygem-azure_mgmt_storagesync
     SUBDIR += rubygem-azure_mgmt_stream_analytics
     SUBDIR += rubygem-azure_mgmt_subscriptions
+    SUBDIR += rubygem-azure_mgmt_support
+    SUBDIR += rubygem-azure_mgmt_synapse
     SUBDIR += rubygem-azure_mgmt_time_series_insights
     SUBDIR += rubygem-azure_mgmt_traffic_manager
     SUBDIR += rubygem-azure_mgmt_vmware_cloudsimple
@@ -6038,6 +6045,7 @@
     SUBDIR += rubygem-jenkins_api_client
     SUBDIR += rubygem-jeweler
     SUBDIR += rubygem-jira-ruby
+    SUBDIR += rubygem-jira-ruby1
     SUBDIR += rubygem-jmespath
     SUBDIR += rubygem-jquery-ui-themes
     SUBDIR += rubygem-jruby-jars
@@ -6086,6 +6094,7 @@
     SUBDIR += rubygem-metaid
     SUBDIR += rubygem-metasm
     SUBDIR += rubygem-method_source
+    SUBDIR += rubygem-method_source0
     SUBDIR += rubygem-micromachine
     SUBDIR += rubygem-micromachine2
     SUBDIR += rubygem-middleware
@@ -6283,6 +6292,7 @@
     SUBDIR += rubygem-ruby-prof
     SUBDIR += rubygem-ruby-progressbar
     SUBDIR += rubygem-ruby-sdl-ffi
+    SUBDIR += rubygem-ruby-statistics
     SUBDIR += rubygem-ruby2_keywords
     SUBDIR += rubygem-ruby2ruby
     SUBDIR += rubygem-ruby_dep
@@ -6302,6 +6312,7 @@
     SUBDIR += rubygem-schash
     SUBDIR += rubygem-sdoc
     SUBDIR += rubygem-semantic_puppet
+    SUBDIR += rubygem-semantic_range
     SUBDIR += rubygem-semi_semantic
     SUBDIR += rubygem-semver2
     SUBDIR += rubygem-semverse
@@ -6329,8 +6340,8 @@
     SUBDIR += rubygem-simple_form-rails50
     SUBDIR += rubygem-simplecov
     SUBDIR += rubygem-skiptrace
+    SUBDIR += rubygem-slack-messenger
     SUBDIR += rubygem-slack-notifier
-    SUBDIR += rubygem-slack-notifier1
     SUBDIR += rubygem-slim
     SUBDIR += rubygem-slop
     SUBDIR += rubygem-slop3
@@ -6458,6 +6469,7 @@
     SUBDIR += rubygem-webpacker-rails5
     SUBDIR += rubygem-webpacker-rails50
     SUBDIR += rubygem-webpacker-rails60
+    SUBDIR += rubygem-webpacker4-rails60
     SUBDIR += rubygem-will_paginate
     SUBDIR += rubygem-windows_error
     SUBDIR += rubygem-wisper
@@ -6674,6 +6686,7 @@
     SUBDIR += violet
     SUBDIR += visualparadigm
     SUBDIR += vitables
+    SUBDIR += volk
     SUBDIR += vstr
     SUBDIR += vulkan-headers
     SUBDIR += vulkan-tools

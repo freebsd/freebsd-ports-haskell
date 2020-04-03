@@ -18,7 +18,6 @@
     SUBDIR += awka
     SUBDIR += bas2tap
     SUBDIR += basic256
-    SUBDIR += beignet
     SUBDIR += bf2c
     SUBDIR += bsh
     SUBDIR += bwbasic
@@ -310,7 +309,6 @@
     SUBDIR += rexx-regutil
     SUBDIR += rexx-wrapper
     SUBDIR += rhino
-    SUBDIR += ruby24
     SUBDIR += ruby25
     SUBDIR += ruby26
     SUBDIR += ruby27
