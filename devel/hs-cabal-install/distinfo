@@ -1,4 +1,4 @@
-TIMESTAMP = 1584025631
+TIMESTAMP = 1585987007
 SHA256 (cabal/HTTP-4000.3.14/HTTP-4000.3.14.tar.gz) = a602d7f30e917164c6a634f8cb1f5df4849048858db01380a0875e16e5aa687b
 SIZE (cabal/HTTP-4000.3.14/HTTP-4000.3.14.tar.gz) = 72938
 SHA256 (cabal/async-2.2.2/async-2.2.2.tar.gz) = 4b4ab1ac82c45144d82c6daf6cb6ba45eab9957dad44787fa5e869e23d73bbff
@@ -57,5 +57,5 @@ SHA256 (cabal/zip-archive-0.3.3/revision/1.cabal) = 53f871653059f87285f434319598
 SIZE (cabal/zip-archive-0.3.3/revision/1.cabal) = 2688
 SHA256 (cabal/zlib-0.6.2.1/zlib-0.6.2.1.tar.gz) = f0f810ff173560b60392db448455c0513b3239f48e43cb494b3733aa559621d0
 SIZE (cabal/zlib-0.6.2.1/zlib-0.6.2.1.tar.gz) = 143424
-SHA256 (cabal/haskell-cabal-3.0.1.0-cabal-install-v3.0.1.0-rc4_GH0.tar.gz) = 5b504a3536ff609490037745a9e81aadf7f9dce0b8744d1524caca8435a2cd64
-SIZE (cabal/haskell-cabal-3.0.1.0-cabal-install-v3.0.1.0-rc4_GH0.tar.gz) = 1883303
+SHA256 (cabal/haskell-cabal-Cabal-v3.0.2.0_GH0.tar.gz) = 2f12b39b81b7c8b3c99c0426c8f866dc90e258a22c08545528d88a86a72ac674
+SIZE (cabal/haskell-cabal-Cabal-v3.0.2.0_GH0.tar.gz) = 1883788

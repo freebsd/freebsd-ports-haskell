@@ -1,9 +1,10 @@
 # $FreeBSD$
 
 PORTNAME=	cabal-install
-DISTVERSION=	3.0.1.0
-DISTVERSIONSUFFIX=	-rc4
+DISTVERSION=	3.0.2.0
+DISTVERSIONPREFIX=	Cabal-v
 CATEGORIES=	devel haskell
+EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
 MAINTAINER=	haskell@FreeBSD.org
 COMMENT=	Command-line interface for Cabal and Hackage
@@ -17,7 +18,6 @@ USES=		cabal compiler:c11
 USE_GITHUB=	yes
 GH_ACCOUNT=	haskell
 GH_PROJECT=	cabal
-GH_TAGNAME=	${PORTNAME}-v${PORTVERSION}${PORTVERSIONSUFFIX}
 
 WRKSRC_SUBDIR=	${PORTNAME}
 
