@@ -1,6 +1,6 @@
-TIMESTAMP = 1586043164
-SHA256 (cabal/elm-compiler-bootstrap-0.19.1.tar.gz) = 0f6b42be4676368785341ee8cbb73d246a6408ee6b330ad94ed4f80b14c804d6
-SIZE (cabal/elm-compiler-bootstrap-0.19.1.tar.gz) = 492381
+TIMESTAMP = 1586081012
+SHA256 (cabal/elm-compiler-bootstrap-0.19.1.tar.gz) = 9cf3aa64ef2b3184c04cccfe29b6d7d8298baf299a35419b1f2b15bc12f6be6b
+SIZE (cabal/elm-compiler-bootstrap-0.19.1.tar.gz) = 487029
 SHA256 (cabal/HTTP-4000.3.14/HTTP-4000.3.14.tar.gz) = a602d7f30e917164c6a634f8cb1f5df4849048858db01380a0875e16e5aa687b
 SIZE (cabal/HTTP-4000.3.14/HTTP-4000.3.14.tar.gz) = 72938
 SHA256 (cabal/HTTP-4000.3.14/revision/1.cabal) = 3c19975fdfd8d057eae58847bda6a79514ad882fd6f8ead72ac0247af34bdfc6
