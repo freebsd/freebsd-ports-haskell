@@ -5,7 +5,7 @@ PORTVERSION=	0.19.1
 CATEGORIES=	lang
 MASTER_SITES=	LOCAL/arrowd/:package_list
 DISTFILES=	elm-compiler-bootstrap-${PORTVERSION}${EXTRACT_SUFX}:package_list
-EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
+EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX} elm-compiler-bootstrap-${PORTVERSION}${EXTRACT_SUFX}
 
 MAINTAINER=	haskell@FreeBSD.org
 COMMENT=	Delightful language for reliable webapps
@@ -95,18 +95,17 @@ USE_CABAL=	ansi-terminal-0.8.2 \
 		zlib-0.6.2.1_1 \
 		zlib-bindings-0.1.1.5_2
 
+MAKE_ENV=	ELM_HOME="${WRKDIR}/elm-compiler-bootstrap-${PORTVERSION}"
+
 post-extract:
 	${RM} "${WRKSRC}/worker/elm.cabal"
-	${MKDIR} "${CABAL_HOME}"
-	${TAR} -xzf "${DISTDIR}/${DIST_SUBDIR}/elm-compiler-bootstrap-${PORTVERSION}${EXTRACT_SUFX}" -C "${CABAL_HOME}"
-	${MV} "${CABAL_HOME}/elm-compiler-bootstrap-${PORTVERSION}" "${CABAL_HOME}/.elm"
 
 .PHONY: create-bootstrap
 # Create the bootstrapping elm packages and registry files
 # This is needed because it builds the reactor app, which is written in elm!
 create-bootstrap:
 	# Prepare source
-	${MKDIR} "${CABAL_HOME}"
+	${MKDIR} "${WRKDIR}"
 	${TAR} -xzf "${DISTDIR}/${DIST_SUBDIR}/${GH_ACCOUNT}-${GH_PROJECT}-${PORTVERSION}_GH${_GITHUB_REV}${EXTRACT_SUFX}" -C "${WRKDIR}"
 	${RM} "${WRKSRC}/worker/elm.cabal"
 	# Build with a custom home
@@ -114,8 +113,7 @@ create-bootstrap:
 		${SETENV} ${MAKE_ENV} HOME="${CABAL_HOME}" cabal new-update && \
 		${SETENV} ${MAKE_ENV} HOME="${CABAL_HOME}" cabal new-build --disable-benchmarks --disable-tests --flags "${CABAL_FLAGS}" ${BUILD_ARGS} ${BUILD_TARGET}
 	# Prepare the bootstrap to /tmp
-	${MV} "${CABAL_HOME}/.elm" "${CABAL_HOME}/elm-compiler-bootstrap-${PORTVERSION}"
-	${TAR} --numeric-owner -czf "/tmp/elm-compiler-bootstrap-${PORTVERSION}${EXTRACT_SUFX}" -C "${CABAL_HOME}" \
+	${TAR} --numeric-owner -czf "/tmp/elm-compiler-bootstrap-${PORTVERSION}${EXTRACT_SUFX}" -C "${WRKDIR}" \
 		"elm-compiler-bootstrap-${PORTVERSION}"
 	# Now all that's left is manually placing the bootstrap file in ${DISTDIR}/cabal/
 	# And running make makesum to update the distfile
