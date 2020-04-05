@@ -3,6 +3,7 @@
 PORTNAME=	matterhorn
 PORTVERSION=	50200.8.0
 CATEGORIES=	net-im
+EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
 MAINTAINER=	haskell@FreeBSD.org
 COMMENT=	Feature-rich Unix terminal client for the Mattermost chat system
@@ -14,7 +15,6 @@ USES=		cabal
 USE_GITHUB=	yes
 GH_ACCOUNT=	matterhorn-chat
 GH_PROJECT=	matterhorn
-EXTRACT_ONLY=	${GH_ACCOUNT}-${GH_PROJECT}-${PORTVERSION}_GH0${CABAL_EXTRACT_SUFX}
 
 USE_CABAL=	aeson-1.4.7.1_1 \
 		ansi-terminal-0.10.3 \
