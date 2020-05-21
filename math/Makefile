@@ -211,7 +211,6 @@
     SUBDIR += curv
     SUBDIR += cvc3
     SUBDIR += cvc4
-    SUBDIR += darknet
     SUBDIR += dbcsr
     SUBDIR += deal.ii
     SUBDIR += dieharder
@@ -721,6 +720,7 @@
     SUBDIR += py-PySCIPOpt
     SUBDIR += py-PyWavelets
     SUBDIR += py-Pyomo
+    SUBDIR += py-affine
     SUBDIR += py-algopy
     SUBDIR += py-altgraph
     SUBDIR += py-apgl
@@ -740,6 +740,7 @@
     SUBDIR += py-cvxopt
     SUBDIR += py-cvxpy
     SUBDIR += py-cyipopt
+    SUBDIR += py-cypari2
     SUBDIR += py-deap
     SUBDIR += py-ecos
     SUBDIR += py-fastcluster
@@ -747,14 +748,17 @@
     SUBDIR += py-ffc
     SUBDIR += py-fiat
     SUBDIR += py-fpconst
+    SUBDIR += py-fpylll
     SUBDIR += py-gau2grid
     SUBDIR += py-gimmik
     SUBDIR += py-gmpy
     SUBDIR += py-gmpy2
+    SUBDIR += py-gmpy2-devel
     SUBDIR += py-grandalf
     SUBDIR += py-graphillion
     SUBDIR += py-gym
     SUBDIR += py-hdbscan
+    SUBDIR += py-hdmedians
     SUBDIR += py-igraph
     SUBDIR += py-intspan
     SUBDIR += py-keras
@@ -785,6 +789,7 @@
     SUBDIR += py-petsc4py
     SUBDIR += py-piranha
     SUBDIR += py-plastex
+    SUBDIR += py-pplpy
     SUBDIR += py-primme
     SUBDIR += py-pyFFTW
     SUBDIR += py-pyasp
@@ -820,6 +825,7 @@
     SUBDIR += py-secp256k1
     SUBDIR += py-simhash
     SUBDIR += py-slepc4py
+    SUBDIR += py-snuggs
     SUBDIR += py-spectral
     SUBDIR += py-spot
     SUBDIR += py-statsmodels
@@ -857,9 +863,11 @@
     SUBDIR += rocs
     SUBDIR += rpcalc
     SUBDIR += rubygem-algebra
+    SUBDIR += rubygem-enumerable-statistics
     SUBDIR += rubygem-expression_parser
     SUBDIR += rubygem-fftw3
     SUBDIR += rubygem-mathn
+    SUBDIR += rubygem-matrix
     SUBDIR += rubygem-mtrc
     SUBDIR += rubygem-narray
     SUBDIR += rubygem-narray_miss

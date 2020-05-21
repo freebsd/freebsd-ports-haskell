@@ -1077,6 +1077,7 @@
     SUBDIR += py-python-glanceclient
     SUBDIR += py-python-heatclient
     SUBDIR += py-python-keystoneclient
+    SUBDIR += py-python-keystoneclient3
     SUBDIR += py-python-neutronclient
     SUBDIR += py-python-novaclient
     SUBDIR += py-python-novaclient16
@@ -1330,6 +1331,7 @@
     SUBDIR += rubygem-twitter4r
     SUBDIR += rubygem-u2f
     SUBDIR += rubygem-u2f0
+    SUBDIR += rubygem-uri
     SUBDIR += rubygem-uri-redis
     SUBDIR += rubygem-whois
     SUBDIR += rubygem-xmlrpc

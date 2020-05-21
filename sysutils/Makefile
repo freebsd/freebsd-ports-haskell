@@ -431,6 +431,7 @@
     SUBDIR += gnome-settings-daemon
     SUBDIR += gnome-system-monitor
     SUBDIR += gnome_subr
+    SUBDIR += go-btfs
     SUBDIR += go-wtf
     SUBDIR += goaccess
     SUBDIR += goawk
@@ -469,6 +470,7 @@
     SUBDIR += highlnk
     SUBDIR += hilite
     SUBDIR += host-setup
+    SUBDIR += hostctl
     SUBDIR += hourglass
     SUBDIR += hpacucli
     SUBDIR += hploscripts
@@ -598,6 +600,7 @@
     SUBDIR += lr
     SUBDIR += lsblk
     SUBDIR += lscpu
+    SUBDIR += lsd
     SUBDIR += lsof
     SUBDIR += lsop
     SUBDIR += lsyncd
@@ -945,7 +948,6 @@
     SUBDIR += py-bitrot
     SUBDIR += py-borgmatic
     SUBDIR += py-cdmi
-    SUBDIR += py-cpuinfo
     SUBDIR += py-cron-descriptor
     SUBDIR += py-croniter
     SUBDIR += py-diffoscope
@@ -981,6 +983,7 @@
     SUBDIR += py-psutil
     SUBDIR += py-psutil121
     SUBDIR += py-ptyprocess
+    SUBDIR += py-py-cpuinfo
     SUBDIR += py-python-consul
     SUBDIR += py-python-crontab
     SUBDIR += py-python-nomad
@@ -989,6 +992,7 @@
     SUBDIR += py-pyznap
     SUBDIR += py-queuelib
     SUBDIR += py-ranger
+    SUBDIR += py-rdiff-backup
     SUBDIR += py-salt
     SUBDIR += py-scandir
     SUBDIR += py-scarab
@@ -1027,7 +1031,6 @@
     SUBDIR += rclean
     SUBDIR += rcm
     SUBDIR += rdate
-    SUBDIR += rdiff-backup
     SUBDIR += rdup
     SUBDIR += read-edid
     SUBDIR += recoverdm
@@ -1144,7 +1147,8 @@
     SUBDIR += rubygem-winrm-elevated
     SUBDIR += rubygem-winrm-fs
     SUBDIR += rubygem-yell
-    SUBDIR += rundeck
+    SUBDIR += rundeck2
+    SUBDIR += rundeck3
     SUBDIR += runit
     SUBDIR += runit-faster
     SUBDIR += runwhen
@@ -1246,6 +1250,7 @@
     SUBDIR += syslog-ng324
     SUBDIR += syslog-ng325
     SUBDIR += syslog-ng326
+    SUBDIR += syslog-ng327
     SUBDIR += syslogger
     SUBDIR += sysrc
     SUBDIR += system-tools-backends
@@ -1333,6 +1338,7 @@
     SUBDIR += u-boot-pinebook
     SUBDIR += u-boot-pinebookpro
     SUBDIR += u-boot-qemu-arm
+    SUBDIR += u-boot-qemu-arm64
     SUBDIR += u-boot-riotboard
     SUBDIR += u-boot-rock64
     SUBDIR += u-boot-rockpro64
@@ -1456,6 +1462,7 @@
     SUBDIR += xmbmon
     SUBDIR += xorriso
     SUBDIR += xosview
+    SUBDIR += xpipe
     SUBDIR += xstow
     SUBDIR += xsysstats
     SUBDIR += xvidcap

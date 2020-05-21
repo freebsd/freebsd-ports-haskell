@@ -169,6 +169,7 @@
     SUBDIR += fpc-libmicrohttpd
     SUBDIR += free-sa-devel
     SUBDIR += fswiki
+    SUBDIR += fusionpbx
     SUBDIR += g-cows
     SUBDIR += g-gcl
     SUBDIR += gallery2
@@ -199,6 +200,8 @@
     SUBDIR += googlebook_dl
     SUBDIR += googler
     SUBDIR += goose
+    SUBDIR += gophernicus
+    SUBDIR += gopherus
     SUBDIR += gotty
     SUBDIR += gpx2map
     SUBDIR += grafana
@@ -345,6 +348,7 @@
     SUBDIR += mod_auth_cookie_mysql2
     SUBDIR += mod_auth_gssapi
     SUBDIR += mod_auth_kerb2
+    SUBDIR += mod_auth_mellon
     SUBDIR += mod_auth_mysql2
     SUBDIR += mod_auth_mysql_another
     SUBDIR += mod_auth_openid
@@ -1404,6 +1408,7 @@
     SUBDIR += py-beaker
     SUBDIR += py-beautifulsoup
     SUBDIR += py-beautifulsoup32
+    SUBDIR += py-beautifulsoup448
     SUBDIR += py-beautifulsoup460
     SUBDIR += py-biscuits
     SUBDIR += py-bjoern
@@ -1491,7 +1496,6 @@
     SUBDIR += py-django-filter
     SUBDIR += py-django-formtools
     SUBDIR += py-django-guardian
-    SUBDIR += py-django-happenings
     SUBDIR += py-django-happenings-update
     SUBDIR += py-django-haystack
     SUBDIR += py-django-hierarkey
@@ -1649,6 +1653,7 @@
     SUBDIR += py-httpie
     SUBDIR += py-httplib2
     SUBDIR += py-httptools
+    SUBDIR += py-httpx
     SUBDIR += py-hyper
     SUBDIR += py-hyperframe
     SUBDIR += py-hyperlink
@@ -1838,8 +1843,8 @@
     SUBDIR += rubygem-actionpack50
     SUBDIR += rubygem-actionpack52
     SUBDIR += rubygem-actionpack60
+    SUBDIR += rubygem-activeresource
     SUBDIR += rubygem-activeresource4
-    SUBDIR += rubygem-activeresource5
     SUBDIR += rubygem-acts-as-taggable-on
     SUBDIR += rubygem-acts-as-taggable-on3
     SUBDIR += rubygem-acts-as-taggable-on5

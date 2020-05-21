@@ -790,6 +790,7 @@
     SUBDIR += py-cairocffi
     SUBDIR += py-cairosvg
     SUBDIR += py-cartopy
+    SUBDIR += py-cogdumper
     SUBDIR += py-colour
     SUBDIR += py-descartes
     SUBDIR += py-django-easy-thumbnails
@@ -864,6 +865,7 @@
     SUBDIR += py-pyx
     SUBDIR += py-qrencode
     SUBDIR += py-qt5-svg
+    SUBDIR += py-rasterio
     SUBDIR += py-rawkit
     SUBDIR += py-sane
     SUBDIR += py-scikit-image
@@ -1039,6 +1041,7 @@
     SUBDIR += vigra
     SUBDIR += vips
     SUBDIR += visprint
+    SUBDIR += viu
     SUBDIR += vkd3d
     SUBDIR += volpack
     SUBDIR += vp

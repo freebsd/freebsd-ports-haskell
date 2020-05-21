@@ -245,6 +245,7 @@
     SUBDIR += pipeglade
     SUBDIR += pixman
     SUBDIR += plank
+    SUBDIR += plasma-wayland-protocols 
     SUBDIR += plasma5-kactivitymanagerd
     SUBDIR += plasma5-kgamma5
     SUBDIR += plasma5-kscreen
@@ -321,6 +322,7 @@
     SUBDIR += urxvt-perls
     SUBDIR += vdesk
     SUBDIR += viewres
+    SUBDIR += virglrenderer
     SUBDIR += virtboard
     SUBDIR += virtualgl
     SUBDIR += wallutils

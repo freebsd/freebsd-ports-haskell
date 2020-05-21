@@ -2,12 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	dhcpcd
-PORTVERSION=	g20200504
+PORTVERSION=	g20200513
 CATEGORIES=	net
 MASTER_SITES=	https://roy.marples.name/cgit/dhcpcd.git/snapshot/
 PKGNAMESUFFIX=	-devel
 DISTNAME=	${PORTNAME}-${GITTAG}
-GITTAG=		725b0bd
+GITTAG=		574535f
 
 MAINTAINER=	woodsb02@FreeBSD.org
 COMMENT=	DHCP/IPv4LL/IPv6RS/DHCPv6 client
@@ -22,14 +22,13 @@ USES=		compiler:c11 cpe tar:xz
 CPE_VENDOR=	dhcpcd_project
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--datadir=${PREFIX}/share/examples \
-		--privsepuser="_dhcp" \
-		--chrootdir="${CHROOTDIR}"
+		--privsepuser="_dhcp"
 USE_RC_SUBR=	dhcpcd
-CHROOTDIR=	/var/chroot/dhcpcd
 
 post-install:
 	${MV} ${STAGEDIR}${PREFIX}/etc/dhcpcd.conf \
 		${STAGEDIR}${PREFIX}/share/examples/dhcpcd
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/sbin/dhcpcd
+	${MKDIR} ${STAGEDIR}/var/db/dhcpcd
 
 .include <bsd.port.mk>

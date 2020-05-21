@@ -22,6 +22,7 @@
     SUBDIR += R-cran-snow
     SUBDIR += R-cran-som
     SUBDIR += R-cran-udunits2
+    SUBDIR += abinit
     SUBDIR += afni
     SUBDIR += agrum
     SUBDIR += aircraft-datcom
@@ -53,6 +54,7 @@
     SUBDIR += code_saturne
     SUBDIR += colt
     SUBDIR += coordgenlibs
+    SUBDIR += cp2k
     SUBDIR += cp2k-data
     SUBDIR += crf++
     SUBDIR += dalton
@@ -70,6 +72,7 @@
     SUBDIR += elmerfem
     SUBDIR += epte
     SUBDIR += erd
+    SUBDIR += ergo
     SUBDIR += erkale
     SUBDIR += erkale-pseudopotentials
     SUBDIR += fastcap
@@ -241,11 +244,13 @@
     SUBDIR += py-kim-query
     SUBDIR += py-kinematics
     SUBDIR += py-kliff
+    SUBDIR += py-liac-arff
     SUBDIR += py-lifelines
     SUBDIR += py-mdp
     SUBDIR += py-mlpy
     SUBDIR += py-mmtf-python
     SUBDIR += py-molmod
+    SUBDIR += py-moltemplate
     SUBDIR += py-netCDF4
     SUBDIR += py-obspy
     SUBDIR += py-oddt

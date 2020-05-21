@@ -5,6 +5,46 @@ they are unavoidable.
 You should get into the habit of checking this file for changes each time
 you update your ports collection, before attempting any port upgrades.
 
+20200518:
+  AFFECTS: users of converers/libiconv
+  AUTHOR: zeising@FreeBSD.org
+
+  Support for the Japanese specific patches have been discontinued.
+  These were previously added in a nondefault ports options, for people who
+  needed them.
+  If you still need them, it might be possible to create a port of libiconv 1.14
+  which includes those patches.
+
+20200517:
+  AFFECTS: users of x11/sddm
+  AUTHOR: arrowd@FreeBSD.org
+
+  The home directory of sddm user has been moved to /var/lib/sddm. It is advised
+  to run following commands as root after updating the package:
+
+    # pw usermod -n sddm -d /var/lib/sddm
+    # pwd_mkdb /etc/master.passwd
+    # mv /usr/local/etc/sddm/home/state.conf /var/lib/sddm/state.conf
+    # rm -rf /usr/local/etc/sddm/home
+
+  Otherwise, SDDM will keep using /usr/local/etc/sddm/home/ as its HOME.
+
+20200515:
+  AFFECTS: users of devel/libphutil, devel/arcanist-lib, devel/phabricator
+  AUTHOR: grembo@FreeBSD.org
+
+  Upstream fully deprecated devel/libphutil and merged its functionality
+  into devel/arcanist-lib and devel/phabricator. As a result, the
+  devel/libphutil port will be removed from the ports tree.
+
+  After upgrading devel/(arcanist-lib|phabricator) to version 20200514, it is
+  recommended to remove the orphaned libphutil package by running:
+
+    # pkg delete php\*-libphutil
+
+  Alternatively, 'pkg autoremove' will also work as expected, but might
+  remove orphaned packages unrelated to this update.
+
 20200505:
   AFFECTS: users of net-im/pidgin-rocketchat
   AUTHOR: tobias.rehbein@web.de
@@ -92,24 +132,6 @@ you update your ports collection, before attempting any port upgrades.
   Please use the following command to do so:
 
   pw usermod -n tests -g tests
-
-20200418:
-  AFFECTS: users of mail/mailman
-  AUTHOR: mandree@FreeBSD.org
-
-  Mailman versions on FreeBSD before (exclusively) 2.1.30 have not marked the
-  web templates as "sample" files, and would overwrite changes made locally or
-  through the web interface on updates.
-
-  BEFORE updating mailman from a version such as 2.1.29_* or older, please
-  backup /usr/local/mailman/templates/ before the upgrade, and after installing
-  mailman 2.1.30 or a newer 2.1.x, restore from backup, overwriting the
-  existing newly installed templates/LANG/... files with those from your
-  backup, and then diff them against the respective *.sample files.  The *.txt
-  and *.html files are yours, and *.sample are the distributed ones.
-
-  Once you have upgraded to 2.1.30, the port or package will take care to only
-  replace files that were unaltered from the shipped version.
 
 20200408:
   AFFECTS: users of security/openssh-portable

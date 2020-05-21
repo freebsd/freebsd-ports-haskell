@@ -67,6 +67,7 @@
     SUBDIR += dahdi
     SUBDIR += dahdi-kmod
     SUBDIR += dahdi-kmod26
+    SUBDIR += darknet
     SUBDIR += dartsim
     SUBDIR += ddate
     SUBDIR += deco
@@ -421,6 +422,7 @@
     SUBDIR += raspberrypi-userland
     SUBDIR += raspbsd-led
     SUBDIR += ree
+    SUBDIR += rfc
     SUBDIR += ringtonetools
     SUBDIR += rname
     SUBDIR += rpl

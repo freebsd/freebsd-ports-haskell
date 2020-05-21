@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	wine
-DISTVERSION=	5.7
+DISTVERSION=	5.8
 PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	emulators
@@ -36,6 +36,7 @@ CONFIGURE_ARGS+=--verbose \
 		--without-alsa --without-capi --without-dbus \
 		--without-gettext --without-gettextpo \
 		--without-gphoto --without-gsm --without-gstreamer \
+		--without-inotify \
 		--without-krb5 \
 		--without-opencl \
 		--without-osmesa \
