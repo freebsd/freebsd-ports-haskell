@@ -1355,6 +1355,8 @@
     SUBDIR += py-snowballstemmer
     SUBDIR += py-sparqlwrapper
     SUBDIR += py-sphinx
+    SUBDIR += py-sphinx-autoapi
+    SUBDIR += py-sphinx-autodoc-typehints
     SUBDIR += py-sphinx-hieroglyph
     SUBDIR += py-sphinx-intl
     SUBDIR += py-sphinx-me
