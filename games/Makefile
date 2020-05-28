@@ -129,6 +129,7 @@
     SUBDIR += caph
     SUBDIR += cardpics
     SUBDIR += cataclysm-dda
+    SUBDIR += cataclysm-dda-tiles
     SUBDIR += catesc
     SUBDIR += cave9
     SUBDIR += cavezofphear
@@ -509,6 +510,7 @@
     SUBDIR += libretro-nxengine
     SUBDIR += libretro-o2em
     SUBDIR += libretro-opera
+    SUBDIR += libretro-paralleln64
     SUBDIR += libretro-pcsx_rearmed
     SUBDIR += libretro-picodrive
     SUBDIR += libretro-prboom
