@@ -272,7 +272,6 @@
     SUBDIR += capstone3
     SUBDIR += capstone4
     SUBDIR += cargo-c
-    SUBDIR += cargo-tree
     SUBDIR += cask
     SUBDIR += catch
     SUBDIR += cbrowser
@@ -487,6 +486,7 @@
     SUBDIR += dmlc-core
     SUBDIR += dmucs
     SUBDIR += docopt.cpp
+    SUBDIR += doctest
     SUBDIR += doctorj
     SUBDIR += dolphin-plugins
     SUBDIR += dotconf
@@ -691,6 +691,7 @@
     SUBDIR += frama-c
     SUBDIR += freebsd-gcc6
     SUBDIR += freebsd-gcc9
+    SUBDIR += frink
     SUBDIR += fsmtrie
     SUBDIR += fstrcmp
     SUBDIR += fstrm
@@ -874,7 +875,6 @@
     SUBDIR += gradle5
     SUBDIR += gradle62
     SUBDIR += grantlee5
-    SUBDIR += graphql.el
     SUBDIR += grpc
     SUBDIR += grumpy
     SUBDIR += grv
@@ -1251,8 +1251,6 @@
     SUBDIR += liborcus
     SUBDIR += libosinfo
     SUBDIR += libosmo-abis
-    SUBDIR += libosmo-netif
-    SUBDIR += libosmo-sccp
     SUBDIR += libosmocore
     SUBDIR += libowfat
     SUBDIR += libpafe
@@ -4469,6 +4467,7 @@
     SUBDIR += py-humanize
     SUBDIR += py-hvac
     SUBDIR += py-hypothesis
+    SUBDIR += py-hypothesmith
     SUBDIR += py-icalendar
     SUBDIR += py-ice
     SUBDIR += py-ice37
@@ -5270,6 +5269,7 @@
     SUBDIR += py-zope.testing
     SUBDIR += py-zope.traversing
     SUBDIR += py-zsm-lib
+    SUBDIR += py3c
     SUBDIR += py_static_check
     SUBDIR += pybind11
     SUBDIR += pybugz
@@ -5379,6 +5379,7 @@
     SUBDIR += ros-urdfdom_headers
     SUBDIR += ros-vcstools
     SUBDIR += ros-wstool
+    SUBDIR += roswell
     SUBDIR += rote
     SUBDIR += rpc2
     SUBDIR += rpclib
@@ -5417,6 +5418,7 @@
     SUBDIR += rubygem-akismet
     SUBDIR += rubygem-algebrick
     SUBDIR += rubygem-algorithms
+    SUBDIR += rubygem-aliyun-sdk
     SUBDIR += rubygem-allison
     SUBDIR += rubygem-analogger
     SUBDIR += rubygem-annoy
@@ -6235,17 +6237,13 @@
     SUBDIR += rubygem-pathutil
     SUBDIR += rubygem-pdk
     SUBDIR += rubygem-peek
-    SUBDIR += rubygem-peek-gc-rails5
     SUBDIR += rubygem-peek-gc-rails52
     SUBDIR += rubygem-peek-host
     SUBDIR += rubygem-peek-performance_bar
     SUBDIR += rubygem-peek-rails4
-    SUBDIR += rubygem-peek-rails5
     SUBDIR += rubygem-peek-rails52
     SUBDIR += rubygem-peek-rails60
-    SUBDIR += rubygem-peek-rblineprof-rails5
     SUBDIR += rubygem-peek-rblineprof-rails52
-    SUBDIR += rubygem-peek-redis-rails5
     SUBDIR += rubygem-peek-redis-rails52
     SUBDIR += rubygem-pkg-config
     SUBDIR += rubygem-platform

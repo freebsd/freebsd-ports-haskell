@@ -76,8 +76,8 @@
     SUBDIR += erkale
     SUBDIR += erkale-pseudopotentials
     SUBDIR += fastcap
-    SUBDIR += fastjet
     SUBDIR += fasthenry
+    SUBDIR += fastjet
     SUBDIR += fisicalab
     SUBDIR += fleur
     SUBDIR += fsom
@@ -342,6 +342,7 @@
     SUBDIR += xcrysden
     SUBDIR += xdrawchem
     SUBDIR += xfce4-equake-plugin
+    SUBDIR += xtb
     SUBDIR += yoda
 
 .include <bsd.port.subdir.mk>

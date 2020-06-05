@@ -361,6 +361,7 @@
     SUBDIR += libgrss
     SUBDIR += libgweather
     SUBDIR += libilbc
+    SUBDIR += libiscsi
     SUBDIR += libjson-rpc-cpp
     SUBDIR += libkgapi
     SUBDIR += libksieve
@@ -533,7 +534,6 @@
     SUBDIR += open-isns
     SUBDIR += openbgpd
     SUBDIR += openbgpd6
-    SUBDIR += openbsc
     SUBDIR += openggsn
     SUBDIR += openldap24-client
     SUBDIR += openldap24-sasl-client
@@ -851,6 +851,7 @@
     SUBDIR += p5-Text-Authinfo
     SUBDIR += p5-Twitter-API
     SUBDIR += p5-URI
+    SUBDIR += p5-URI-Based
     SUBDIR += p5-URI-Encode-XS
     SUBDIR += p5-URI-Fast
     SUBDIR += p5-URI-FromHash
@@ -989,6 +990,7 @@
     SUBDIR += ptunnel
     SUBDIR += pvm
     SUBDIR += pwhois
+    SUBDIR += pwnat
     SUBDIR += pxe
     SUBDIR += pxe-pdhcp
     SUBDIR += py-DTLSSocket

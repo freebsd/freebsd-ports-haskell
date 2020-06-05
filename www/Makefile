@@ -256,6 +256,7 @@
     SUBDIR += igal2
     SUBDIR += ikiwiki
     SUBDIR += ilias
+    SUBDIR += ilias6
     SUBDIR += interchange
     SUBDIR += iridium
     SUBDIR += itop
@@ -310,6 +311,7 @@
     SUBDIR += linux-opera
     SUBDIR += litmus
     SUBDIR += ljdeps
+    SUBDIR += logswan
     SUBDIR += logtools
     SUBDIR += lua-resty-core
     SUBDIR += lua-resty-lrucache
@@ -325,7 +327,6 @@
     SUBDIR += mattermost-server
     SUBDIR += mattermost-webapp
     SUBDIR += mediawiki131
-    SUBDIR += mediawiki132
     SUBDIR += mediawiki133
     SUBDIR += mediawiki134
     SUBDIR += mergelog
@@ -409,7 +410,6 @@
     SUBDIR += mongoose
     SUBDIR += mongrel2
     SUBDIR += moodle35
-    SUBDIR += moodle36
     SUBDIR += moodle37
     SUBDIR += moodle38
     SUBDIR += morty
@@ -1410,7 +1410,6 @@
     SUBDIR += py-beautifulsoup
     SUBDIR += py-beautifulsoup32
     SUBDIR += py-beautifulsoup448
-    SUBDIR += py-beautifulsoup460
     SUBDIR += py-biscuits
     SUBDIR += py-bjoern
     SUBDIR += py-bleach
@@ -1504,7 +1503,6 @@
     SUBDIR += py-django-htmlmin
     SUBDIR += py-django-i18nfield
     SUBDIR += py-django-js-asset
-    SUBDIR += py-django-json-rpc
     SUBDIR += py-django-jsonfield
     SUBDIR += py-django-ldapdb
     SUBDIR += py-django-libsass
@@ -1569,9 +1567,8 @@
     SUBDIR += py-djangorestframework-csv
     SUBDIR += py-djangorestframework-filters
     SUBDIR += py-djangorestframework-xml
+    SUBDIR += py-djangorestframework311
     SUBDIR += py-djangorestframework36
-    SUBDIR += py-djangotoolbox
-    SUBDIR += py-dojango
     SUBDIR += py-draftjs_exporter
     SUBDIR += py-drf-yasg
     SUBDIR += py-dtflickr
@@ -1719,7 +1716,6 @@
     SUBDIR += py-requests-cache
     SUBDIR += py-requests-file
     SUBDIR += py-requests-futures
-    SUBDIR += py-requests-futures097
     SUBDIR += py-requests-mock
     SUBDIR += py-requests-oauthlib
     SUBDIR += py-requests-toolbelt
@@ -1893,7 +1889,9 @@
     SUBDIR += rubygem-ethon
     SUBDIR += rubygem-eventmachine_httpserver
     SUBDIR += rubygem-faraday
+    SUBDIR += rubygem-faraday0
     SUBDIR += rubygem-faraday_middleware
+    SUBDIR += rubygem-faraday_middleware0
     SUBDIR += rubygem-faye
     SUBDIR += rubygem-faye-websocket
     SUBDIR += rubygem-fcgi
