@@ -27,13 +27,13 @@ USE_CABAL=	aeson-1.4.7.1_1 \
 		base-compat-0.11.1 \
 		base-compat-batteries-0.11.1 \
 		base-orphans-0.8.2 \
-		base64-bytestring-1.0.0.3 \
+		base64-bytestring-1.1.0.0 \
 		basement-0.0.11_2 \
 		bifunctors-5.5.7 \
 		blaze-builder-0.4.1.0 \
 		blaze-html-0.9.1.2 \
-		blaze-markup-0.8.2.4 \
-		brick-0.52.1 \
+		blaze-markup-0.8.2.5 \
+		brick-0.53 \
 		brick-skylighting-0.3 \
 		bytestring-builder-0.10.8.2.0 \
 		cabal-doctest-1.0.8_1 \
@@ -42,11 +42,11 @@ USE_CABAL=	aeson-1.4.7.1_1 \
 		cheapskate-0.1.1.2_1 \
 		clock-0.8 \
 		colour-2.3.5 \
-		comonad-5.0.6 \
+		comonad-5.0.6_1 \
 		config-ini-0.2.4.0_1 \
 		connection-0.3.1_1 \
 		contravariant-1.5.2 \
-		cryptohash-md5-0.11.100.1_4 \
+		cryptohash-md5-0.11.100.1_5 \
 		cryptohash-sha1-0.11.100.1_5 \
 		cryptonite-0.26 \
 		css-text-0.1.3.0 \
@@ -56,10 +56,9 @@ USE_CABAL=	aeson-1.4.7.1_1 \
 		data-default-instances-containers-0.0.1 \
 		data-default-instances-dlist-0.0.1 \
 		data-default-instances-old-locale-0.0.1 \
-		distributive-0.6.1 \
+		distributive-0.6.2_1 \
 		dlist-0.8.0.8 \
-		entropy-0.4.1.5 \
-		exceptions-0.10.4_1 \
+		entropy-0.4.1.6 \
 		extensible-exceptions-0.1.1.4 \
 		gitrev-1.3.1 \
 		happy-1.19.12 \
@@ -69,7 +68,7 @@ USE_CABAL=	aeson-1.4.7.1_1 \
 		hourglass-0.2.12 \
 		hsc2hs-0.68.7 \
 		HTTP-4000.3.14_1 \
-		http-media-0.8.0.0_2 \
+		http-media-0.8.0.0_3 \
 		hxt-9.3.1.18 \
 		hxt-charproperties-9.4.0.0 \
 		hxt-regex-xmlschema-9.2.0.3_1 \
@@ -82,8 +81,8 @@ USE_CABAL=	aeson-1.4.7.1_1 \
 		microlens-ghc-0.4.12 \
 		microlens-mtl-0.2.0.1 \
 		microlens-platform-0.4.1 \
-		microlens-th-0.4.3.4 \
-		modern-uri-0.3.2.0 \
+		microlens-th-0.4.3.5 \
+		modern-uri-0.3.2.0_1 \
 		monad-control-1.0.2.3 \
 		network-3.1.1.1 \
 		network-info-0.2.0.10_1 \
@@ -95,20 +94,20 @@ USE_CABAL=	aeson-1.4.7.1_1 \
 		pretty-show-1.10 \
 		primitive-0.7.0.1 \
 		profunctors-5.5.2 \
-		QuickCheck-2.14 \
+		QuickCheck-2.14_1 \
 		random-1.1_1 \
-		reflection-2.1.5 \
+		reflection-2.1.6 \
 		regex-base-0.94.0.0_1 \
-		regex-pcre-builtin-0.95.1.1.8.43 \
+		regex-pcre-builtin-0.95.1.2.8.43 \
 		resource-pool-0.2.3.2 \
-		safe-0.3.18_1 \
+		safe-0.3.19 \
 		scientific-0.3.6.2 \
 		semigroups-0.19.1 \
 		SHA-1.6.4.4 \
-		skylighting-core-0.8.3.4 \
+		skylighting-core-0.8.4 \
 		socks-0.6.1 \
 		split-0.2.3.4 \
-		splitmix-0.0.4 \
+		splitmix-0.0.5 \
 		StateVar-1.2 \
 		stm-delay-0.1.1.1 \
 		streaming-commons-0.2.1.2 \
@@ -132,7 +131,7 @@ USE_CABAL=	aeson-1.4.7.1_1 \
 		uuid-types-1.0.3_2 \
 		vector-0.12.1.2 \
 		vty-5.28.2 \
-		websockets-0.12.7.0 \
+		websockets-0.12.7.1 \
 		word-wrap-0.4.1_1 \
 		x509-1.7.5_1 \
 		x509-store-1.6.7_1 \
