@@ -2,6 +2,7 @@
 
 PORTNAME=	rust
 PORTVERSION=	1.44.0
+PORTREVISION=	1
 CATEGORIES=	lang
 MASTER_SITES=	https://static.rust-lang.org/dist/:rust \
 		LOCAL/tobik:armbase \
@@ -43,7 +44,7 @@ powerpc64_elfv2_PKGNAMEPREFIX=	powerpc64-elfv2-
 
 USES=		perl5 python:3.3+,build tar:xz
 .if ${FLAVOR} == powerpc64_elfv1
-USE_GCC=	yes
+USE_GCC=	9
 .endif
 # for openssl-src crate
 USE_PERL5=	build

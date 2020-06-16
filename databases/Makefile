@@ -23,6 +23,7 @@
     SUBDIR += apq-pgsql
     SUBDIR += arangodb32
     SUBDIR += arangodb33
+    SUBDIR += arrow
     SUBDIR += ateam_mysql_ldap_auth
     SUBDIR += autobackupmysql
     SUBDIR += automysqlbackup
@@ -188,6 +189,8 @@
     SUBDIR += mongodb36-tools
     SUBDIR += mongodb40
     SUBDIR += mongodb40-tools
+    SUBDIR += mongodb42
+    SUBDIR += mongodb42-tools
     SUBDIR += mroonga
     SUBDIR += mtools-mongodb
     SUBDIR += mtop

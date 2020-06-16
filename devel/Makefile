@@ -1188,6 +1188,7 @@
     SUBDIR += libglade2
     SUBDIR += libglade2-reference
     SUBDIR += libglademm24
+    SUBDIR += libgnt
     SUBDIR += libgpc
     SUBDIR += libgpkg
     SUBDIR += libgrading
@@ -3244,6 +3245,9 @@
     SUBDIR += p5-Term-ANSIScreen
     SUBDIR += p5-Term-Animation
     SUBDIR += p5-Term-App-Roles
+    SUBDIR += p5-Term-App-Util-Color
+    SUBDIR += p5-Term-App-Util-Interactive
+    SUBDIR += p5-Term-App-Util-Size
     SUBDIR += p5-Term-CallEditor
     SUBDIR += p5-Term-Choose
     SUBDIR += p5-Term-Choose-Util
@@ -4651,6 +4655,7 @@
     SUBDIR += py-nbconvert
     SUBDIR += py-nbdime
     SUBDIR += py-nbformat
+    SUBDIR += py-node-semver
     SUBDIR += py-nodeenv
     SUBDIR += py-nose
     SUBDIR += py-nose-cov
@@ -4741,6 +4746,7 @@
     SUBDIR += py-parver
     SUBDIR += py-pastel
     SUBDIR += py-patch
+    SUBDIR += py-patch-ng
     SUBDIR += py-path.py
     SUBDIR += py-pathlib
     SUBDIR += py-pathlib2
@@ -5480,6 +5486,7 @@
     SUBDIR += rubygem-aws-sdk-cloudwatch
     SUBDIR += rubygem-aws-sdk-cloudwatchevents
     SUBDIR += rubygem-aws-sdk-cloudwatchlogs
+    SUBDIR += rubygem-aws-sdk-codeartifact
     SUBDIR += rubygem-aws-sdk-codebuild
     SUBDIR += rubygem-aws-sdk-codecommit
     SUBDIR += rubygem-aws-sdk-codedeploy
@@ -5897,10 +5904,12 @@
     SUBDIR += rubygem-csv
     SUBDIR += rubygem-cucumber
     SUBDIR += rubygem-cucumber-core
+    SUBDIR += rubygem-cucumber-cucumber-expressions
     SUBDIR += rubygem-cucumber-expressions
     SUBDIR += rubygem-cucumber-expressions6
     SUBDIR += rubygem-cucumber-formatter-dots
     SUBDIR += rubygem-cucumber-messages
+    SUBDIR += rubygem-cucumber-messages4
     SUBDIR += rubygem-cucumber-rails
     SUBDIR += rubygem-cucumber-tag-expressions
     SUBDIR += rubygem-cucumber-tag_expressions1
@@ -6261,6 +6270,7 @@
     SUBDIR += rubygem-progressbar
     SUBDIR += rubygem-prometheus-client-mmap
     SUBDIR += rubygem-protected_attributes
+    SUBDIR += rubygem-protobuf-cucumber
     SUBDIR += rubygem-protocol
     SUBDIR += rubygem-pry
     SUBDIR += rubygem-pry-byebug

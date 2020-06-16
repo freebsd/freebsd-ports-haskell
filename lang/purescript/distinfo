@@ -1,4 +1,4 @@
-TIMESTAMP = 1591385853
+TIMESTAMP = 1592244958
 SHA256 (cabal/purescript-0.13.8.tar.gz) = 701fac49de867ec01252b067185e8bbd1b72e4b96997044bac3cca91e3f8096a
 SIZE (cabal/purescript-0.13.8.tar.gz) = 568902
 SHA256 (cabal/Glob-0.9.3/Glob-0.9.3.tar.gz) = 3a77853eba3700c5346cd6d4008302e70dca93a7e8ac0d679cf41b16c7a4c9e8

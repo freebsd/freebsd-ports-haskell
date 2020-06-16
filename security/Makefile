@@ -717,7 +717,6 @@
     SUBDIR += pam_mkhomedir
     SUBDIR += pam_ocra
     SUBDIR += pam_p11
-    SUBDIR += pam_pseudo
     SUBDIR += pam_pwdfile
     SUBDIR += pam_require
     SUBDIR += pam_script
@@ -1079,6 +1078,7 @@
     SUBDIR += rubygem-net-ssh-krb
     SUBDIR += rubygem-net-ssh-multi
     SUBDIR += rubygem-net-ssh4
+    SUBDIR += rubygem-net-ssh5
     SUBDIR += rubygem-net-telnet
     SUBDIR += rubygem-nexpose
     SUBDIR += rubygem-nmap-parser
@@ -1288,6 +1288,7 @@
     SUBDIR += ykpers
     SUBDIR += ylva
     SUBDIR += yubico-piv-tool
+    SUBDIR += yubikey-agent
     SUBDIR += yubikey-manager-qt
     SUBDIR += yubikey-personalization-gui
     SUBDIR += yubioath-desktop
