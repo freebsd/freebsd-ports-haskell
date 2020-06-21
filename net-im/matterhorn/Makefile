@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	matterhorn
-PORTVERSION=	50200.8.0
+PORTVERSION=	50200.9.0
 PORTREVISION=	1
 CATEGORIES=	net-im
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
@@ -75,7 +75,7 @@ USE_CABAL=	aeson-1.4.7.1_1 \
 		hxt-regex-xmlschema-9.2.0.3_1 \
 		hxt-unicode-9.0.2.4 \
 		integer-logarithms-1.0.3_2 \
-		mattermost-api-50200.5.0 \
+		mattermost-api-50200.6.0 \
 		megaparsec-8.0.0 \
 		memory-0.15.0_1 \
 		microlens-0.4.11.2 \
@@ -105,7 +105,7 @@ USE_CABAL=	aeson-1.4.7.1_1 \
 		scientific-0.3.6.2 \
 		semigroups-0.19.1 \
 		SHA-1.6.4.4 \
-		skylighting-core-0.8.4 \
+		skylighting-core-0.8.5 \
 		socks-0.6.1 \
 		split-0.2.3.4 \
 		splitmix-0.0.5 \
@@ -120,13 +120,13 @@ USE_CABAL=	aeson-1.4.7.1_1 \
 		text-zipper-0.10.1 \
 		th-abstraction-0.3.2.0 \
 		time-compat-1.9.3 \
-		timezone-olson-0.1.9 \
+		timezone-olson-0.2.0 \
 		timezone-series-0.1.9 \
 		tls-1.5.4 \
 		transformers-base-0.4.5.2 \
 		transformers-compat-0.6.5 \
 		uniplate-1.6.12_1 \
-		unordered-containers-0.2.10.0_1 \
+		unordered-containers-0.2.11.0 \
 		utf8-string-1.0.1.1_3 \
 		uuid-1.3.13_3 \
 		uuid-types-1.0.3_2 \
