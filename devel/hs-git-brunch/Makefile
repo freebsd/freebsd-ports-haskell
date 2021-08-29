@@ -9,7 +9,7 @@ LICENSE=	BSD3CLAUSE
 
 USES=		cabal
 
-USE_CABAL= 	HUnit-1.6.2.0 \
+USE_CABAL=	HUnit-1.6.2.0 \
 		QuickCheck-2.14.2 \
 		StateVar-1.2.1 \
 		ansi-terminal-0.11 \
