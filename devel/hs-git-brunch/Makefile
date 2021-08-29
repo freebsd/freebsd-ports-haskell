@@ -1,15 +1,15 @@
 PORTNAME=	git-brunch
-PORTVERSION=	1.5.0.0
+PORTVERSION=	1.5.1.0
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org
-COMMENT=	git branch checkout command line tool
+COMMENT=	Git branch checkout command line tool
 
 LICENSE=	BSD3CLAUSE
 
 USES=		cabal
 
-USE_CABAL=	HUnit-1.6.2.0 \
+USE_CABAL= 	HUnit-1.6.2.0 \
 		QuickCheck-2.14.2 \
 		StateVar-1.2.1 \
 		ansi-terminal-0.11 \
@@ -34,12 +34,12 @@ USE_CABAL=	HUnit-1.6.2.0 \
 		microlens-0.4.12.0 \
 		microlens-mtl-0.2.0.1 \
 		microlens-th-0.4.3.9 \
-		optparse-applicative-0.16.1.0 \
+		optparse-applicative-0.16.1.0_1 \
 		parallel-3.2.2.0_3 \
 		parser-combinators-1.3.0 \
-		primitive-0.7.1.0_2 \
+		primitive-0.7.1.0_3 \
 		quickcheck-io-0.2.0 \
-		random-1.2.0_5 \
+		random-1.2.0_6 \
 		scientific-0.3.6.2 \
 		setenv-0.1.1.3_1 \
 		splitmix-0.1.0.3 \
