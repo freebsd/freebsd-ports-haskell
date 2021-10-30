@@ -3980,6 +3980,8 @@ lib/ghc-%%GHC_VERSION%%/include/ghcautoconf.h
 lib/ghc-%%GHC_VERSION%%/include/ghcconfig.h
 lib/ghc-%%GHC_VERSION%%/include/ghcplatform.h
 lib/ghc-%%GHC_VERSION%%/include/ghcversion.h
+%%NODYNAMIC%%lib/ghc-%%GHC_VERSION%%/include/ffi.h
+%%NODYNAMIC%%lib/ghc-%%GHC_VERSION%%/include/ffitarget.h
 lib/ghc-%%GHC_VERSION%%/include/rts/Adjustor.h
 lib/ghc-%%GHC_VERSION%%/include/rts/BlockSignals.h
 lib/ghc-%%GHC_VERSION%%/include/rts/Bytecodes.h
@@ -4312,6 +4314,12 @@ lib/ghc-%%GHC_VERSION%%/rts/libHSrts_thr_debug.a
 %%DYNAMIC%%lib/ghc-%%GHC_VERSION%%/rts/libHSrts_thr_l-ghc%%GHC_VERSION%%.so
 lib/ghc-%%GHC_VERSION%%/rts/libHSrts_thr_l.a
 %%PROFILE%%lib/ghc-%%GHC_VERSION%%/rts/libHSrts_thr_p.a
+%%NODYNAMIC%%lib/ghc-%%GHC_VERSION%%/rts/libCffi.a
+%%NODYNAMIC%%lib/ghc-%%GHC_VERSION%%/rts/libCffi_debug.a
+%%NODYNAMIC%%lib/ghc-%%GHC_VERSION%%/rts/libCffi_l.a
+%%NODYNAMIC%%lib/ghc-%%GHC_VERSION%%/rts/libCffi_thr.a
+%%NODYNAMIC%%lib/ghc-%%GHC_VERSION%%/rts/libCffi_thr_debug.a
+%%NODYNAMIC%%lib/ghc-%%GHC_VERSION%%/rts/libCffi_thr_l.a
 lib/ghc-%%GHC_VERSION%%/settings
 %%DYNAMIC%%lib/ghc-%%GHC_VERSION%%/stm-2.5.0.0/Control/Concurrent/STM.dyn_hi
 lib/ghc-%%GHC_VERSION%%/stm-2.5.0.0/Control/Concurrent/STM.hi
