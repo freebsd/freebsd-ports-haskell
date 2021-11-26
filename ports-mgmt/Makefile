@@ -11,6 +11,7 @@
     SUBDIR += freebsd-bugzilla-cli
     SUBDIR += genpatch
     SUBDIR += genplist
+    SUBDIR += hs-panopticum
     SUBDIR += jailaudit
     SUBDIR += lsknobs
     SUBDIR += mkreadmes
@@ -39,6 +40,7 @@
     SUBDIR += port-maintenance-tools
     SUBDIR += portal
     SUBDIR += portconf
+    SUBDIR += portconfig
     SUBDIR += portdowngrade
     SUBDIR += portest
     SUBDIR += portfind
@@ -66,6 +68,7 @@
     SUBDIR += py-FreeBSD-ports
     SUBDIR += py-pytoport
     SUBDIR += py-skog
+    SUBDIR += sccache-overlay
     SUBDIR += synth
     SUBDIR += wanted-ports
 

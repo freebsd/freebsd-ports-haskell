@@ -1,7 +1,7 @@
 PORTNAME=	rpcs3
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.0.18-12953 # git rev-list --count HEAD
-DISTVERSIONSUFFIX=	-g78bcb0fd5
+DISTVERSION=	0.0.19-13040 # git rev-list --count HEAD
+DISTVERSIONSUFFIX=	-g59f253ba2
 CATEGORIES=	emulators
 
 MAINTAINER=	jbeich@FreeBSD.org
@@ -23,7 +23,7 @@ ONLY_FOR_ARCHS_REASON=	requires int128 and SSE2
 USE_GITHUB=	yes
 GH_ACCOUNT=	RPCS3
 GH_TUPLE=	RPCS3:hidapi:hidapi-0.8.0-rc1-125-g01f601a:hidapi/3rdparty/hidapi/hidapi \
-		RPCS3:llvm-mirror:5836324d6443:llvm/llvm \
+		RPCS3:llvm-mirror:318b8fe37466:llvm/llvm \
 		Cyan4973:xxHash:v0.8.0:xxHash/3rdparty/xxHash \
 		asmjit:asmjit:723f585:asmjit/3rdparty/asmjit/asmjit \
 		google:flatbuffers:v2.0.0:flatbuffers/3rdparty/flatbuffers \
@@ -37,7 +37,7 @@ GH_TUPLE=	RPCS3:hidapi:hidapi-0.8.0-rc1-125-g01f601a:hidapi/3rdparty/hidapi/hida
 USES=		cmake compiler:c++17-lang gl iconv:wchar_t localbase:ldflags \
 		openal:soft pkgconfig python:3.4+,build qt:5 xorg
 USE_GL=		gl glew
-USE_QT=		qmake_build buildtools_build core concurrent dbus gui multimedia widgets
+USE_QT=		qmake_build buildtools_build core concurrent dbus gui multimedia svg widgets
 USE_XORG=	x11
 CMAKE_ON=	CMAKE_SKIP_RPATH USE_SYSTEM_CURL USE_SYSTEM_FFMPEG USE_SYSTEM_LIBPNG
 CMAKE_OFF=	USE_NATIVE_INSTRUCTIONS USE_PRECOMPILED_HEADERS
@@ -72,6 +72,11 @@ post-patch:
 		 -e '/GIT_FULL_BRANCH/s/local_build/${GH_ACCOUNT}\/${GH_PROJECT}\/master/' \
 		-e '/GIT_VERSION/s/local_build/${GH_TAGNAME:C/[^-]*-//}/' \
 		${WRKSRC}/${PORTNAME}/git-version.cmake
+
+post-install:
+.if exists(/usr/bin/elfctl)
+	elfctl -e +noaslr ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
+.endif
 
 .include <bsd.port.pre.mk>
 

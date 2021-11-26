@@ -1,5 +1,5 @@
 PORTNAME=	freebsd-sysroot
-DISTVERSION=	a2021-09-14
+DISTVERSION=	a2021-11-09
 CATEGORIES=	devel
 MASTER_SITES=	LOCAL/tobik:${FLAVOR} \
 		${_SYSROOT_DIST:@f@https://download.freebsd.org/ftp/$f?dummy=/:${FLAVOR}@}
@@ -34,8 +34,8 @@ EXTRACT_AFTER_ARGS=	-C${STAGEDIR}${_SYSROOT} --no-same-permissions \
 NO_ARCH=	yes
 NO_BUILD=	yes
 NO_MTREE=	yes
-SUB_FILES=	${exists(${FILESDIR}/${FLAVOR}-cc.in):?${FLAVOR}-cc:} \
-		${exists(${FILESDIR}/${FLAVOR}-c++.in):?${FLAVOR}-c++:} c++ cc
+SUB_FILES=	${exists(${FILESDIR}/${FLAVOR}-c++.in):?${FLAVOR}-c++:} \
+		${exists(${FILESDIR}/${FLAVOR}-cc.in):?${FLAVOR}-cc:} c++ cc
 SUB_LIST=	FREEBSD_SYSROOT="${_SYSROOT}" \
 		FREEBSD_SYSROOT_CC="${CC}" \
 		FREEBSD_SYSROOT_CC_ELFV1="$$(${ECHO_CMD} ${LOCALBASE}/bin/powerpc64-unknown-${OPSYS:tl}*[0-9]-gcc9)" \
@@ -89,7 +89,7 @@ _SYSROOT_LLVM_TRIPLE_armv7=		armv7-unknown-freebsd12.2-gnueabihf
 _SYSROOT_LLVM_TRIPLE_powerpc=		powerpc-unknown-freebsd13.0 # secure-plt
 
 .if make(distclean) || make(makesum)
-.MAKEFLAGS:	MASTER_SITES="${FLAVORS:@_flavor@${:!${SETENV} FLAVOR=${_flavor} ${MAKE} -VMASTER_SITES!}@:O:u:q}" # PR 249537
+MASTER_SITES:=	${FLAVORS:O:@_flavor@${:!${SETENV} FLAVOR=${_flavor} ${MAKE} -VMASTER_SITES!}@}
 DISTFILES:=	${FLAVORS:O:@_flavor@${:!${SETENV} FLAVOR=${_flavor} ${MAKE} -V'DISTFILES'!}@}
 .endif
 

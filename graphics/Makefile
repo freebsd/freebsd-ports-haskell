@@ -152,6 +152,7 @@
     SUBDIR += dspdfviewer
     SUBDIR += dssim
     SUBDIR += duhdraw
+    SUBDIR += dust3d
     SUBDIR += dynamechs
     SUBDIR += ebsynth
     SUBDIR += edje_viewer
@@ -603,6 +604,7 @@
     SUBDIR += openrm
     SUBDIR += openshadinglanguage
     SUBDIR += opensubdiv
+    SUBDIR += openvkl
     SUBDIR += optar
     SUBDIR += optipng
     SUBDIR += osg
@@ -796,6 +798,7 @@
     SUBDIR += povray-meta
     SUBDIR += povray36
     SUBDIR += povray37
+    SUBDIR += povray38
     SUBDIR += ppmcaption
     SUBDIR += ppminfo
     SUBDIR += ppsei
@@ -896,6 +899,7 @@
     SUBDIR += py-pyx
     SUBDIR += py-qrencode
     SUBDIR += py-qt5-svg
+    SUBDIR += py-railroad-diagrams
     SUBDIR += py-rasterio
     SUBDIR += py-rasterstats
     SUBDIR += py-rawkit
@@ -1035,6 +1039,7 @@
     SUBDIR += simage
     SUBDIR += simpleviewer
     SUBDIR += skanlite
+    SUBDIR += skanpage
     SUBDIR += spectacle
     SUBDIR += spirv-tools
     SUBDIR += springgraph
@@ -1112,6 +1117,7 @@
     SUBDIR += webp-pixbuf-loader
     SUBDIR += wings
     SUBDIR += wmicons
+    SUBDIR += wrapland
     SUBDIR += wxsvg
     SUBDIR += xaos
     SUBDIR += xbmbrowser

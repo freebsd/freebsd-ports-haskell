@@ -1,3 +1,5 @@
-TIMESTAMP = 1635275024
-SHA256 (KDE/plasma/5.23.2/libksysguard-5.23.2.tar.xz) = f8fabf6af590e92146d1449e96a66ea7e5b7c249699ec0fe0e612f91c78ccbce
-SIZE (KDE/plasma/5.23.2/libksysguard-5.23.2.tar.xz) = 769100
+TIMESTAMP = 1637662125
+SHA256 (KDE/plasma/5.23.3/libksysguard-5.23.3.tar.xz) = 40c17c3fb7c14665379b03d16a912c9f40c74f64f925b8a3210e480438584455
+SIZE (KDE/plasma/5.23.3/libksysguard-5.23.3.tar.xz) = 769224
+SHA256 (KDE/plasma/5.23.3/d8312cfd67a2e9481e466674ba9922bc18e5c5bf.diff) = 27dec3dde0dfea13cde621731d21add2f7153329cbcfe966ddb515b631ab812e
+SIZE (KDE/plasma/5.23.3/d8312cfd67a2e9481e466674ba9922bc18e5c5bf.diff) = 528

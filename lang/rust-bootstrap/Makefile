@@ -96,6 +96,7 @@ do-configure:
 		${SH} ${SCRIPTSDIR}/rust-compat11-canary.sh
 	@${ECHO_CMD} 'changelog-seen=2' > ${WRKSRC}/config.toml
 	@${ECHO_CMD} '[build]' >> ${WRKSRC}/config.toml
+	@${ECHO_CMD} 'build-dir="${WRKDIR}/_build"' >> ${WRKSRC}/config.toml
 	@${ECHO_CMD} 'vendor=true' >> ${WRKSRC}/config.toml
 	@${ECHO_CMD} 'extended=false' >> ${WRKSRC}/config.toml
 	@${ECHO_CMD} 'python="${PYTHON_CMD}"' >> ${WRKSRC}/config.toml
@@ -124,9 +125,9 @@ do-configure:
 .endif
 # https://github.com/rust-lang/rust/pull/72696#issuecomment-641517185
 	@${ECHO_CMD} 'ldflags="-lz"' >> ${WRKSRC}/config.toml
-# we need to make sure to always build llvm with X86 support to get a
+# we need to make sure to always build llvm with host arch support to get a
 # host compiler that can build the host->target compiler
-	@${ECHO_CMD} 'targets="${_RUST_LLVM_TARGET};X86"' >> ${WRKSRC}/config.toml
+	@${ECHO_CMD} 'targets="${_RUST_LLVM_TARGET};${_RUST_LLVM_TARGET_${ARCH}}"' >> ${WRKSRC}/config.toml
 	@${ECHO_CMD} '[target.${_RUST_TARGET}]' >> ${WRKSRC}/config.toml
 	@${ECHO_CMD} 'cc="${LOCALBASE}/freebsd-sysroot/${FLAVOR:S/_/-/g}/bin/cc"' >> ${WRKSRC}/config.toml
 	@${ECHO_CMD} 'cxx="${LOCALBASE}/freebsd-sysroot/${FLAVOR:S/_/-/g}/bin/c++"' >> ${WRKSRC}/config.toml

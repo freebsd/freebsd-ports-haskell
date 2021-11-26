@@ -12,7 +12,10 @@ COMMENT?=	Backup archiving recovery open sourced (server)
 LICENSE=	AGPLv3 LGPL3
 LICENSE_COMB=	multi
 
-CONFLICTS?=	bacula*-server-* bareos16-server-*
+DEPRECATED=	Deprecated, no new release since 2020
+EXPIRATION_DATE=2021-12-05
+
+CONFLICTS?=	bacula*-server bareos16-server
 
 LIB_DEPENDS+=	liblzo2.so:archivers/lzo2 \
 		libjansson.so:devel/jansson

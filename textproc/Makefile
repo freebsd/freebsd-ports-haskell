@@ -226,6 +226,7 @@
     SUBDIR += gastex
     SUBDIR += gd-aspell
     SUBDIR += gdome2
+    SUBDIR += gh-grep
     SUBDIR += git-chglog
     SUBDIR += gitlab-elasticsearch-indexer
     SUBDIR += gl-aspell
@@ -243,6 +244,7 @@
     SUBDIR += greple
     SUBDIR += groff
     SUBDIR += gron
+    SUBDIR += gron.awk
     SUBDIR += groonga
     SUBDIR += gsed
     SUBDIR += gspell
@@ -276,6 +278,7 @@
     SUBDIR += htmldoc
     SUBDIR += htmlise
     SUBDIR += htmlq
+    SUBDIR += htmltest
     SUBDIR += htmltolatex
     SUBDIR += humanzip
     SUBDIR += hunspell
@@ -632,6 +635,7 @@
     SUBDIR += p5-Net-YASA
     SUBDIR += p5-NetAddr-IP-Find
     SUBDIR += p5-Number-Format
+    SUBDIR += p5-Number-Format-Metric
     SUBDIR += p5-Number-Spell
     SUBDIR += p5-ODF-lpOD
     SUBDIR += p5-OpenOffice-OODoc
@@ -820,6 +824,7 @@
     SUBDIR += p5-Template-Plugin-HTML-SuperForm
     SUBDIR += p5-Template-Plugin-Lingua-EN-Inflect
     SUBDIR += p5-Template-Plugin-XML-Escape
+    SUBDIR += p5-Template-Plugin-YAML
     SUBDIR += p5-Template-Semantic
     SUBDIR += p5-Template-Tiny
     SUBDIR += p5-Term-QRCode
@@ -1540,6 +1545,7 @@
     SUBDIR += redet
     SUBDIR += redisearch
     SUBDIR += redisearch16
+    SUBDIR += redisearch20
     SUBDIR += redland
     SUBDIR += redland-bindings
     SUBDIR += refdb
@@ -1585,7 +1591,9 @@
     SUBDIR += rubygem-asciidoctor-plantuml
     SUBDIR += rubygem-asciidoctor-plantuml0010
     SUBDIR += rubygem-autoprefixer-rails
+    SUBDIR += rubygem-autoprefixer-rails-node16
     SUBDIR += rubygem-autoprefixer-rails1020
+    SUBDIR += rubygem-autoprefixer-rails1025
     SUBDIR += rubygem-babel-source
     SUBDIR += rubygem-babel-transpiler
     SUBDIR += rubygem-babosa
@@ -1616,6 +1624,7 @@
     SUBDIR += rubygem-elasticsearch
     SUBDIR += rubygem-elasticsearch-api
     SUBDIR += rubygem-elasticsearch-api6
+    SUBDIR += rubygem-elasticsearch-api713
     SUBDIR += rubygem-elasticsearch-dsl
     SUBDIR += rubygem-elasticsearch-model
     SUBDIR += rubygem-elasticsearch-model6
@@ -1624,8 +1633,10 @@
     SUBDIR += rubygem-elasticsearch-rails6
     SUBDIR += rubygem-elasticsearch-transport
     SUBDIR += rubygem-elasticsearch-transport6
+    SUBDIR += rubygem-elasticsearch-transport713
     SUBDIR += rubygem-elasticsearch-xpack
     SUBDIR += rubygem-elasticsearch6
+    SUBDIR += rubygem-elasticsearch713
     SUBDIR += rubygem-emot
     SUBDIR += rubygem-escape_utils
     SUBDIR += rubygem-escape_utils11
@@ -1928,6 +1939,7 @@
     SUBDIR += uz-aspell
     SUBDIR += vbindiff
     SUBDIR += ve-hunspell
+    SUBDIR += vgrep
     SUBDIR += wa-aspell
     SUBDIR += wa-hunspell
     SUBDIR += wbxml2

@@ -282,6 +282,7 @@
 %%DATADIR%%/extras/management/commands/renaturalize.py
 %%DATADIR%%/extras/management/commands/rqworker.py
 %%DATADIR%%/extras/management/commands/runreport.py
+%%DATADIR%%/extras/management/commands/runscript.py
 %%DATADIR%%/extras/management/commands/webhook_receiver.py
 %%DATADIR%%/extras/migrations/0001_squashed.py
 %%DATADIR%%/extras/migrations/0002_squashed_0059.py
@@ -431,6 +432,7 @@
 %%DATADIR%%/netbox/middleware.py
 %%DATADIR%%/netbox/models.py
 %%DATADIR%%/netbox/navigation_menu.py
+%%DATADIR%%/netbox/request_context.py
 %%DATADIR%%/netbox/settings.py
 %%DATADIR%%/netbox/signals.py
 %%DATADIR%%/netbox/tests/__init__.py
@@ -838,6 +840,7 @@
 %%DATADIR%%/utilities/management/commands/__init__.py
 %%DATADIR%%/utilities/management/commands/makemigrations.py
 %%DATADIR%%/utilities/management/commands/migrate.py
+%%DATADIR%%/utilities/markdown.py
 %%DATADIR%%/utilities/mptt.py
 %%DATADIR%%/utilities/ordering.py
 %%DATADIR%%/utilities/paginator.py

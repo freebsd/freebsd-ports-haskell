@@ -1,8 +1,8 @@
 # Created by: Torsten Zuehlsdorff <tz@FreeBSD.org>
 
 PORTNAME=	gitlab-ce
-PORTVERSION=	14.4.0
-PORTREVISION=	1
+PORTVERSION=	14.4.2
+PORTREVISION=	2
 CATEGORIES=	www devel
 
 MAINTAINER=	mfechner@FreeBSD.org
@@ -21,7 +21,7 @@ MY_DEPENDS=	git>=2.32.0:devel/git \
 	gitlab-shell>=13.21.1:devel/gitlab-shell \
 	gitlab-workhorse>=${PORTVERSION}:www/gitlab-workhorse \
 	redis>=6.0.14:databases/redis \
-	yarn-node16>=1.10.0:www/yarn-node16 \
+	yarn>=1.10.0:www/yarn \
 	gtar>0:archivers/gtar \
 	bash>0:shells/bash \
 	rubygem-rails61>=6.1.4.1<6.1.4.2:www/rubygem-rails61 \
@@ -176,7 +176,7 @@ MY_DEPENDS=	git>=2.32.0:devel/git \
 	rubygem-gitlab_chronic_duration>=0.10.6.2<0.10.7:devel/rubygem-gitlab_chronic_duration \
 	rubygem-rack-proxy06>=0.6.0<0.7.0:www/rubygem-rack-proxy06 \
 	rubygem-sassc-rails-rails61>=2.1.0<2.2.0:textproc/rubygem-sassc-rails-rails61 \
-	rubygem-autoprefixer-rails>=10.2.5.1<10.2.6:textproc/rubygem-autoprefixer-rails \
+	rubygem-autoprefixer-rails1025>=10.2.5.1<10.2.6:textproc/rubygem-autoprefixer-rails1025 \
 	rubygem-terser>=1.0.2:textproc/rubygem-terser \
 	rubygem-addressable>=2.8<3:www/rubygem-addressable \
 	rubygem-gemojione>=3.3<4.0:graphics/rubygem-gemojione \
@@ -197,11 +197,12 @@ MY_DEPENDS=	git>=2.32.0:devel/git \
 	rubygem-gettext>=3.3<4:devel/rubygem-gettext \
 	rubygem-batch-loader>=2.0.1<2.1:devel/rubygem-batch-loader \
 	rubygem-peek-rails61>=1.1.0<2.0:devel/rubygem-peek-rails61 \
-	rubygem-snowplow-tracker>=0.6.1<0.7.0:devel/rubygem-snowplow-tracker \
+	rubygem-snowplow-tracker>=0.6.1<1:devel/rubygem-snowplow-tracker \
 	rubygem-method_source>=1.0<2:devel/rubygem-method_source \
 	rubygem-webrick>=1.6.1:www/rubygem-webrick \
 	rubygem-prometheus-client-mmap>=0.15.0<0.16.0:devel/rubygem-prometheus-client-mmap \
 	rubygem-warning>=1.2.0<1.3:devel/rubygem-warning \
+	rubygem-license_finder>=6.0<7:devel/rubygem-license_finder \
 	rubygem-octokit>=4.20<5.0:net/rubygem-octokit \
 	rubygem-gitlab-mail_room>=0.0.9<0.1.0:mail/rubygem-gitlab-mail_room \
 	rubygem-email_reply_trimmer>=0.1<1.0:mail/rubygem-email_reply_trimmer \
@@ -224,8 +225,8 @@ MY_DEPENDS=	git>=2.32.0:devel/git \
 	rubygem-spamcheck>=0.1.0<0.2:net/rubygem-spamcheck \
 	rubygem-gitaly>=14.3.0.pre.rc2<14.4.0:net/rubygem-gitaly \
 	rubygem-kas-grpc>=0.0.2,1<0.0.3,1:net/rubygem-kas-grpc \
-	rubygem-grpc>=1.30.2<2:net/rubygem-grpc \
-	rubygem-google-protobuf317>=3.17.1<3.18:devel/rubygem-google-protobuf317 \
+	rubygem-grpc142>=1.30.2<2:net/rubygem-grpc142 \
+	rubygem-google-protobuf>=3.19.0<3.20:devel/rubygem-google-protobuf \
 	rubygem-toml-rb>=2.0.1<3:www/rubygem-toml-rb \
 	rubygem-flipper021>=0.21.0<0.22:devel/rubygem-flipper021 \
 	rubygem-flipper-active_record-rails61>=0.21.0<0.22:databases/rubygem-flipper-active_record-rails61 \
@@ -256,11 +257,11 @@ BUILD_DEPENDS=	gem:devel/ruby-gems \
 
 RUN_DEPENDS=	${MY_DEPENDS}
 
-CONFLICTS_INSTALL=	gitolite-* \
-			gitolite2-* \
-			gogs-* \
-			gitea-* \
-			${PYTHON_PKGNAMEPREFIX}-gitosis-*
+CONFLICTS_INSTALL=	gitolite \
+			gitolite2 \
+			gogs \
+			gitea \
+			${PYTHON_PKGNAMEPREFIX}-gitosis
 
 USES=		go:modules shebangfix
 USE_RUBY=	yes
@@ -270,7 +271,7 @@ USE_GITLAB=	yes
 GL_ACCOUNT=	gitlab-org
 GL_PROJECT=	gitlab-foss
 # Find the here: https://gitlab.com/gitlab-org/gitlab-foss/-/tags
-GL_COMMIT=	51b27ab58055b65e14e68b19604e4823389adb73
+GL_COMMIT=	1ce86e92f81869fc38ece6ae212b5ea9d5ffd405
 
 USERS=	git
 GROUPS=	git

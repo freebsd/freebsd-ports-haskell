@@ -337,6 +337,7 @@
     SUBDIR += libu2f-host
     SUBDIR += libuecc
     SUBDIR += libwhisker
+    SUBDIR += libxcrypt
     SUBDIR += libyubikey
     SUBDIR += libzrtpcppcore
     SUBDIR += linux-bitwarden-cli
@@ -1022,6 +1023,7 @@
     SUBDIR += py-vici
     SUBDIR += py-virustotal-api
     SUBDIR += py-volatility3
+    SUBDIR += py-vpn-slice
     SUBDIR += py-vulndb
     SUBDIR += py-webauthn
     SUBDIR += py-xkcdpass
@@ -1228,6 +1230,7 @@
     SUBDIR += snort3
     SUBDIR += snortsam
     SUBDIR += snortsnarf
+    SUBDIR += snowflake-tor
     SUBDIR += snuffleupagus
     SUBDIR += softether
     SUBDIR += softether-devel

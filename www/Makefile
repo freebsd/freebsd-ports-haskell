@@ -109,6 +109,7 @@
     SUBDIR += dojo
     SUBDIR += dokuwiki
     SUBDIR += dolibarr
+    SUBDIR += dolibarr13
     SUBDIR += domoticz
     SUBDIR += dooble
     SUBDIR += drupal7
@@ -266,6 +267,7 @@
     SUBDIR += jesred
     SUBDIR += jetty8
     SUBDIR += jetty9
+    SUBDIR += jira-cli
     SUBDIR += jitsi-meet
     SUBDIR += jmeter
     SUBDIR += joomla3
@@ -290,6 +292,7 @@
     SUBDIR += libecap
     SUBDIR += libepc
     SUBDIR += libevhtp
+    SUBDIR += libhsts
     SUBDIR += libhubbub
     SUBDIR += libjwt
     SUBDIR += libmicrohttpd
@@ -463,6 +466,8 @@
     SUBDIR += npc
     SUBDIR += npm
     SUBDIR += npm-node14
+    SUBDIR += npm-node16
+    SUBDIR += npm-node17
     SUBDIR += nspluginwrapper
     SUBDIR += oauth2-proxy
     SUBDIR += obhttpd
@@ -1550,6 +1555,7 @@
     SUBDIR += py-django-post_office
     SUBDIR += py-django-prometheus
     SUBDIR += py-django-pyscss
+    SUBDIR += py-django-radius
     SUBDIR += py-django-ranged-response
     SUBDIR += py-django-recaptcha
     SUBDIR += py-django-redis
@@ -2073,6 +2079,7 @@
     SUBDIR += rubygem-rails52
     SUBDIR += rubygem-rails60
     SUBDIR += rubygem-rails61
+    SUBDIR += rubygem-rails61-node16
     SUBDIR += rubygem-rails_12factor
     SUBDIR += rubygem-rails_autolink
     SUBDIR += rubygem-rails_serve_static_assets
@@ -2144,6 +2151,7 @@
     SUBDIR += rubygem-turbolinks-source
     SUBDIR += rubygem-typhoeus
     SUBDIR += rubygem-uglifier
+    SUBDIR += rubygem-uglifier-node16
     SUBDIR += rubygem-underscore-rails
     SUBDIR += rubygem-unicorn
     SUBDIR += rubygem-unicorn-worker-killer
@@ -2246,6 +2254,7 @@
     SUBDIR += transproxy
     SUBDIR += tt-rss
     SUBDIR += ttf2eot
+    SUBDIR += tusc
     SUBDIR += tusd
     SUBDIR += twiki
     SUBDIR += twiki-BehaviourContrib
@@ -2337,6 +2346,7 @@
     SUBDIR += webstone-ssl
     SUBDIR += webtrees
     SUBDIR += webtrees20
+    SUBDIR += wget2
     SUBDIR += wgetpaste
     SUBDIR += wikicalc
     SUBDIR += wordpress
@@ -2351,6 +2361,7 @@
     SUBDIR += wwwoffle
     SUBDIR += xapian-omega
     SUBDIR += xapian-omega12
+    SUBDIR += xcaddy
     SUBDIR += xfce4-smartbookmark-plugin
     SUBDIR += xh
     SUBDIR += xist
@@ -2361,6 +2372,7 @@
     SUBDIR += yarn
     SUBDIR += yarn-node14
     SUBDIR += yarn-node16
+    SUBDIR += yarn-node17
     SUBDIR += yarr
     SUBDIR += yaws
     SUBDIR += you-get

@@ -1,8 +1,8 @@
 # Created by: Torsten Blum <torstenb@FreeBSD.org>
 
 PORTNAME=	postfix
-DISTVERSION=	3.6.2
-PORTREVISION?=	2
+DISTVERSION=	3.6.3
+PORTREVISION?=	0
 PORTEPOCH=	1
 CATEGORIES=	mail
 MASTER_SITES=	http://ftp.porcupine.org/mirrors/postfix-release/ \
@@ -24,19 +24,19 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 LICENSE_PERMS_IPL10=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 
 FLAVORS=			default ldap sasl
-default_CONFLICTS_INSTALL=	postfix-base-ldap-* postfix-base-sasl-* \
-				postfix-ldap-* postfix-sasl-*
+default_CONFLICTS_INSTALL=	postfix-base-ldap postfix-base-sasl \
+				postfix-ldap postfix-sasl
 ldap_PKGNAMESUFFIX=		-ldap
-ldap_CONFLICTS_INSTALL=		postfix-[0-9]* postfix-base-[0-9]* \
-				postfix-base-sasl-* postfix-sasl-*
+ldap_CONFLICTS_INSTALL=		postfix postfix-base \
+				postfix-base-sasl postfix-sasl
 sasl_PKGNAMESUFFIX=		-sasl
-sasl_CONFLICTS_INSTALL=		postfix-[0-9]* postfix-base-[0-9]* \
-				postfix-base-ldap-* postfix-ldap-*
+sasl_CONFLICTS_INSTALL=		postfix postfix-base \
+				postfix-base-ldap postfix-ldap
 
 COMMENT_ldap=	(with OpenLDAP and Cyrus SASL support)
 COMMENT_sasl=	(with Cyrus SASL support)
 
-USES=		cpe shebangfix
+USES=		cpe shebangfix ssl
 USE_RC_SUBR=	postfix
 USE_SUBMAKE=	yes
 
@@ -44,8 +44,8 @@ SHEBANG_FILES=	auxiliary/qshape/qshape.pl
 
 SCRIPTS_ENV+=	POSTFIX_DEFAULT_MTA="${POSTFIX_DEFAULT_MTA}"
 
-CONFLICTS_INSTALL=	courier-0.* opensmtpd-[0-9]* opensmtpd-devel-* \
-			postfix-current-* sendmail-[0-9]* sendmail-devel-*
+CONFLICTS_INSTALL=	courier-0.* opensmtpd opensmtpd-devel \
+			postfix-current sendmail sendmail-devel
 
 PORTSCOUT=	limit:^3\.6\.
 
@@ -159,7 +159,21 @@ SUB_LIST+=	DAEMONDIR="${DAEMONDIR}" \
 		REQUIRE="${_REQUIRE}"
 SUB_FILES+=	mailer.conf.postfix pkg-install pkg-message
 
-POSTFIX_CCARGS+=	-DDEF_CONFIG_DIR=\\\"${ETCDIR}\\\" -DDEF_DAEMON_DIR=\\\"${DAEMONDIR}\\\" -DDEF_META_DIR=\\\"${META_DIRECTORY}\\\" -DDEF_COMMAND_DIR=\\\"${PREFIX}/sbin\\\" -DDEF_SENDMAIL_PATH=\\\"${PREFIX}/sbin/sendmail\\\" -DDEF_NEWALIAS_PATH=\\\"${PREFIX}/bin/newaliases\\\" -DDEF_MAILQ_PATH=\\\"${PREFIX}/bin/mailq\\\" -DDEF_MANPAGE_DIR=\\\"${MANPREFIX}/man\\\" -DDEF_README_DIR=\\\"${READMEDIR}\\\" -DDEF_HTML_DIR=\\\"${READMEDIR}\\\" -DDEF_QUEUE_DIR=\\\"/var/spool/postfix\\\" -DDEF_DATA_DIR=\\\"/var/db/postfix\\\" -DDEF_MAIL_OWNER=\\\"postfix\\\" -DDEF_SGID_GROUP=\\\"maildrop\\\" -Wmissing-prototypes -Wformat -Wno-comment
+POSTFIX_CCARGS+=	-DDEF_CONFIG_DIR=\\\"${ETCDIR}\\\" \
+			-DDEF_DAEMON_DIR=\\\"${DAEMONDIR}\\\" \
+			-DDEF_META_DIR=\\\"${META_DIRECTORY}\\\" \
+			-DDEF_COMMAND_DIR=\\\"${PREFIX}/sbin\\\" \
+			-DDEF_SENDMAIL_PATH=\\\"${PREFIX}/sbin/sendmail\\\" \
+			-DDEF_NEWALIAS_PATH=\\\"${PREFIX}/bin/newaliases\\\" \
+			-DDEF_MAILQ_PATH=\\\"${PREFIX}/bin/mailq\\\" \
+			-DDEF_MANPAGE_DIR=\\\"${MANPREFIX}/man\\\" \
+			-DDEF_README_DIR=\\\"${READMEDIR}\\\" \
+			-DDEF_HTML_DIR=\\\"${READMEDIR}\\\" \
+			-DDEF_QUEUE_DIR=\\\"/var/spool/postfix\\\" \
+			-DDEF_DATA_DIR=\\\"/var/db/postfix\\\" \
+			-DDEF_MAIL_OWNER=\\\"postfix\\\" \
+			-DDEF_SGID_GROUP=\\\"maildrop\\\" \
+			-Wmissing-prototypes -Wformat -Wno-comment
 
 # Default requirement for postfix rc script
 _REQUIRE=	LOGIN cleanvar dovecot
@@ -277,20 +291,21 @@ POSTFIX_DYN_AUXLIBS+=	"AUXLIBS_LMDB=-L${LOCALBASE}/lib -llmdb"
 .endif
 
 # sed script for files in ${WRKSRC}/README_FILES ${WRKSRC}/conf ${WRKSRC}/man
-REINPLACE=	s!^PATH=.*!PATH=/bin:/sbin:/usr/bin:/usr/sbin:${PREFIX}/bin:${PREFIX}/sbin!; \
-		s!(_directory = )/usr/!\1${PREFIX}/!g; s!^(data_directory = \
-		/var/)lib/!\1db/!g; s!^\#(mynetworks_style = host)!\1!g; \
-		s!^(sendmail_path =)!\1 ${PREFIX}/sbin/sendmail!g; \
-		s!^(newaliases_path =)!\1 ${PREFIX}/bin/newaliases!g; \
-		s!^(mailq_path =)!\1 ${PREFIX}/bin/mailq!g; s!^(setgid_group \
-		=)!\1 maildrop!g; s!^(manpage_directory =)!\1 \
-		${MANPREFIX}/man!g; s!^((html|readme)_directory =)!\1 \
-		${READMEDIR}!g; \!^\#alias_database = \
-		dbm:/etc/mail/aliases$$!d; s!(:|= \
-		)/etc/postfix!\1$$config_directory!g; \
-		s!/etc/postfix!${ETCDIR}!g; s!^(sample_directory =)!\1 \
-		${ETCDIR}!g; \
-		s!($config_directory/(access|aliases|canonical|generic|header_checks|relocated|transport|virtual):f:root:-:644:)p1!\1o!;
+REINPLACE=	s!^PATH=.*!PATH=/bin:/sbin:/usr/bin:/usr/sbin:${PREFIX}/bin:${PREFIX}/sbin!;\
+		s!(_directory = )/usr/!\1${PREFIX}/!g;\
+		s!^(data_directory = /var/)lib/!\1db/!g;\
+		s!^\#(mynetworks_style = host)!\1!g;\
+		s!^(sendmail_path =)!\1 ${PREFIX}/sbin/sendmail!g;\
+		s!^(newaliases_path =)!\1 ${PREFIX}/bin/newaliases!g;\
+		s!^(mailq_path =)!\1 ${PREFIX}/bin/mailq!g;\
+		s!^(setgid_group =)!\1 maildrop!g;\
+		s!^(manpage_directory =)!\1 ${MANPREFIX}/man!g;\
+		s!^((html|readme)_directory =)!\1 ${READMEDIR}!g;\
+		\!^\#alias_database = dbm:/etc/mail/aliases$$!d;\
+		s!(:|= )/etc/postfix!\1$$config_directory!g;\
+		s!/etc/postfix!${ETCDIR}!g;\
+		s!^(sample_directory =)!\1 ${ETCDIR}!g;\
+		s!($$config_directory/(access|aliases|canonical|generic|header_checks|relocated|transport|virtual):f:root:-:644:)p1!\1o!;
 
 pre-patch:
 .if ${PORT_OPTIONS:MSASL} && ! ${PORT_OPTIONS:MMYSQL} && exists(${LOCALBASE}/lib/libsasl2.a)
@@ -359,6 +374,9 @@ do-install:
 	${MV} ${STAGEDIR}${ETCDIR}/master.cf ${STAGEDIR}${ETCDIR}/master.cf.sample
 	${MKDIR} ${STAGEDIR}${DATADIR}
 	${INSTALL_DATA} ${WRKDIR}/mailer.conf.postfix ${STAGEDIR}${DATADIR}
+.for SAMPLEFILE in access aliases canonical generic header_checks relocated transport virtual
+	${MV} ${STAGEDIR}${ETCDIR}/${SAMPLEFILE} ${STAGEDIR}${ETCDIR}/${SAMPLEFILE}.sample
+.endfor
 
 # == chop dynamicmaps.cf entries into dedicated .cf files
 # for future sub-packages support
