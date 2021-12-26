@@ -29,6 +29,7 @@
     SUBDIR += apache-xml-security-c
     SUBDIR += apg
     SUBDIR += apkid
+    SUBDIR += archlinux-keyring
     SUBDIR += arirang
     SUBDIR += arpCounterattack
     SUBDIR += arti
@@ -845,7 +846,6 @@
     SUBDIR += pulledpork
     SUBDIR += pure-sfv
     SUBDIR += putty
-    SUBDIR += putty-gtk2
     SUBDIR += putty-nogtk
     SUBDIR += pvk
     SUBDIR += pwauth
@@ -1079,8 +1079,6 @@
     SUBDIR += rubygem-devise-two-factor-rails5
     SUBDIR += rubygem-devise-two-factor-rails60
     SUBDIR += rubygem-devise-two-factor-rails61
-    SUBDIR += rubygem-devise-two-factor30-rails52
-    SUBDIR += rubygem-devise-two-factor30-rails60
     SUBDIR += rubygem-devise_pam_authenticatable2
     SUBDIR += rubygem-digest-crc
     SUBDIR += rubygem-doorkeeper
@@ -1113,10 +1111,8 @@
     SUBDIR += rubygem-net-sftp2
     SUBDIR += rubygem-net-ssh
     SUBDIR += rubygem-net-ssh-gateway
-    SUBDIR += rubygem-net-ssh-gateway1
     SUBDIR += rubygem-net-ssh-krb
     SUBDIR += rubygem-net-ssh-multi
-    SUBDIR += rubygem-net-ssh4
     SUBDIR += rubygem-net-ssh5
     SUBDIR += rubygem-net-telnet
     SUBDIR += rubygem-nexpose
@@ -1126,6 +1122,7 @@
     SUBDIR += rubygem-omniauth-bitbucket
     SUBDIR += rubygem-omniauth-cas
     SUBDIR += rubygem-omniauth-cas3
+    SUBDIR += rubygem-omniauth-dingtalk-oauth2
     SUBDIR += rubygem-omniauth-gitlab
     SUBDIR += rubygem-omniauth-jwt
     SUBDIR += rubygem-omniauth-multipassword
@@ -1354,6 +1351,7 @@
     SUBDIR += yubikey-manager-qt
     SUBDIR += yubikey-personalization-gui
     SUBDIR += yubioath-desktop
+    SUBDIR += zaproxy
     SUBDIR += zebedee
     SUBDIR += zeek
     SUBDIR += zeronet

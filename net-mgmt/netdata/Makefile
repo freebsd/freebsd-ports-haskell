@@ -2,17 +2,12 @@
 
 PORTNAME=	netdata
 DISTVERSIONPREFIX=	v
-DISTVERSION=	1.31.0
-PORTREVISION=	1
+DISTVERSION=	1.32.1
 CATEGORIES=	net-mgmt
-MASTER_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/releases/download/v${DISTVERSION}/ \
+MASTER_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/releases/download/${DISTVERSION}/ \
 		https://github.com/forkbomb9/netdata/commit/:dashboard
-DISTFILES=	${DISTNAME}${EXTRACT_SUFX} fd15080f65fde1c484a06cbc5a13a2853639a960.patch:dashboard
+DISTFILES=	${DISTNAME}${EXTRACT_SUFX} 91757292561eba170fe363b1f1023583216ca26f.patch:dashboard
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
-
-# Backport commit to fix interrupt graph
-PATCH_SITES=	https://github.com/netdata/netdata/commit/
-PATCHFILES=	4b130034f223a5034c241b8a3e905d8f8031747d.patch:-p1
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Scalable distributed realtime performance and health monitoring
@@ -91,7 +86,7 @@ NETDATA_PERST=	/var/db/${PORTNAME}
 
 .if ! ${PORT_OPTIONS:MCLOUD}
 post-patch:
-	cd ${WRKSRC} && gpatch -p1 < ${_DISTDIR}/fd15080f65fde1c484a06cbc5a13a2853639a960.patch
+	cd ${WRKSRC} && gpatch -p1 < ${_DISTDIR}/91757292561eba170fe363b1f1023583216ca26f.patch
 	@${REINPLACE_CMD} -e 's|%%DISTVERSION%%|${DISTVERSION}|g' \
 	    ${PATCH_WRKSRC}/configure.ac
 	@${REINPLACE_CMD} -e 's|%%NETDATA_CACHE%%|${NETDATA_CACHE}|g' \

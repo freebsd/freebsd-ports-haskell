@@ -188,6 +188,7 @@
     SUBDIR += feh
     SUBDIR += fig2sxd
     SUBDIR += figurine
+    SUBDIR += filmulator
     SUBDIR += flam3
     SUBDIR += flasm
     SUBDIR += flif
@@ -195,6 +196,7 @@
     SUBDIR += fly
     SUBDIR += fortytwo
     SUBDIR += fotofix
+    SUBDIR += fotoxx
     SUBDIR += founts
     SUBDIR += fpc-cairo
     SUBDIR += fpc-graph
@@ -493,6 +495,7 @@
     SUBDIR += libreatlas
     SUBDIR += librsvg2
     SUBDIR += librsvg2-rust
+    SUBDIR += librtprocess
     SUBDIR += libsixel
     SUBDIR += libspiro
     SUBDIR += libspng
@@ -610,6 +613,8 @@
     SUBDIR += osg
     SUBDIR += osg34
     SUBDIR += osgearth
+    SUBDIR += ospray
+    SUBDIR += ospray-studio
     SUBDIR += ossim
     SUBDIR += oyranos
     SUBDIR += p5-Acme-Steganography-Image-Png
@@ -957,6 +962,7 @@
     SUBDIR += reactphysics3d
     SUBDIR += reallyslick
     SUBDIR += realsr-ncnn-vulkan
+    SUBDIR += recastnavigation
     SUBDIR += recoverjpeg
     SUBDIR += renrot
     SUBDIR += repng2jpeg
@@ -1002,6 +1008,7 @@
     SUBDIR += rubygem-ruby-graphviz
     SUBDIR += rubygem-ruby-vips
     SUBDIR += rubygem-scruffy
+    SUBDIR += rubygem-tanuki_emoji
     SUBDIR += rx
     SUBDIR += s10sh
     SUBDIR += s2

@@ -41,7 +41,6 @@
     SUBDIR += clifm
     SUBDIR += cloc
     SUBDIR += clpbar
-    SUBDIR += cmatrix
     SUBDIR += colortail
     SUBDIR += colwide
     SUBDIR += compat10x
@@ -107,6 +106,7 @@
     SUBDIR += fortune-mod-psalms
     SUBDIR += fortuneit
     SUBDIR += fpc-chm
+    SUBDIR += fq
     SUBDIR += free42
     SUBDIR += freebsd-doc-all
     SUBDIR += freebsd-doc-bn
@@ -133,6 +133,7 @@
     SUBDIR += frugally-deep
     SUBDIR += ftdi-eeprom
     SUBDIR += fxload
+    SUBDIR += g810-led
     SUBDIR += gedkeeper
     SUBDIR += geekcode
     SUBDIR += getopt
@@ -448,7 +449,6 @@
     SUBDIR += rubygem-iesd
     SUBDIR += rubygem-mime-types
     SUBDIR += rubygem-mime-types-data
-    SUBDIR += rubygem-mime-types1
     SUBDIR += rubygem-mimemagic
     SUBDIR += rubygem-octicons
     SUBDIR += rubygem-rabbit
@@ -516,6 +516,7 @@
     SUBDIR += urh
     SUBDIR += usbids
     SUBDIR += usbrh-libusb
+    SUBDIR += usd
     SUBDIR += utftools
     SUBDIR += utouch-kmod
     SUBDIR += valentina

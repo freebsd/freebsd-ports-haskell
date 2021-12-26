@@ -1,5 +1,5 @@
 PORTNAME=	vscode
-DISTVERSION=	1.62.3
+DISTVERSION=	1.63.2
 CATEGORIES=	editors
 MASTER_SITES=	https://registry.npmjs.org/esbuild-freebsd-64/-/:esbuild_binary \
 		https://nodejs.org/dist/v${NODE_VER}/:node_headers \
@@ -21,7 +21,6 @@ COMMENT=	Visual Studio Code - Open Source ("Code - OSS")
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-BROKEN_FreeBSD_12=	../src/keymapping.h:40:3: error: unknown type name 'pthread_t'
 DEPRECATED=	Uses EOL Python 2.7 via devel/electron13
 EXPIRATION_DATE=2021-06-23
 
@@ -73,7 +72,7 @@ USES=		desktop-file-utils gl gmake gnome jpeg pkgconfig \
 USE_GITHUB=	yes
 GH_ACCOUNT=	microsoft
 
-SOURCE_COMMIT_HASH=	ccbaa2d27e38e5afa3e5c21c1c7bef4657064247
+SOURCE_COMMIT_HASH=	899d46d82c4c95423fb7e10e68eba52050e30ba3
 
 BINARY_ALIAS=	python=${PYTHON_CMD}
 

@@ -95,9 +95,6 @@
     SUBDIR += bareos-client
     SUBDIR += bareos-server
     SUBDIR += bareos-traymonitor
-    SUBDIR += bareos17-client
-    SUBDIR += bareos17-client-static
-    SUBDIR += bareos17-server
     SUBDIR += bareos18-client
     SUBDIR += bareos18-server
     SUBDIR += bareos18-traymonitor
@@ -168,9 +165,11 @@
     SUBDIR += cfengine-masterfiles316
     SUBDIR += cfengine-masterfiles317
     SUBDIR += cfengine-masterfiles318
+    SUBDIR += cfengine-masterfiles319
     SUBDIR += cfengine316
     SUBDIR += cfengine317
     SUBDIR += cfengine318
+    SUBDIR += cfengine319
     SUBDIR += chaoskube
     SUBDIR += checkrestart
     SUBDIR += chezmoi
@@ -918,6 +917,7 @@
     SUBDIR += parallel
     SUBDIR += parkverbot
     SUBDIR += pass-otp
+    SUBDIR += pass-secrets
     SUBDIR += pass-update
     SUBDIR += password-store
     SUBDIR += passwordsafe
@@ -1023,6 +1023,7 @@
     SUBDIR += py-azure-cli-telemetry
     SUBDIR += py-bitrot
     SUBDIR += py-borgmatic
+    SUBDIR += py-concurrent-log-handler
     SUBDIR += py-cron-descriptor
     SUBDIR += py-croniter
     SUBDIR += py-dict-toolbox
@@ -1146,7 +1147,6 @@
     SUBDIR += rubygem-bolt
     SUBDIR += rubygem-bosh-gen
     SUBDIR += rubygem-bundler
-    SUBDIR += rubygem-bundler1
     SUBDIR += rubygem-bundler_ext
     SUBDIR += rubygem-capistrano
     SUBDIR += rubygem-capistrano-ext
@@ -1485,6 +1485,7 @@
     SUBDIR += vchanger
     SUBDIR += vcp
     SUBDIR += vector
+    SUBDIR += viddy
     SUBDIR += videogen
     SUBDIR += vii
     SUBDIR += vils

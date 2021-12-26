@@ -2325,6 +2325,8 @@ share/applications/emacsclient-mail.desktop
 %%DATADIR%%/%%EMACS_VER%%/lisp/jsonrpc.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/kermit.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/kermit.elc
+%%DATADIR%%/%%EMACS_VER%%/lisp/keymap.el.gz
+%%DATADIR%%/%%EMACS_VER%%/lisp/keymap.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/kmacro.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/kmacro.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/language/burmese.el.gz
@@ -2948,6 +2950,8 @@ share/applications/emacsclient-mail.desktop
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/crisp.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/cust-print.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/cust-print.elc
+%%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/eieio-compat.el.gz
+%%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/eieio-compat.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/erc-hecomplete.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/erc-hecomplete.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/eudcb-ph.el.gz
@@ -3605,6 +3609,10 @@ share/applications/emacsclient-mail.desktop
 %%DATADIR%%/%%EMACS_VER%%/lisp/soundex.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/speedbar.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/speedbar.elc
+%%DATADIR%%/%%EMACS_VER%%/lisp/sqlite-mode.el.gz
+%%DATADIR%%/%%EMACS_VER%%/lisp/sqlite-mode.elc
+%%DATADIR%%/%%EMACS_VER%%/lisp/sqlite.el.gz
+%%DATADIR%%/%%EMACS_VER%%/lisp/sqlite.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/startup.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/startup.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/strokes.el.gz
@@ -3641,6 +3649,8 @@ share/applications/emacsclient-mail.desktop
 %%DATADIR%%/%%EMACS_VER%%/lisp/term/cygwin.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/term/internal.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/term/internal.elc
+%%DATADIR%%/%%EMACS_VER%%/lisp/term/haiku-win.el.gz
+%%DATADIR%%/%%EMACS_VER%%/lisp/term/haiku-win.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/term/iris-ansi.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/term/iris-ansi.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/term/konsole.el.gz
@@ -3705,6 +3715,8 @@ share/applications/emacsclient-mail.desktop
 %%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/fill.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/flyspell.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/flyspell.elc
+%%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/glyphless-mode.el.gz
+%%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/glyphless-mode.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/ispell.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/ispell.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/less-css-mode.el.gz
@@ -3723,6 +3735,8 @@ share/applications/emacsclient-mail.desktop
 %%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/paragraphs.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/picture.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/picture.elc
+%%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/pixel-fill.el.gz
+%%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/pixel-fill.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/po.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/po.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/refbib.el.gz
@@ -4085,6 +4099,18 @@ share/applications/emacsclient-mail.desktop
 %%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/gnutls.h
 %%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/gtkutil.c
 %%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/gtkutil.h
+%%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/haiku.c
+%%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/haiku_io.c
+%%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/haiku_support.h
+%%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/haikufns.c
+%%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/haikufont.c
+%%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/haikugui.h
+%%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/haikuimage.c
+%%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/haikumenu.c
+%%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/haikuselect.c
+%%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/haikuselect.h
+%%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/haikuterm.c
+%%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/haikuterm.h
 %%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/hbfont.c
 %%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/image.c
 %%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/indent.c
@@ -4138,6 +4164,7 @@ share/applications/emacsclient-mail.desktop
 %%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/sheap.c
 %%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/sheap.h
 %%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/sound.c
+%%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/sqlite.c
 %%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/syntax.c
 %%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/syntax.h
 %%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/sysdep.c

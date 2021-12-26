@@ -2,7 +2,6 @@
 
 PORTNAME=	python
 DISTVERSION=	${PYTHON_DISTVERSION}
-PORTREVISION=	1
 CATEGORIES=	lang python
 MASTER_SITES=	PYTHON/ftp/python/${DISTVERSION:C/[a-z].*//}
 PKGNAMESUFFIX=	${PYTHON_SUFFIX}
@@ -10,7 +9,7 @@ DISTNAME=	Python-${DISTVERSION}
 DIST_SUBDIR=	python
 
 MAINTAINER=	python@FreeBSD.org
-COMMENT=	Interpreted object-oriented programming language (beta version)
+COMMENT=	Interpreted object-oriented programming language
 
 LICENSE=	PSFL
 
@@ -127,8 +126,7 @@ post-patch:
 	@${REINPLACE_CMD} -e '/find_library_file/ s|uuid|ignore_&|' ${WRKSRC}/setup.py
 # disable detection of multiarch as it breaks with clang >= 13, which adds a
 # major.minor version number in -print-multiarch output, confusing Python
-	@${REINPLACE_CMD} -e 's|^MULTIARCH=.*|MULTIARCH=|' ${WRKSRC}/configure \
-		${WRKSRC}/configure.ac
+	@${REINPLACE_CMD} -e 's|^\( *MULTIARCH=\).*--print-multiarch.*|\1|' ${WRKSRC}/configure
 # Apply DISABLED_EXTENSIONS
 	@${ECHO_CMD} '*disabled*' > ${WRKSRC}/Modules/Setup.local
 .  for _module in ${DISABLED_EXTENSIONS}

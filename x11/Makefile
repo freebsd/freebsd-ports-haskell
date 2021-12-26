@@ -330,6 +330,7 @@
     SUBDIR += showmethekey
     SUBDIR += simdock
     SUBDIR += simplestroke
+    SUBDIR += sirula
     SUBDIR += slick-greeter
     SUBDIR += slim
     SUBDIR += slock
@@ -351,6 +352,7 @@
     SUBDIR += swaylock-effects
     SUBDIR += swaync
     SUBDIR += swayr
+    SUBDIR += swaysettings
     SUBDIR += sxhkd
     SUBDIR += sxpc
     SUBDIR += tabbed
@@ -403,6 +405,7 @@
     SUBDIR += workrave
     SUBDIR += wshowkeys
     SUBDIR += wtype
+    SUBDIR += wvkbd
     SUBDIR += x-on-resize
     SUBDIR += x11perf
     SUBDIR += x3270

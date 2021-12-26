@@ -2,6 +2,7 @@
 
 PORTNAME=	wine
 DISTVERSION=	6.0.2
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	emulators
 MASTER_SITES=	SF/${PORTNAME}/Source \
@@ -40,7 +41,9 @@ CONFIGURE_ARGS+=--verbose \
 		--without-gettext --without-gettextpo \
 		--without-gphoto \
 		--without-gsm \
+		--without-gssapi \
 		--without-gstreamer \
+		--without-hal \
 		--without-inotify \
 		--without-krb5 \
 		--without-mingw \
@@ -51,6 +54,7 @@ CONFIGURE_ARGS+=--verbose \
 		--with-pcap \
 		--with-pthread \
 		--without-pulse \
+		--without-quicktime \
 		--without-sane \
 		--with-sdl \
 		--without-tiff \
