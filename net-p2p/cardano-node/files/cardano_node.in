@@ -1,0 +1,90 @@
+#!/bin/sh
+
+# PROVIDE: cardano_node
+# REQUIRE: DAEMON
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf to enable this service:
+#
+# cardano_node_enable:	     Set to NO by default. Set it to YES to enable it.
+# cardano_node_socket:	     Absolute path to the socket file.
+# cardano_node_flags:	     Additional command line flags to pass to cardano-node
+#
+
+. /etc/rc.subr
+
+name=cardano_node
+desc="Cardano Node daemon"
+rcvar=cardano_node_enable
+
+start_cmd="${name}_start"
+start_precmd="${name}_prestart"
+start_postcmd="${name}_poststart"
+stop_cmd="${name}_stop"
+status_cmd="${name}_status"
+
+extra_commands="status"
+
+load_rc_config $name
+
+cardano_node_home="/var/db/cardano_node"
+
+: ${cardano_node_enable:=NO}
+: ${cardano_node_socket:="${cardano_node_home}/cardano-node.sock"}
+: ${cardano_node_flags:=""}
+
+topology_file="${cardano_node_home}/testnet-topology.json"
+config_file="${cardano_node_home}/testnet-config.json"
+pidfile="/var/run/cardano-node.pid"
+logfile="/var/log/cardano-node.log"
+flags="run +RTS -N -A16m -qg -qb -RTS --topology ${topology_file} --database-path ${cardano_node_home}/db --socket-path ${cardano_node_socket} --host-addr 0.0.0.0 --port 6000 --config ${config_file}"
+
+cardano_node_prestart()
+{
+    if [ ! -d ${cardano_node_home} ]; then
+        mkdir -m 700 ${cardano_node_home}
+        mkdir -pm 700 ${cardano_node_home}/db
+    fi
+    if [ -S ${cardano_node_socket} -a ! -f $pidfile ]; then
+        rm ${cardano_node_socket}
+    fi
+}
+
+cardano_node_poststart()
+{
+    echo "waiting 60 seconds for the socket file to appear"
+    counter=1
+    until [ -S ${cardano_node_socket} ]
+    do
+        if [ $counter -gt 60 ]; then
+            echo "failed to start ${name}"
+            exit 1
+        fi
+        sleep 1
+        counter=`expr $counter + 1`
+    done
+    chown :wheel ${cardano_node_socket}
+    chmod g+w ${cardano_node_socket}
+}
+
+cardano_node_start()
+{
+    check_startmsgs && echo "Starting ${name}."
+    cd $cardano_node_home && /usr/sbin/daemon -p $pidfile -o ${logfile} ${command} \
+        %%PREFIX%%/bin/cardano-node ${flags} ${cardano_node_flags} 2>&1 > /dev/null
+}
+
+cardano_node_stop()
+{
+    [ -f $pidfile ] \
+        && /bin/kill -INT `cat $pidfile` \
+        || echo ${name} not running? \(check ${pidfile}\)
+}
+cardano_node_status()
+{
+    [ -f $pidfile ] \
+        && echo ${name} is running as pid `cat $pidfile` \
+        || echo ${name} is not running.
+}
+
+run_rc_command "$1"
