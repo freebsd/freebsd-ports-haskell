@@ -33,11 +33,13 @@ SKIP_CABAL_PLIST=	yes
 IGNORE=		This port is not supposed to be built outside poudriere jail. It pollutes ${PREFIX}
 .endif
 
+CABAL_HOME=	${WRKSRC}/cabal-home
+
 # setenv http_proxy http://10.10.7.1:3128/
 # git config --global http.proxy http://10.10.7.1:3128/
 pre-build:
-	${MKDIR} ${WRKSRC}/home
-	env HOME=${WRKSRC}/home cabal update
+	${MKDIR} ${CABAL_HOME}
+	env HOME=${CABAL_HOME} cabal update
 
 do-build:
 	cd ${WRKSRC_sodium} && ./autogen.sh
@@ -46,8 +48,8 @@ do-build:
 	mv ${PREFIX}/lib/pkgconfig/libsodium.pc ${PREFIX}/libdata/pkgconfig/libsodium.pc
 
 	mv ${WRKSRC}/cabal.project.cardano-node ${WRKSRC}/cabal.project
-	cd ${WRKSRC} && env HOME=${WRKSRC}/home cabal configure --with-compiler=ghc-${GHC_VERSION}
-	cd ${WRKSRC} && env HOME=${WRKSRC}/home cabal build all
+	cd ${WRKSRC} && env HOME=${CABAL_HOME} cabal configure --with-compiler=ghc-${GHC_VERSION}
+	cd ${WRKSRC} && env HOME=${CABAL_HOME} cabal build all
 
 #	cd /tmp/cardano-node-${PORTVERSION} && tar -f /root/cardano-node-${PORTVERSION}.tar.gz -cJ .
 
