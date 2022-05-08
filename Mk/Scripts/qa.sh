@@ -412,7 +412,6 @@ proxydeps_suggest_uses() {
 	elif [ ${pkg} = "graphics/libart_lgpl" ]; then warn "you need USE_GNOME+=libartlgpl2"
 	elif [ ${pkg} = "devel/libIDL" ]; then warn "you need USE_GNOME+=libidl"
 	elif [ ${pkg} = "x11-fm/nautilus" ]; then warn "you need USE_GNOME+=nautilus3"
-	elif [ ${pkg} = "devel/ORBit2" ]; then warn "you need USE_GNOME+=orbit2"
 	elif [ ${pkg} = "graphics/librsvg2-rust" ]; then warn "you need USE_GNOME+=librsvg2"
 	# mate
 	# grep LIB_DEPENDS= Mk/Uses/mate.mk |sed -e 's|\(.*\)_LIB_DEPENDS.*:\(.*\)\/\(.*\)|elif [ ${pkg} = "\2/\3" ]; then warn "you need USE_MATE+=\1"|'
@@ -434,7 +433,6 @@ proxydeps_suggest_uses() {
 	elif [ ${pkg} = "net/akonadi-notes" ]; then warn "you need to use USE_KDE+=akonadinotes"
 	elif [ ${pkg} = "net/akonadi-calendar" ]; then warn "you need to use USE_KDE+=akonadicalendar"
 	elif [ ${pkg} = "net/akonadi-search" ]; then warn "you need to use USE_KDE+=akonadisearch"
-	elif [ ${pkg} = "net/kalarmcal" ]; then warn "you need to use USE_KDE+=alarmcalendar"
 	elif [ ${pkg} = "net/calendarsupport" ]; then warn "you need to use USE_KDE+=calendarsupport"
 	elif [ ${pkg} = "net/kcalcore" ]; then warn "you need to use USE_KDE+=calendarcore"
 	elif [ ${pkg} = "net/kcalutils" ]; then warn "you need to use USE_KDE+=calendarutils"

@@ -46,6 +46,7 @@
     SUBDIR += alienblaster
     SUBDIR += alienwave
     SUBDIR += allacrost
+    SUBDIR += amnesia-tdd
     SUBDIR += amoebax
     SUBDIR += an
     SUBDIR += angband
@@ -172,14 +173,12 @@
     SUBDIR += crimson
     SUBDIR += crispy-doom
     SUBDIR += criticalmass
-    SUBDIR += critterding
     SUBDIR += crossfire-client
     SUBDIR += crrcsim
     SUBDIR += cryptoslam
     SUBDIR += csmash
     SUBDIR += ctris
     SUBDIR += cube
-    SUBDIR += cultivation
     SUBDIR += cursive
     SUBDIR += cutemaze
     SUBDIR += cuyo
@@ -197,6 +196,7 @@
     SUBDIR += dobutsu
     SUBDIR += dodgindiamond2
     SUBDIR += domination
+    SUBDIR += domino-chain
     SUBDIR += dontspace
     SUBDIR += doom
     SUBDIR += doom-data
@@ -488,6 +488,7 @@
     SUBDIR += libmt_client
     SUBDIR += libretro
     SUBDIR += libretro-2048
+    SUBDIR += libretro-a5200
     SUBDIR += libretro-beetle_bsnes
     SUBDIR += libretro-beetle_gba
     SUBDIR += libretro-beetle_lynx
@@ -768,7 +769,6 @@
     SUBDIR += pongix
     SUBDIR += ponscripter-07th-mod
     SUBDIR += popstar
-    SUBDIR += pouetchess
     SUBDIR += powder
     SUBDIR += powder-toy
     SUBDIR += powermanga
@@ -777,7 +777,6 @@
     SUBDIR += prboom-plus
     SUBDIR += primateplunge
     SUBDIR += puckman
-    SUBDIR += pushover
     SUBDIR += pvpgn
     SUBDIR += py-2048-py
     SUBDIR += py-cbeams
@@ -1156,6 +1155,7 @@
     SUBDIR += xzip
     SUBDIR += yadex
     SUBDIR += yahtzee
+    SUBDIR += yquake2
     SUBDIR += zangband
     SUBDIR += zatacka
     SUBDIR += zaz

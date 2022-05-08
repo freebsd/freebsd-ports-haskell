@@ -61,8 +61,8 @@ NOPRECIOUSMAKEVARS=	yes
 
 JDK_MAJOR_VERSION=	17
 JDK_MINOR_VERSION=	0
-JDK_PATCH_VERSION=	2
-JDK_BUILD_NUMBER=	8
+JDK_PATCH_VERSION=	3
+JDK_BUILD_NUMBER=	7
 BSD_JDK_VERSION=	1
 
 JDK_BUG_URL=	https://bugs.freebsd.org/bugzilla/enter_bug.cgi?product=Ports%20%26%20Packages&component=Individual%20Port(s)&short_desc=java/${PORTNAME}${JDK_MAJOR_VERSION}%3A%20
@@ -149,7 +149,12 @@ CONFIGURE_ARGS+=	--with-extra-ldflags="-Wl,-rpath=${LOCALBASE}/lib/gcc${GCC_DEFA
 .else
 MAKE_ENV+=	USE_CLANG=true
 .if ${COMPILER_VERSION} >= 130
-CONFIGURE_ARGS+=	--with-extra-cflags="-Wno-unused-but-set-parameter"
+EXTRA_CFLAGS+=		-Wno-unused-but-set-parameter
+.if ${COMPILER_VERSION} >= 140
+EXTRA_CFLAGS+=		-Wno-bitwise-instead-of-logical
+.endif
+CONFIGURE_ARGS+=	--with-extra-cflags="${EXTRA_CFLAGS}"
+CONFIGURE_ARGS+=	--with-extra-cxxflags="${EXTRA_CFLAGS}"
 .endif
 .endif
 

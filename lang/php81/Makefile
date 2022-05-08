@@ -1,5 +1,5 @@
 PORTNAME=	php81
-DISTVERSION=	8.1.3
+DISTVERSION=	8.1.5
 PORTREVISION?=	0
 CATEGORIES?=	lang devel www
 MASTER_SITES=	PHP/distributions
@@ -269,7 +269,8 @@ CONFIGURE_ARGS+=	--enable-filter
 CONFIGURE_ARGS+=	--enable-ftp
 
 CONFIGURE_ENV+=	OPENSSL_CFLAGS="-I${OPENSSLINC}" \
-		OPENSSL_LIBS="-L${OPENSSLLIB} -lssl -lcrypto"
+		OPENSSL_LIBS="-L${OPENSSLLIB} -lssl -lcrypto" \
+		PHP_OPENSSL=yes
 
 LDFLAGS+=	-L${OPENSSLLIB} -lcrypto -lssl
 USES+=		pkgconfig ssl
@@ -325,14 +326,15 @@ OPTIONS_RADIO_CLIENT=	CCLIENT PANDA
 OPTIONS_DEFAULT=	PANDA
 CCLIENT_DESC=		Uses the original but unmaintained cclient
 PANDA_DESC=		Uses the forked panda-cclient instead of the original cclient
-PANDA_LIB_DEPENDS=	libc-client4.so.10:mail/panda-cclient
+PANDA_LIB_DEPENDS=	libc-client.so.2010:mail/panda-cclient
 PANDA_LIB_DEPENDS_OFF=	libc-client4.so.9:mail/cclient
 
 CONFIGURE_ARGS+=	--with-imap-ssl=${OPENSSLBASE} \
 			--with-imap=${LOCALBASE}
 
 CONFIGURE_ENV+=	OPENSSL_CFLAGS="-I${OPENSSLINC}" \
-		OPENSSL_LIBS="-L${OPENSSLLIB} -lssl -lcrypto"
+		OPENSSL_LIBS="-L${OPENSSLLIB} -lssl -lcrypto" \
+		PHP_OPENSSL=yes
 
 LDFLAGS+=	-L${OPENSSLLIB} -lcrypto -lssl
 USES+=		ssl

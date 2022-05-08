@@ -45,6 +45,7 @@
     SUBDIR += fastdnaml
     SUBDIR += fastool
     SUBDIR += fastp
+    SUBDIR += fastq-trim
     SUBDIR += fastqc
     SUBDIR += fasttree
     SUBDIR += fastx-toolkit
@@ -160,6 +161,7 @@
     SUBDIR += py-libsedml
     SUBDIR += py-loompy
     SUBDIR += py-macs2
+    SUBDIR += py-mrcfile
     SUBDIR += py-multiqc
     SUBDIR += py-ont-fast5-api
     SUBDIR += py-orange3-bioinformatics

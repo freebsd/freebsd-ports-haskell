@@ -1,7 +1,8 @@
 # Created by: Boris Samorodov <bsam@FreeBSD.org>
 
 PORTNAME=	pycharm-ce
-PORTVERSION=	2021.3.2
+PORTVERSION=	2022.1
+PORTREVISION=	1
 CATEGORIES=	devel java python
 MASTER_SITES=	https://download.jetbrains.com/python/ \
 		http://download.jetbrains.com/python/
@@ -16,7 +17,7 @@ RUN_DEPENDS=	intellij-fsnotifier>0:java/intellij-fsnotifier \
 		intellij-pty4j>0:java/intellij-pty4j
 
 USES=		python:run shebangfix
-SHEBANG_FILES=	bin/printenv.py bin/restart.py
+SHEBANG_FILES=	bin/restart.py
 
 USE_JAVA=	yes
 JAVA_VERSION=	11+
@@ -33,13 +34,15 @@ do-install:
 	@${MKDIR} ${STAGEDIR}${DATADIR}
 	@${TAR} -czf - -C ${WRKSRC} . | ${TAR} xzf - -C ${STAGEDIR}${DATADIR}
 # Linux/Windows/OS X only so remove them
-	@${RM} ${STAGEDIR}${DATADIR}/bin/*fsnotifier* ${STAGEDIR}${DATADIR}/bin/*.so
+	@${RM} ${STAGEDIR}${DATADIR}/bin/*fsnotifier* ${STAGEDIR}${DATADIR}/bin/*.so ${STAGEDIR}${DATADIR}/bin/repair
+	@${FIND} ${STAGEDIR}${DATADIR}/plugins -name '*.so' -delete
+	@${RM} -r ${STAGEDIR}${DATADIR}/plugins/cwm-plugin/quiche-native
 # Remove the bundled native Pty4J support libraries, they are replaced
 # by java/intellij-pty4j
 	@${RM} -r ${STAGEDIR}${DATADIR}/lib/pty4j-native
 # Remove bundled linux-only JRE
 	@${RM} -r ${STAGEDIR}${DATADIR}/jbr
-	@${RM} -r ${STAGEDIR}${DATADIR}/helpers/pydev/pydevd_attach_to_process
+	@${RM} -r ${STAGEDIR}${DATADIR}/plugins/python-ce/helpers/pydev/pydevd_attach_to_process
 	@${RM} ${STAGEDIR}${DATADIR}/lib/pty4j-0.5.jar
 	${INSTALL_SCRIPT} ${WRKDIR}/pycharm ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
 	${INSTALL_DATA} ${WRKDIR}/${PORTNAME}.desktop ${STAGEDIR}${PREFIX}/share/applications/

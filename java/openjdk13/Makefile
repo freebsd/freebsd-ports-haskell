@@ -11,6 +11,9 @@ LICENSE=	GPLv2
 
 ONLY_FOR_ARCHS=	aarch64 amd64 i386 powerpc64 powerpc64le
 
+DEPRECATED=	EOLed since 31 march 2020
+EXPIRATION_DATE=	2022-05-21
+
 BUILD_DEPENDS=	zip:archivers/zip \
 		autoconf>0:devel/autoconf \
 		${LOCALBASE}/include/cups/cups.h:print/cups \
@@ -55,8 +58,8 @@ NOPRECIOUSMAKEVARS=	yes
 
 JDK_MAJOR_VERSION=	13
 JDK_MINOR_VERSION=	0
-JDK_PATCH_VERSION=	10
-JDK_BUILD_NUMBER=	5
+JDK_PATCH_VERSION=	11
+JDK_BUILD_NUMBER=	4
 BSD_JDK_VERSION=	1
 
 JDK_BUG_URL=	https://bugs.freebsd.org/bugzilla/enter_bug.cgi?product=Ports%20%26%20Packages&component=Individual%20Port(s)&short_desc=java/${PORTNAME}${JDK_MAJOR_VERSION}%3A%20
@@ -130,7 +133,12 @@ CONFIGURE_ARGS+=	--with-extra-ldflags="-Wl,-rpath=${LOCALBASE}/lib/gcc${GCC_DEFA
 .else
 MAKE_ENV+=	USE_CLANG=true
 .if ${COMPILER_VERSION} >= 130
-CONFIGURE_ARGS+=	--with-extra-cflags="-Wno-unused-but-set-parameter"
+EXTRA_CFLAGS+=		-Wno-unused-but-set-parameter
+.if ${COMPILER_VERSION} >= 140
+EXTRA_CFLAGS+=		-Wno-bitwise-instead-of-logical
+.endif
+CONFIGURE_ARGS+=	--with-extra-cflags="${EXTRA_CFLAGS}"
+CONFIGURE_ARGS+=	--with-extra-cxxflags="${EXTRA_CFLAGS}"
 .endif
 .endif
 

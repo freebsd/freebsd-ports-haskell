@@ -2,6 +2,7 @@
 
 PORTNAME=	fusefs-webdavfs
 DISTVERSION=	g20200520
+PORTREVISION=	2
 CATEGORIES=	sysutils
 
 MAINTAINER=	eugen@FreeBSD.org

@@ -2,6 +2,7 @@
 
 PORTNAME=	glade
 PORTVERSION=	3.38.2
+PORTREVISION=	1
 CATEGORIES=	devel gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -19,13 +20,14 @@ LICENSE_FILE_GPLv2+ =	${WRKSRC}/COPYING.GPL
 LICENSE_FILE_LGPL21+ =	${WRKSRC}/COPYING.LGPL
 
 BUILD_DEPENDS=	itstool:textproc/itstool \
-		rarian-sk-config:textproc/rarian
+		docbook-xsl>=0:textproc/docbook-xsl \
+		xsltproc:textproc/libxslt
 
 CONFLICTS=	glade3-3.*
 PORTSCOUT=	limitw:1,even
 
-USES=		compiler:c11 desktop-file-utils gettext gnome localbase:ldflags \
-		meson pathfix pkgconfig tar:xz
+USES=		compiler:c11 desktop-file-utils gettext gnome \
+		localbase:ldflags meson pathfix pkgconfig tar:xz
 USE_GNOME=	cairo gtk30 intlhack introspection:build
 
 DOCSDIR=	${PREFIX}/share/doc/gladeui-2
@@ -34,6 +36,7 @@ OPTIONS_SUB=		yes
 OPTIONS_DEFINE=		GJS PYTHON WEBKIT
 OPTIONS_DEFAULT=	GJS PYTHON WEBKIT
 
+GJS_DESC=		GJS (JavaScript) support
 GJS_MESON_ENABLED=	gjs
 GJS_LIB_DEPENDS=	libgjs.so:lang/gjs
 

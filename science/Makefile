@@ -16,6 +16,7 @@
     SUBDIR += R-cran-etm
     SUBDIR += R-cran-fastICA
     SUBDIR += R-cran-kernlab
+    SUBDIR += R-cran-ks
     SUBDIR += R-cran-snow
     SUBDIR += R-cran-som
     SUBDIR += R-cran-udunits2
@@ -231,6 +232,7 @@
     SUBDIR += packmol
     SUBDIR += pagmo2
     SUBDIR += paje
+    SUBDIR += pastix
     SUBDIR += pcmsolver
     SUBDIR += phonopy
     SUBDIR += plumed
@@ -402,5 +404,6 @@
     SUBDIR += xdrawchem
     SUBDIR += xtb
     SUBDIR += yoda
+    SUBDIR += zotero
 
 .include <bsd.port.subdir.mk>

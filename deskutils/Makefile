@@ -176,7 +176,6 @@
     SUBDIR += moregroupware
     SUBDIR += mozo
     SUBDIR += myitcrm
-    SUBDIR += nautilus-actions
     SUBDIR += nautilus-sendto
     SUBDIR += nextcloudclient
     SUBDIR += note
@@ -184,6 +183,7 @@
     SUBDIR += noti
     SUBDIR += notification-daemon
     SUBDIR += notify-osd
+    SUBDIR += orage
     SUBDIR += osmo
     SUBDIR += owncloudclient
     SUBDIR += p5-Data-ICal

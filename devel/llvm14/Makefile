@@ -1,5 +1,5 @@
 PORTNAME=	llvm
-DISTVERSION=	14.0.0rc2
+DISTVERSION=	14.0.2
 PORTREVISION=	0
 CATEGORIES=	devel lang
 MASTER_SITES=	https://github.com/llvm/llvm-project/releases/download/llvmorg-${DISTVERSION:S/rc/-rc/}/ \
@@ -66,6 +66,11 @@ CMAKE_ARGS=	-DLLVM_BUILD_LLVM_DYLIB=ON -DLLVM_LINK_LLVM_DYLIB=ON
 CMAKE_ARGS+=	-DLLVM_ENABLE_RTTI=ON
 CMAKE_ARGS+=	-DLLVM_DEFAULT_TARGET_TRIPLE=${CONFIGURE_TARGET}
 CMAKE_ARGS+=	-DLLVM_HOST_TRIPLE=${CONFIGURE_TARGET}
+.if ${DISTVERSION} == 14.0.2
+CMAKE_ARGS+=	-DLLVM_VERSION_PATCH=2
+.else
+.error update the LLVM_VERSION_PATCH hack.
+.endif
 # Following commit https://github.com/kitware/cmake/commit/956054
 # we need to either change the whole man-shuffle below, or simply
 # redefine CMAKE_INSTALL_MANDIR
@@ -89,7 +94,7 @@ OPTIONS_DEFINE_i386=	COMPILER_RT OPENMP
 OPTIONS_DEFINE_powerpc=	GOLD
 OPTIONS_DEFINE_powerpc64=	GOLD OPENMP
 OPTIONS_DEFINE_powerpc64le=	GOLD OPENMP
-OPTIONS_DEFINE_riscv64=	OPENMP
+OPTIONS_DEFINE_riscv64=	COMPILER_RT OPENMP
 OPTIONS_DEFAULT=	BE_AMDGPU BE_STANDARD BE_WASM CLANG EXTRAS FLANG LIT LLD LLDB MLIR PYCLANG
 OPTIONS_DEFAULT_aarch64=	OPENMP
 OPTIONS_DEFAULT_amd64=	COMPILER_RT GOLD OPENMP
@@ -99,7 +104,7 @@ OPTIONS_DEFAULT_powerpc64=	${OPTIONS_DEFAULT_powerpc64_${OSREL:R}} OPENMP
 OPTIONS_DEFAULT_powerpc64_13=	GOLD
 OPTIONS_DEFAULT_powerpc64_14=	GOLD
 OPTIONS_DEFAULT_powerpc64le=	GOLD OPENMP
-OPTIONS_DEFAULT_riscv64=	OPENMP
+OPTIONS_DEFAULT_riscv64=	COMPILER_RT OPENMP
 OPTIONS_EXCLUDE_armv6=	FLANG
 OPTIONS_EXCLUDE_armv7=	FLANG
 OPTIONS_EXCLUDE_i386=	FLANG
@@ -119,7 +124,8 @@ BE_NATIVE_CMAKE_ON=	-DLLVM_TARGETS_TO_BUILD="${NATIVE_BACKENDS:ts;}"
 BE_STANDARD_DESC=	All non-experimental backends
 BE_WASM_DESC=		WebAssembly backend (required by firefox via wasi)
 .for BE in FREEBSD NATIVE STANDARD
-BE_${BE}_PLIST_FILES=	${_BE_LIBS_${BE}:O:S/$/.a/:S|^|${LLVM_DIR}/lib/libLLVM|}
+BE_${BE}_PLIST_FILES=	${_BE_LIBS_${BE}:O:S/$/.a/:S|^|${LLVM_DIR}/lib/libLLVM|} \
+			${_BE_INCS_${BE}:S|^|${LLVM_DIR}/lib/clang/${LLVM_RELEASE}/include/|:N${LLVM_DIR}/lib/clang/${LLVM_RELEASE}/include/$}
 .endfor
 CLANG_DESC=	Build clang
 CLANG_CMAKE_ON=		-DCLANG_DEFAULT_OPENMP_RUNTIME=libomp
@@ -133,12 +139,7 @@ CLANG_SUB_LIST=		XCC=clang${LLVM_SUFFIX} \
 			X_COMPILER_TYPE=clang
 CLANG_USE=		GNOME=libxml2
 COMPILER_RT_DESC=	Sanitizer libraries
-# An unwind.h is require to build.  I think an in-tree one should be used
-# but this seems to work as a workaround...
-COMPILER_RT_BUILD_DEPENDS=	libunwind>0:devel/libunwind
 COMPILER_RT_CMAKE_ON=	-DCOMPILER_RT_INSTALL_PATH=${LLVM_PREFIX}/lib/clang/${LLVM_RELEASE}
-# Allow unwind.h to be found reliably
-COMPILER_RT_USES=	localbase
 COMPILER_RT_PLIST_FILES=${_COMPILER_RT_LIBS:S|^|${_CRTLIBDIR}/|} \
 			${_COMPILER_RT_BLACKLISTS:S|^|${_CRTBLDIR}/|}
 DOCS_BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sphinx-markdown-tables>=0:textproc/py-sphinx-markdown-tables@${PY_FLAVOR} \
@@ -197,49 +198,7 @@ PLIST_SUB+=	LLVM_RELEASE=${LLVM_RELEASE} \
 COMMANDS=	${LLVM_COMMANDS}
 FIRST_COMMAND=	${COMMANDS:C/^/XXXX/1:MXXXX*:C/^XXXX//}
 
-MAN1SRCS+=	bugpoint.1 \
-		dsymutil.1 \
-		llc.1 \
-		lli.1 \
-		llvm-addr2line.1 \
-		llvm-ar.1 \
-		llvm-as.1 \
-		llvm-bcanalyzer.1 \
-		llvm-config.1 \
-		llvm-cov.1 \
-		llvm-cxxfilt.1 \
-		llvm-cxxmap.1 \
-		llvm-diff.1 \
-		llvm-dis.1 \
-		llvm-dwarfdump.1 \
-		llvm-exegesis.1 \
-		llvm-extract.1 \
-		llvm-install-name-tool.1 \
-		llvm-lib.1 \
-		llvm-libtool-darwin.1 \
-		llvm-lipo.1 \
-		llvm-link.1 \
-		llvm-locstats.1 \
-		llvm-mca.1 \
-		llvm-nm.1 \
-		llvm-objcopy.1 \
-		llvm-objdump.1 \
-		llvm-otool.1 \
-		llvm-pdbutil.1 \
-		llvm-profdata.1 \
-		llvm-profgen.1 \
-		llvm-ranlib.1 \
-		llvm-readelf.1 \
-		llvm-readobj.1 \
-		llvm-size.1 \
-		llvm-stress.1 \
-		llvm-strings.1 \
-		llvm-strip.1 \
-		llvm-symbolizer.1 \
-		llvm-tblgen.1 \
-		llvm-tli-checker.1 \
-		tblgen.1 \
-		opt.1
+MAN1SRCS+=	${LLVM_MAN1SRCS}
 
 STRIP_LIBS=	BugpointPasses.so \
 		LLVMHello.so \
@@ -295,10 +254,7 @@ CONFIGURE_TARGET:=${ARCH:C/amd64/x86_64/:C/arm64/aarch64/}-portbld-${OPSYS:tl}${
 .if ${PORT_OPTIONS:MCLANG}
 LLVM_ENABLE_PROJECTS+=	clang
 COMMANDS+=	${CLANG_COMMANDS}
-MAN1SRCS+=	clang.1 \
-		clang-tblgen.1 \
-		diagtool.1 \
-		scan-build.1
+MAN1SRCS+=	${CLANG_MAN1SRCS}
 CLANG_PATTERN=	(c-index-test|clang|diagtool|hmaptool|intercept-|libear|libscanbuild|analyze-|scan-|Reporter.py|ScanView.py|scanview.css|sorttable.js|startfile.py|-analyzer|AnalyzerPlugin.so)
 USES+=		gnome
 .endif
@@ -306,12 +262,19 @@ USES+=		gnome
 .if ${PORT_OPTIONS:MCOMPILER_RT}
 LLVM_ENABLE_PROJECTS+=	compiler-rt
 COMPILER_RT_PATTERN=	(sanitizer|include.xray|include\/fuzzer|profile\/InstrProfData.inc)
+.if ${OSVERSION} < 1300525
+# An unwind.h is require to build.  I think an in-tree one should be used
+# but this seems to work as a workaround...
+BUILD_DEPENDS+=	libunwind>0:devel/libunwind
+# Allow unwind.h to be found reliably
+USES+=	localbase
+.endif
 .endif
 
 .if ${PORT_OPTIONS:MEXTRAS}
 LLVM_ENABLE_PROJECTS+=	clang-tools-extra
 COMMANDS+=	${EXTRAS_COMMANDS}
-MAN1SRCS+=	extraclangtools.1
+MAN1SRCS+=	${EXTRAS_MAN1SRCS}
 PORTDOCS+=	clang-tools
 .endif
 
@@ -321,7 +284,7 @@ COMMANDS+=	${FLANG_COMMANDS}
 .endif
 
 .if ${PORT_OPTIONS:MLIT}
-MAN1SRCS+=	lit.1 FileCheck.1
+MAN1SRCS+=	${LIT_MAN1SRCS}
 .endif
 
 .if ${PORT_OPTIONS:MLLD}
@@ -332,19 +295,19 @@ PORTDOCS+=	lld
 
 .if ${PORT_OPTIONS:MLLDB}
 LLVM_ENABLE_PROJECTS+=	lldb
-MAN1SRCS+=	lldb-tblgen.1
+MAN1SRCS+=	${LLDB_MAN1SRCS}
 COMMANDS+=	${LLDB_COMMANDS}
 .endif
 
 .if ${PORT_OPTIONS:MMLIR}
 LLVM_ENABLE_PROJECTS+=	mlir
-MAN1SRCS+=	mlir-tblgen.1
+MAN1SRCS+=	${MLIR_MAN1SRCS}
 COMMANDS+=	${MLIR_COMMANDS}
 .endif
 
 .if ${PORT_OPTIONS:MOPENMP}
 LLVM_ENABLE_PROJECTS+=	openmp
-MAN1SRCS+=	llvmopenmp.1
+MAN1SRCS+=	${OPENMP_MAN1SRCS}
 COMMANDS+=	${OPENMP_COMMANDS}
 .endif
 OPENMP_PATTERN=	${OPENMP_COMMANDS:tW:C/  */|/g}|cmake\/openmp|libarcher|lib[ig]*omp|omp.h|ompt.h|ompt-multiplex.h|omp-tools.h
@@ -359,6 +322,7 @@ CMAKE_ARGS+=	-DLLVM_ENABLE_PROJECTS="${LLVM_ENABLE_PROJECTS:ts;}"
 
 .include <bsd.port.pre.mk>
 .include "${.CURDIR}/Makefile.COMMANDS"
+.include "${.CURDIR}/Makefile.MAN1SRCS"
 
 _FREEBSD_BACKENDS=	AArch64 ARM Mips PowerPC RISCV Sparc X86
 FREEBSD_BACKENDS=	${_FREEBSD_BACKENDS}
@@ -387,11 +351,12 @@ FREEBSD_BACKENDS+=	WebAssembly
 NATIVE_BACKENDS+=	WebAssembly
 .endif
 STANDARD_BACKENDS=	${_FREEBSD_BACKENDS} AMDGPU AVR BPF Hexagon Lanai \
-			MSP430 NVPTX SystemZ WebAssembly XCore
+			MSP430 NVPTX SystemZ VE WebAssembly XCore
 _BE_LIBS_COMMON=	CodeGen Desc Info
 _BE_LIBS_AArch64=	AsmParser Disassembler Utils
 _BE_LIBS_BACKWARDS_AArch64=Exegesis
 _BE_LIBS_AMDGPU=	AsmParser Disassembler TargetMCA Utils
+_BE_INCS_ARM=		arm_bf16.h arm_cde.h arm_fp16.h arm_mve.h arm_neon.h arm_sve.h
 _BE_LIBS_ARM=		AsmParser Disassembler Utils
 _BE_LIBS_AVR=		AsmParser Disassembler
 _BE_LIBS_BPF=		AsmParser Disassembler
@@ -402,6 +367,7 @@ _BE_LIBS_Mips=		AsmParser Disassembler
 _BE_LIBS_BACKWARDS_Mips=Exegesis
 _BE_LIBS_PowerPC=	AsmParser Disassembler
 _BE_LIBS_BACKWARDS_PowerPC=Exegesis
+_BE_INCS_RISCV=		riscv_vector.h
 _BE_LIBS_RISCV=		AsmParser Disassembler
 _BE_LIBS_Sparc=		AsmParser Disassembler
 _BE_LIBS_SystemZ=	AsmParser Disassembler
@@ -415,13 +381,13 @@ _BE_LIBS_XCore=		Disassembler
 _BE_LIBS_${BE}+=	${_BE_LIBS_COMMON:S/^/${BE_ARCH}/} \
 			${_BE_LIBS_${BE_ARCH}:S/^/${BE_ARCH}/} \
 			${_BE_LIBS_BACKWARDS_${BE_ARCH}:S/$/${BE_ARCH}/}
+_BE_INCS_${BE}+=	${_BE_INCS_${BE_ARCH}}
 .endfor
 .endfor
-BE_PATTERN=${_BE_LIBS_STANDARD:O:S/$/.a/:ts|}
+BE_PATTERN=${_BE_LIBS_STANDARD:O:S/$/.a/:ts|}|${_BE_INCS_STANDARD:ts|}
 
 _CRTLIBDIR=	${LLVM_DIR}/lib/clang/${LLVM_RELEASE}/lib/freebsd
 _CRTBLDIR=	${LLVM_DIR}/lib/clang/${LLVM_RELEASE}/share
-_COMPILER_RT_BLACKLISTS=	cfi_ignorelist.txt
 _COMPILER_RT_LIBS_i386=	\
 	libclang_rt.asan-i386.a \
 	libclang_rt.asan-i386.so \
@@ -441,6 +407,7 @@ _COMPILER_RT_LIBS_i386=	\
 	libclang_rt.ubsan_standalone-i386.so \
 	libclang_rt.ubsan_standalone_cxx-i386.a
 .if ${ARCH} == "amd64"
+_COMPILER_RT_BLACKLISTS=	cfi_ignorelist.txt
 _COMPILER_RT_BLACKLISTS+=	asan_ignorelist.txt
 _COMPILER_RT_BLACKLISTS+=	msan_ignorelist.txt
 _COMPILER_RT_LIBS=	\
@@ -488,10 +455,31 @@ _COMPILER_RT_LIBS=	\
 .if exists(/usr/lib32/libc.so.7)
 _COMPILER_RT_LIBS+=	${_COMPILER_RT_LIBS_i386}
 .endif
-.endif
-.if ${ARCH} == "i386"
+.elif ${ARCH} == "i386"
+_COMPILER_RT_BLACKLISTS=	cfi_ignorelist.txt
 _COMPILER_RT_BLACKLISTS+=	asan_ignorelist.txt
 _COMPILER_RT_LIBS+=	${_COMPILER_RT_LIBS_i386}
+.elif ${ARCH} == "riscv64"
+_COMPILER_RT_BLACKLISTS=	asan_ignorelist.txt
+_COMPILER_RT_LIBS= \
+	libclang_rt.asan-preinit-riscv64.a \
+	libclang_rt.asan-riscv64.a \
+	libclang_rt.asan-riscv64.a.syms \
+	libclang_rt.asan-riscv64.so \
+	libclang_rt.asan_cxx-riscv64.a \
+	libclang_rt.asan_cxx-riscv64.a.syms \
+	libclang_rt.asan_static-riscv64.a \
+	libclang_rt.builtins-riscv64.a \
+	libclang_rt.stats-riscv64.a \
+	libclang_rt.stats_client-riscv64.a \
+	libclang_rt.ubsan_minimal-riscv64.a \
+	libclang_rt.ubsan_minimal-riscv64.a.syms \
+	libclang_rt.ubsan_minimal-riscv64.so \
+	libclang_rt.ubsan_standalone-riscv64.a \
+	libclang_rt.ubsan_standalone-riscv64.a.syms \
+	libclang_rt.ubsan_standalone-riscv64.so \
+	libclang_rt.ubsan_standalone_cxx-riscv64.a \
+	libclang_rt.ubsan_standalone_cxx-riscv64.a.syms
 .endif
 
 .if ${ARCH} == "armv6"
@@ -576,6 +564,7 @@ post-install-CLANG-on:
 	${MKDIR} ${STAGEDIR}${PREFIX}/share/toolchains/
 	${INSTALL_DATA} ${WRKDIR}/xtoolchain.mk \
 	    ${STAGEDIR}${PREFIX}/share/toolchains/llvm${LLVM_SUFFIX}.mk
+	${LN} -s libclang.so.13 ${STAGEDIR}${LLVM_PREFIX}/lib/libclang.so.${LLVM_MAJOR}
 
 post-install-FLANG-on:
 	${RMDIR} ${STAGEDIR}${LLVM_PREFIX}/include/flang/Optimizer/CodeGen/CMakeFiles
@@ -653,7 +642,7 @@ build-plist:
 	    -e 's|\([^0-9]\)${LLVM_MAJOR}\([^0-9]\)|\1%%LLVM_MAJOR%%\2|' \
 	    | ${SORT} >> ${PLIST}.tmp
 	${AWK} '{ \
-	    if ($$0 ~ /${CLANG_PATTERN}/ && $$0 !~ /(${OPENMP_PATTERN}|${EXTRAS_PATTERN}|libclang_rt|${PYCLANG_PATTERN})/) {printf "%%%%CLANG%%%%"} \
+	    if ($$0 ~ /${CLANG_PATTERN}/ && $$0 !~ /(${OPENMP_PATTERN}|${EXTRAS_PATTERN}|libclang_rt|${PYCLANG_PATTERN}|${BE_PATTERN})/) {printf "%%%%CLANG%%%%"} \
 	    if ($$0 ~ /${COMPILER_RT_PATTERN}/) \
 		{printf "%%%%COMPILER_RT%%%%"} \
 	    if ($$0 ~ /(${EXTRAS_PATTERN})/) {printf "%%%%EXTRAS%%%%"} \

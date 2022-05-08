@@ -1,8 +1,8 @@
 # Created by: Mahdi Mokhtari <mokhi64@gmail.com>
 
 PORTNAME?=	mysql
-PORTVERSION=	5.7.37
-PORTREVISION?=	1
+PORTVERSION=	5.7.38
+PORTREVISION?=	0
 CATEGORIES=	databases
 MASTER_SITES=	MYSQL/MySQL-5.7
 PKGNAMESUFFIX?=	57-server
@@ -158,10 +158,6 @@ CMAKE_ARGS+=		-DWITH_SSL=${OPENSSLBASE}
 
 .if ${CHOSEN_COMPILER_TYPE} == gcc
 CXXFLAGS+=	-fpermissive
-.endif
-
-.if ${ARCH} == powerpc
-LLD_UNSAFE=	yes
 .endif
 
 post-extract:

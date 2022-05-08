@@ -11,6 +11,7 @@
     SUBDIR += R-cran-commonmark
     SUBDIR += R-cran-formatR
     SUBDIR += R-cran-highr
+    SUBDIR += R-cran-htmlTable
     SUBDIR += R-cran-htmltools
     SUBDIR += R-cran-hunspell
     SUBDIR += R-cran-markdown
@@ -51,7 +52,9 @@
     SUBDIR += apache-commons-digester
     SUBDIR += apache-poi
     SUBDIR += apache-solr
+    SUBDIR += apache-xmlbeans
     SUBDIR += apertium
+    SUBDIR += apertium-eng
     SUBDIR += artha
     SUBDIR += asciidoc
     SUBDIR += asm-xml
@@ -87,6 +90,7 @@
     SUBDIR += castxml
     SUBDIR += catdoc
     SUBDIR += cdif
+    SUBDIR += cg3
     SUBDIR += cgrep
     SUBDIR += chkascii
     SUBDIR += chpp
@@ -106,7 +110,6 @@
     SUBDIR += consul-template
     SUBDIR += cpp-peglib
     SUBDIR += crex
-    SUBDIR += crimson
     SUBDIR += crunch
     SUBDIR += cs-aspell
     SUBDIR += cs-hunspell
@@ -135,6 +138,7 @@
     SUBDIR += diffmark
     SUBDIR += diffsplit
     SUBDIR += diffstat
+    SUBDIR += difftastic
     SUBDIR += diffutils
     SUBDIR += dikt
     SUBDIR += discount
@@ -318,6 +322,7 @@
     SUBDIR += jade
     SUBDIR += jalingo
     SUBDIR += jarnal
+    SUBDIR += jarowinkler-cpp
     SUBDIR += java2html
     SUBDIR += jaxup
     SUBDIR += jdictionary
@@ -338,7 +343,6 @@
     SUBDIR += kf5-kcodecs
     SUBDIR += kf5-sonnet
     SUBDIR += kf5-syntax-highlighting
-    SUBDIR += kibana6
     SUBDIR += kibana7
     SUBDIR += kiss-templates
     SUBDIR += kmfl-european-latin
@@ -434,7 +438,6 @@
     SUBDIR += lua-lyaml
     SUBDIR += luaexpat
     SUBDIR += lucene
-    SUBDIR += lucene4
     SUBDIR += lucene5
     SUBDIR += luceneplusplus
     SUBDIR += lv-aspell
@@ -451,6 +454,7 @@
     SUBDIR += md4c
     SUBDIR += mdbook
     SUBDIR += mdbook-linkcheck
+    SUBDIR += mdbook-mermaid
     SUBDIR += mdocml
     SUBDIR += meilisearch
     SUBDIR += meld
@@ -1172,6 +1176,7 @@
     SUBDIR += p5-libxml
     SUBDIR += p5-pod2pdf
     SUBDIR += p5-podlators
+    SUBDIR += p5-utf8-all
     SUBDIR += p5-xmltv
     SUBDIR += pa-aspell
     SUBDIR += pageedit
@@ -1327,11 +1332,13 @@
     SUBDIR += py-html2text2018
     SUBDIR += py-humanfriendly
     SUBDIR += py-hunspell
+    SUBDIR += py-ini2toml
     SUBDIR += py-isbnlib
     SUBDIR += py-isbntools
     SUBDIR += py-iso-639
     SUBDIR += py-iso3166
     SUBDIR += py-j2cli
+    SUBDIR += py-jarowinkler
     SUBDIR += py-jc
     SUBDIR += py-jinja2-cli
     SUBDIR += py-jq
@@ -1366,13 +1373,17 @@
     SUBDIR += py-mkdocs-autorefs
     SUBDIR += py-mkdocs-material
     SUBDIR += py-mkdocs-material-extensions
+    SUBDIR += py-mkdocs-mermaid2-plugin
     SUBDIR += py-mkdocs-nature
+    SUBDIR += py-mkdocs-redirects
+    SUBDIR += py-mkdocs-simple-hooks
     SUBDIR += py-mkdocstrings
     SUBDIR += py-mwparserfromhell
     SUBDIR += py-myst-parser
     SUBDIR += py-nbsphinx
     SUBDIR += py-nltk
     SUBDIR += py-normality
+    SUBDIR += py-ntc-templates
     SUBDIR += py-numpydoc
     SUBDIR += py-ocrmypdf
     SUBDIR += py-openpyxl
@@ -1468,6 +1479,7 @@
     SUBDIR += py-sphinx-autodoc-typehints
     SUBDIR += py-sphinx-book-theme
     SUBDIR += py-sphinx-copybutton
+    SUBDIR += py-sphinx-design
     SUBDIR += py-sphinx-inline-tabs
     SUBDIR += py-sphinx-intl
     SUBDIR += py-sphinx-issues
@@ -1556,7 +1568,6 @@
     SUBDIR += rapidxml
     SUBDIR += raptor
     SUBDIR += raptor2
-    SUBDIR += rarian
     SUBDIR += rasqal
     SUBDIR += re-flex
     SUBDIR += re_graph
@@ -1628,12 +1639,12 @@
     SUBDIR += rubygem-css_parser
     SUBDIR += rubygem-cssmin
     SUBDIR += rubygem-cucumber-gherkin
+    SUBDIR += rubygem-cucumber-gherkin22
     SUBDIR += rubygem-cucumber-html-formatter
     SUBDIR += rubygem-cucumber-html-formatter17
     SUBDIR += rubygem-diff-lcs
     SUBDIR += rubygem-diff_match_patch
     SUBDIR += rubygem-diffy
-    SUBDIR += rubygem-diffy330
     SUBDIR += rubygem-docdiff
     SUBDIR += rubygem-elasticsearch
     SUBDIR += rubygem-elasticsearch-api
@@ -1695,6 +1706,7 @@
     SUBDIR += rubygem-kramdown
     SUBDIR += rubygem-kramdown-parser-gfm
     SUBDIR += rubygem-kramdown1
+    SUBDIR += rubygem-kramdown23
     SUBDIR += rubygem-kwalify
     SUBDIR += rubygem-libxml-ruby
     SUBDIR += rubygem-linguistics
@@ -2011,8 +2023,10 @@
     SUBDIR += yi-hunspell
     SUBDIR += yodl
     SUBDIR += yq
+    SUBDIR += zed
     SUBDIR += zenxml
     SUBDIR += zorba
+    SUBDIR += zq
     SUBDIR += zu-aspell
     SUBDIR += zu-hunspell
     SUBDIR += zxing-cpp

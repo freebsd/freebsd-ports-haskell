@@ -198,9 +198,7 @@
     SUBDIR += go-cs
     SUBDIR += gobgp
     SUBDIR += gofish
-    SUBDIR += gogoc
     SUBDIR += google-cloud-sdk
-    SUBDIR += google-cloud-sdk-app-engine-go
     SUBDIR += gopher
     SUBDIR += goreplay
     SUBDIR += gorss
@@ -219,6 +217,7 @@
     SUBDIR += gsocket
     SUBDIR += gspoof
     SUBDIR += gssdp
+    SUBDIR += gssdp14
     SUBDIR += gstreamer1-plugins-libmms
     SUBDIR += gstreamer1-plugins-srtp
     SUBDIR += gtk-vnc
@@ -229,6 +228,7 @@
     SUBDIR += gupnp-igd
     SUBDIR += gupnp-tools
     SUBDIR += gupnp-ui
+    SUBDIR += gupnp14
     SUBDIR += gutenfetch
     SUBDIR += gwhois
     SUBDIR += h323plus
@@ -249,7 +249,6 @@
     SUBDIR += honeyd
     SUBDIR += hostapd
     SUBDIR += hostapd-devel
-    SUBDIR += hping
     SUBDIR += hping3
     SUBDIR += hsflowd
     SUBDIR += htpdate
@@ -268,7 +267,6 @@
     SUBDIR += ilbc
     SUBDIR += imapproxy
     SUBDIR += incidenceeditor
-    SUBDIR += inlets
     SUBDIR += intel-em-kmod
     SUBDIR += intel-ix-kmod
     SUBDIR += intel-ixl-kmod
@@ -288,6 +286,7 @@
     SUBDIR += isc-dhcp44-relay
     SUBDIR += isc-dhcp44-server
     SUBDIR += istgt
+    SUBDIR += iwnet
     SUBDIR += java-beepcore
     SUBDIR += jcifs
     SUBDIR += jgroups
@@ -301,7 +300,6 @@
     SUBDIR += jwhois
     SUBDIR += k6
     SUBDIR += kafka
-    SUBDIR += kalarmcal
     SUBDIR += kamailio
     SUBDIR += kcalutils
     SUBDIR += kcat
@@ -369,6 +367,7 @@
     SUBDIR += libgravatar
     SUBDIR += libgrss
     SUBDIR += libgweather
+    SUBDIR += libgweather4
     SUBDIR += libilbc
     SUBDIR += libiscsi
     SUBDIR += libkgapi
@@ -512,6 +511,7 @@
     SUBDIR += netwib
     SUBDIR += nfs-ganesha-kmod
     SUBDIR += nfsshell
+    SUBDIR += nfstrace
     SUBDIR += ng_mikrotik_eoip
     SUBDIR += ngrep
     SUBDIR += nifmon
@@ -1073,6 +1073,7 @@
     SUBDIR += py-paho-mqtt
     SUBDIR += py-pamqp
     SUBDIR += py-pcapy
+    SUBDIR += py-pcapy-ng
     SUBDIR += py-port-for
     SUBDIR += py-portend
     SUBDIR += py-pyenet
@@ -1153,6 +1154,7 @@
     SUBDIR += py-txrestapi
     SUBDIR += py-uritemplate
     SUBDIR += py-uritools
+    SUBDIR += py-url-normalize
     SUBDIR += py-urlextract
     SUBDIR += py-urllib3
     SUBDIR += py-whois
@@ -1168,7 +1170,6 @@
     SUBDIR += qt5-network
     SUBDIR += qt5-networkauth
     SUBDIR += quagga
-    SUBDIR += queso
     SUBDIR += quiche
     SUBDIR += quiterss
     SUBDIR += quoted
@@ -1318,6 +1319,7 @@
     SUBDIR += rubygem-netrc
     SUBDIR += rubygem-network_interface
     SUBDIR += rubygem-nkf
+    SUBDIR += rubygem-no_proxy_fix
     SUBDIR += rubygem-oauth
     SUBDIR += rubygem-oauth2
     SUBDIR += rubygem-octokit
@@ -1448,7 +1450,6 @@
     SUBDIR += ssldump
     SUBDIR += sslh
     SUBDIR += ssspl
-    SUBDIR += ssvnc
     SUBDIR += stone
     SUBDIR += storj
     SUBDIR += stund
@@ -1532,6 +1533,7 @@
     SUBDIR += unison232
     SUBDIR += unison240
     SUBDIR += unison248
+    SUBDIR += unison251
     SUBDIR += unix2tcp
     SUBDIR += urelay
     SUBDIR += uriparser
@@ -1560,10 +1562,13 @@
     SUBDIR += whois
     SUBDIR += widentd
     SUBDIR += wifibox
+    SUBDIR += wifibox-alpine
+    SUBDIR += wifibox-core
     SUBDIR += wireguard
     SUBDIR += wireguard-go
     SUBDIR += wireguard-kmod
     SUBDIR += wireguard-tools
+    SUBDIR += wireproxy
     SUBDIR += wireshark
     SUBDIR += wireshark-lite
     SUBDIR += wlan2eth

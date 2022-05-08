@@ -1,6 +1,5 @@
 PORTNAME=	spidermonkey
-DISTVERSION=	78.9.0
-PORTREVISION=	6
+DISTVERSION=	78.15.0
 CATEGORIES=	lang
 MASTER_SITES=	MOZILLA/firefox/releases/${DISTVERSION}esr/source
 PKGNAMESUFFIX=	${SP_VER}
@@ -56,6 +55,8 @@ PLIST_SUB=	SP_VER=${SP_VER}
 
 .if ${ARCH} == amd64
 CONFIGURE_TARGET=	x86_64-portbld-freebsd${OSREL}
+.elif ${ARCH} == powerpc
+EXTRA_PATCHES=	${FILESDIR}/extra-patch-config_makefiles_rust.mk
 .endif
 
 # Require newer Clang than what's in base system unless user opted out

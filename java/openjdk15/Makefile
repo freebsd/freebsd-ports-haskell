@@ -25,6 +25,9 @@ LIB_DEPENDS=	libasound.so:audio/alsa-lib \
 RUN_DEPENDS=	javavm:java/javavmwrapper \
 		xorg-fonts-truetype>0:x11-fonts/xorg-fonts-truetype
 
+DEPRECATED=	EOLed since 31 march 2021
+EXPIRATION_DATE=	2022-05-21
+
 USES=		compiler:features cpe gmake iconv jpeg pkgconfig xorg
 USE_XORG=	x11 xext xi xrandr xrender xt xtst
 
@@ -56,8 +59,8 @@ NOPRECIOUSMAKEVARS=	yes
 
 JDK_MAJOR_VERSION=	15
 JDK_MINOR_VERSION=	0
-JDK_PATCH_VERSION=	6
-JDK_BUILD_NUMBER=	5
+JDK_PATCH_VERSION=	7
+JDK_BUILD_NUMBER=	4
 BSD_JDK_VERSION=	1
 
 JDK_BUG_URL=	https://bugs.freebsd.org/bugzilla/enter_bug.cgi?product=Ports%20%26%20Packages&component=Individual%20Port(s)&short_desc=java/${PORTNAME}${JDK_MAJOR_VERSION}%3A%20
@@ -131,7 +134,12 @@ CONFIGURE_ARGS+=	--with-extra-ldflags="-Wl,-rpath=${LOCALBASE}/lib/gcc${GCC_DEFA
 .else
 MAKE_ENV+=	USE_CLANG=true
 .if ${COMPILER_VERSION} >= 130
-CONFIGURE_ARGS+=	--with-extra-cflags="-Wno-unused-but-set-parameter"
+EXTRA_CFLAGS+=		-Wno-unused-but-set-parameter
+.if ${COMPILER_VERSION} >= 140
+EXTRA_CFLAGS+=		-Wno-bitwise-instead-of-logical
+.endif
+CONFIGURE_ARGS+=	--with-extra-cflags="${EXTRA_CFLAGS}"
+CONFIGURE_ARGS+=	--with-extra-cxxflags="${EXTRA_CFLAGS}"
 .endif
 .endif
 

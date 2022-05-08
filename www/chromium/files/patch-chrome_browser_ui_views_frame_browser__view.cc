@@ -1,6 +1,6 @@
---- chrome/browser/ui/views/frame/browser_view.cc.orig	2022-02-28 16:54:41 UTC
+--- chrome/browser/ui/views/frame/browser_view.cc.orig	2022-04-21 18:48:31 UTC
 +++ chrome/browser/ui/views/frame/browser_view.cc
-@@ -1750,7 +1750,7 @@ void BrowserView::TabDraggingStatusChanged(bool is_dra
+@@ -1945,7 +1945,7 @@ void BrowserView::TabDraggingStatusChanged(bool is_dra
    // CrOS cleanup is done.
  // TODO(crbug.com/1052397): Revisit the macro expression once build flag switch
  // of lacros-chrome is complete.

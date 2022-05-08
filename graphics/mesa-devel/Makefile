@@ -1,6 +1,6 @@
 PORTNAME=	mesa
-DISTVERSION=	22.0-branchpoint-1237
-DISTVERSIONSUFFIX=	-g45770ac286b
+DISTVERSION=	22.1-branchpoint-1036
+DISTVERSIONSUFFIX=	-g6983c8580a2
 CATEGORIES=	graphics
 PKGNAMESUFFIX=	-devel
 
@@ -71,12 +71,14 @@ ${j}_VARS+=		${i}_DRIVERS+=${j:S/anv/intel/:S/radv/amd/}
 GALLIUM_DESC=		Unified OpenGL drivers
 crocus_DESC=		Broadwater, Eaglelake, Ironlake, Sandybridge, Ivybridge, Haswell
 iris_DESC=		Broadwell and newer
+panfrost_DESC=		Midgard, Bifrost
 r600_DESC=		R600, R700, Evergreen, Northern Islands (implies LLVM)
 radeonsi_DESC=		Southern Islands and newer (implies LLVM)
 
 VULKAN_DESC=		Vulkan drivers
 anv_DESC=		Haswell and newer
 radv_DESC=		Southern Islands and newer (implies LLVM)
+radv_BUILD_DEPENDS=	glslangValidator:graphics/glslang
 
 COINST_DESC=		Allow co-installation with another Mesa port
 COINST_MESON_ON=	-Degl-lib-suffix=${PKGNAMESUFFIX}
@@ -90,7 +92,7 @@ LIBUNWIND_LIB_DEPENDS=	libunwind.so:devel/libunwind
 LIBUNWIND_MESON_ENABLED=	libunwind
 
 LLVM_DESC=		Build with LLVM support (see implies)
-LLVM_LIB_DEPENDS=	libLLVM-${LLVM_DEFAULT:C/^([6-9])0/\1/:S/-devel/14git/}.so:devel/llvm${LLVM_DEFAULT}
+LLVM_LIB_DEPENDS=	libLLVM-${LLVM_DEFAULT:C/^([6-9])0/\1/:S/-devel/15git/}.so:devel/llvm${LLVM_DEFAULT}
 LLVM_MESON_ENABLED=	llvm
 LLVM_BINARY_ALIAS=	llvm-config=llvm-config${LLVM_DEFAULT}
 .for i in r600 radeonsi radv
@@ -111,7 +113,7 @@ VDPAU_IMPLIES=		X11
 VKLAYERS_DESC=		Vulkan layers: ${VKLAYERS_MESON_ON:C/.*=//} (implies ${VKLAYERS_IMPLIES})
 VKLAYERS_BUILD_DEPENDS=	glslangValidator:graphics/glslang
 VKLAYERS_MESON_ON=	-Dvulkan-layers=device-select,overlay
-VKLAYERS_IMPLIES=	${"${PORT_OPTIONS:Mradv}":?radv:anv} # any from OPTIONS_GROUP_VULKAN
+VKLAYERS_IMPLIES=	${"${PORT_OPTIONS:Manv}":?anv:radv} # any from OPTIONS_GROUP_VULKAN
 
 WAYLAND_BUILD_DEPENDS=	wayland-protocols>0:graphics/wayland-protocols
 WAYLAND_LIB_DEPENDS=	libwayland-server.so:graphics/wayland

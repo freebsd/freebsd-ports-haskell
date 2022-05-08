@@ -1,8 +1,7 @@
 # Created by: Florent Thoumie <flz@FreeBSD.org>
 
 PORTNAME=	chromium
-PORTVERSION=	99.0.4844.51
-PORTREVISION=	3
+PORTVERSION=	101.0.4951.54
 CATEGORIES=	www
 MASTER_SITES=	https://commondatastorage.googleapis.com/chromium-browser-official/ \
 		https://nerd.hu/distfiles/:fonts
@@ -14,7 +13,7 @@ COMMENT=	Google web browser based on WebKit
 LICENSE=	BSD3CLAUSE LGPL21 MPL11
 LICENSE_COMB=	multi
 
-ONLY_FOR_ARCHS=			aarch64 amd64 i386
+ONLY_FOR_ARCHS=	aarch64 amd64 i386
 
 BUILD_DEPENDS=	bash:shells/bash \
 		${PYTHON_PKGNAMEPREFIX}Jinja2>0:devel/py-Jinja2@${PY_FLAVOR} \
@@ -57,6 +56,7 @@ LIB_DEPENDS=	libatk-bridge-2.0.so:accessibility/at-spi2-atk \
 		libnss3.so:security/nss \
 		libexpat.so:textproc/expat2 \
 		libfontconfig.so:x11-fonts/fontconfig \
+		libwayland-client.so:graphics/wayland \
 		libxkbcommon.so:x11/libxkbcommon \
 		libxshmfence.so:x11/libxshmfence
 
@@ -64,7 +64,7 @@ RUN_DEPENDS=	xdg-open:devel/xdg-utils \
 		noto-basic>0:x11-fonts/noto-basic
 
 USES=		bison compiler:c++17-lang cpe desktop-file-utils gl gnome jpeg localbase:ldflags \
-		ninja perl5 pkgconfig python:3.6-3.9,build shebangfix tar:xz xorg
+		ninja perl5 pkgconfig python:3.7+,build shebangfix tar:xz xorg
 
 CPE_VENDOR=	google
 CPE_PRODUCT=	chrome
@@ -79,9 +79,7 @@ SHEBANG_FILES=	chrome/tools/build/linux/chrome-wrapper buildtools/linux64/clang-
 MAKE_ARGS=	-C out/${BUILDTYPE}
 ALL_TARGET=	chrome
 
-BINARY_ALIAS=	ar=/usr/bin/llvm-ar \
-		nm=/usr/bin/llvm-nm \
-		python3=${PYTHON_CMD}
+BINARY_ALIAS=	python3=${PYTHON_CMD}
 
 # TODO bz@ : install libwidevinecdm.so (see third_party/widevine/cdm/BUILD.gn)
 #
@@ -111,6 +109,7 @@ GN_ARGS+=	clang_use_chrome_plugins=false \
 		use_system_freetype=false \
 		use_system_harfbuzz=true \
 		use_system_libjpeg=true \
+		use_system_wayland_scanner=true \
 		use_udev=false \
 		extra_cxxflags="${CXXFLAGS}" \
 		extra_ldflags="${LDFLAGS}"
@@ -128,7 +127,7 @@ GN_ARGS+=	google_api_key="AIzaSyBsp9n41JLW8jCokwn7vhoaMejDFRd1mp8"
 SUB_FILES=	chromium-browser.desktop chrome
 SUB_LIST+=	COMMENT="${COMMENT}"
 
-OPTIONS_DEFINE=	CODECS CUPS DEBUG DRIVER KERBEROS LTO TEST
+OPTIONS_DEFINE=		CODECS CUPS DEBUG DRIVER KERBEROS LTO TEST
 OPTIONS_DEFAULT=	CODECS CUPS DRIVER KERBEROS SNDIO
 OPTIONS_EXCLUDE_aarch64=LTO
 OPTIONS_GROUP=		AUDIO
@@ -157,18 +156,19 @@ CUPS_LIB_DEPENDS=	libcups.so:print/cups
 CUPS_VARS=		GN_ARGS+=use_cups=true
 CUPS_VARS_OFF=		GN_ARGS+=use_cups=false
 
+DEBUG_BUILD_DEPENDS=	esbuild:devel/esbuild
 DEBUG_VARS=		BUILDTYPE=Debug \
 			GN_ARGS+=is_debug=true \
 			GN_ARGS+=is_component_build=false \
 			GN_ARGS+=symbol_level=1 \
 			GN_BOOTSTRAP_FLAGS+=--debug \
-			WANTSPACE="13 GB"
+			WANTSPACE="21 GB"
 DEBUG_VARS_OFF=		BUILDTYPE=Release \
 			GN_ARGS+=blink_symbol_level=0 \
 			GN_ARGS+=is_debug=false \
 			GN_ARGS+=is_official_build=true \
 			GN_ARGS+=symbol_level=0 \
-			WANTSPACE="6.5 GB"
+			WANTSPACE="14 GB"
 
 DRIVER_MAKE_ARGS=	chromedriver
 
@@ -206,11 +206,18 @@ TEST_ALL_TARGET=	${TEST_TARGETS}
 IGNORE=		you have selected HEIMDAL_BASE but do not have Heimdal installed in base
 .endif
 
-.if ${COMPILER_VERSION} < 120
-
-.if ${PORT_OPTIONS:MLTO}
-BROKEN+=	does not build with LTO needs LLVM 12+
-.endif
+.if ${COMPILER_VERSION} < 130
+LLVM_DEFAULT=		13
+BUILD_DEPENDS+=		clang${LLVM_DEFAULT}:devel/llvm${LLVM_DEFAULT}
+BINARY_ALIAS+=		cpp=${LOCALBASE}/bin/clang-cpp${LLVM_DEFAULT} \
+			cc=${LOCALBASE}/bin/clang${LLVM_DEFAULT} \
+			c++=${LOCALBASE}/bin/clang++${LLVM_DEFAULT} \
+			ar=${LOCALBASE}/bin/llvm-ar${LLVM_DEFAULT} \
+			nm=${LOCALBASE}/bin/llvm-nm${LLVM_DEFAULT} \
+			ld=${LOCALBASE}/bin/ld.lld${LLVM_DEFAULT}
+.else
+BINARY_ALIAS+=		ar=/usr/bin/llvm-ar \
+			nm=/usr/bin/llvm-nm
 .endif
 
 # swiftshader/lib/{libEGL.so,libGLESv2.so} is x86 only
@@ -274,6 +281,8 @@ do-configure:
 do-install:
 	@${MKDIR} ${STAGEDIR}${DATADIR}
 	${INSTALL_MAN} ${WRKSRC}/chrome/app/resources/manpage.1.in \
+		${STAGEDIR}${MANPREFIX}/man/man1/chrome.1
+	@${SED} -i "" -e 's,\@\@PACKAGE\@\@,chromium,g;s,\@\@MENUNAME\@\@,Chromium Web Browser,g' \
 		${STAGEDIR}${MANPREFIX}/man/man1/chrome.1
 	${CP} ${WRKSRC}/chrome/app/theme/chromium/product_logo_22_mono.png ${WRKSRC}/chrome/app/theme/chromium/product_logo_22.png
 .for s in 22 24 48 64 128 256

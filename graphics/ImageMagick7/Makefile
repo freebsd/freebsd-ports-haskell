@@ -1,6 +1,5 @@
 PORTNAME=	ImageMagick
-DISTVERSION=	7.1.0-19
-PORTREVISION=	3
+DISTVERSION=	7.1.0-32
 CATEGORIES=	graphics perl5
 MASTER_SITES=	https://www.imagemagick.org/download/ \
 		https://www.imagemagick.org/download/releases/ \
@@ -127,7 +126,6 @@ JPEG2000_DESC=		OpenJPEG 2000 support via openjpeg
 JPEG2000_CONFIGURE_WITH=openjp2
 JPEG2000_LIB_DEPENDS=	libopenjp2.so:graphics/openjpeg
 
-JXL_DESC=		JPEG XL image format via libjxl
 JXL_CONFIGURE_WITH=	jxl
 JXL_LIB_DEPENDS=	libjxl.so:graphics/libjxl
 
