@@ -38,6 +38,7 @@ CABAL_HOME=	${WRKSRC}/cabal-home
 # setenv http_proxy http://10.10.7.1:3128/
 # git config --global http.proxy http://10.10.7.1:3128/
 pre-build:
+	${RM} -rf ${CABAL_HOME}
 	${MKDIR} ${CABAL_HOME}
 	env HOME=${CABAL_HOME} cabal update
 
