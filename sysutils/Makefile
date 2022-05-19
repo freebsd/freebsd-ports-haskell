@@ -332,6 +332,7 @@
     SUBDIR += env4801
     SUBDIR += envconsul
     SUBDIR += epazote
+    SUBDIR += equinix-metal-cli
     SUBDIR += etc_os-release
     SUBDIR += etcmerge
     SUBDIR += etcupdate
@@ -359,6 +360,7 @@
     SUBDIR += file
     SUBDIR += filedupe
     SUBDIR += filelight
+    SUBDIR += filemon
     SUBDIR += fileprune
     SUBDIR += fileschanged
     SUBDIR += filetype
@@ -655,6 +657,7 @@
     SUBDIR += logstash7
     SUBDIR += logtool
     SUBDIR += logwatch
+    SUBDIR += loki
     SUBDIR += lookat
     SUBDIR += lr
     SUBDIR += lsblk

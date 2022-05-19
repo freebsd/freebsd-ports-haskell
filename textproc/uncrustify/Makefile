@@ -1,5 +1,5 @@
 PORTNAME=	uncrustify
-PORTVERSION=	0.75.0
+PORTVERSION=	0.75.1
 DISTVERSIONPREFIX=	${PORTNAME}-
 CATEGORIES=	textproc
 
@@ -18,7 +18,7 @@ TEST_TARGET=	test
 PORTDOCS=	*
 PORTEXAMPLES=	*
 
-PLIST_FILES=	bin/uncrustify man/man1/uncrustify.1.gz
+PLIST_FILES=	bin/uncrustify share/man/man1/uncrustify.1.gz
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
