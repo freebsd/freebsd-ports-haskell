@@ -66,7 +66,7 @@ topology_file="${cardano_node_home}/testnet-topology.json"
 config_file="${cardano_node_home}/testnet-config.json"
 pidfile="/var/run/cardano-node.pid"
 logfile="/var/log/cardano-node.log"
-flags=run +RTS -N -A16m -qg -qb -RTS \
+flags=run +RTS -N -A64m -n4m -F1.2 -qg1 -RTS \
         --database-path ${cardano_node_db} \
         --host-addr ${cardano_node_host} \
         --port ${cardano_node_port} \
