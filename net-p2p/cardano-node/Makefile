@@ -51,7 +51,7 @@ do-build:
 	${ECHO} "  extra-lib-dirs: ${LIBSODIUM_PREFIX}${PREFIX}/lib" >> ${WRKSRC}/cabal.project.cardano-node
 	mv ${WRKSRC}/cabal.project.cardano-node ${WRKSRC}/cabal.project
 	cd ${WRKSRC} && env ${CABAL_ENV} cabal configure --with-compiler=ghc-${GHC_VERSION}
-	cd ${WRKSRC} && env ${CABAL_ENV} cabal build all
+	cd ${WRKSRC} && env ${CABAL_ENV} cabal build cardano-node cardano-cli
 
 do-install:
 	cd ${WRKSRC_sodium} && gmake DESTDIR=${STAGEDIR} install
