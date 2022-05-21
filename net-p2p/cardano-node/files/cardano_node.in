@@ -33,6 +33,11 @@
 #                           to the cardano-node config.json file.
 #                           Default: "mainnet-config.json"
 #
+# cardano_node_rts_flags:   GHC runtime flags to be passed between "+RTS" and "-RTS".
+#                           See https://downloads.haskell.org/ghc/latest/docs/html/users_guide/runtime_control.html
+#                           for the meaning of these flags.
+#                           Default: "-N -A64m -n4m -F1.2 -qg1"
+#
 # cardano_node_flags:       Any additional command line flags to pass to cardano-node.
 #                           Default: ""
 #
@@ -60,13 +65,14 @@ load_rc_config $name
 : ${cardano_node_socket:="${cardano_node_home}/cardano-node.sock"}
 : ${cardano_node_topology:="mainnet-topology.json"}
 : ${cardano_node_config:="mainnet-config.json"}
+: ${cardano_node_rts_flags:="-N -A64m -n4m -F1.2 -qg1"}
 : ${cardano_node_flags:=""}
 
 topology_file="${cardano_node_home}/testnet-topology.json"
 config_file="${cardano_node_home}/testnet-config.json"
 pidfile="/var/run/cardano-node.pid"
 logfile="/var/log/cardano-node.log"
-flags=run +RTS -N -A16m -qg -qb -RTS \
+flags=run +RTS ${cardano_node_rts_flags} -RTS \
         --database-path ${cardano_node_db} \
         --host-addr ${cardano_node_host} \
         --port ${cardano_node_port} \
