@@ -45,7 +45,6 @@ rcvar=cardano_node_enable
 
 start_cmd="${name}_start"
 start_precmd="${name}_prestart"
-start_postcmd="${name}_poststart"
 stop_cmd="${name}_stop"
 status_cmd="${name}_status"
 
@@ -66,14 +65,14 @@ topology_file="${cardano_node_home}/testnet-topology.json"
 config_file="${cardano_node_home}/testnet-config.json"
 pidfile="/var/run/cardano-node.pid"
 logfile="/var/log/cardano-node.log"
-flags=run +RTS -N -A64m -n4m -F1.2 -qg1 -RTS \
+flags="run +RTS -N -A64m -n4m -F1.2 -qg1 -RTS \
         --database-path ${cardano_node_db} \
         --host-addr ${cardano_node_host} \
         --port ${cardano_node_port} \
         --socket-path ${cardano_node_socket} \
         --topology ${cardano_node_topology} \
         --config ${cardano_node_config} \
-        ${cardano_node_flags}
+        ${cardano_node_flags}"
 
 cardano_node_prestart()
 {
