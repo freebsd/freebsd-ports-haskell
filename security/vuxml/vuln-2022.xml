@@ -1,3 +1,80 @@
+  <vuln vid="04fecc47-dad2-11ec-8fbd-d4c9ef517024">
+    <topic>MariaDB -- Multiple vulnerabilities</topic>
+    <affects>
+      <package>
+	<name>mariadb103-client</name>
+	<range><lt>10.3.35</lt></range>
+      </package>
+      <package>
+	<name>mariadb103-server</name>
+	<range><lt>10.3.35</lt></range>
+      </package>
+      <package>
+	<name>mariadb104-client</name>
+	<range><lt>10.4.25</lt></range>
+      </package>
+      <package>
+	<name>mariadb104-server</name>
+	<range><lt>10.4.25</lt></range>
+      </package>
+      <package>
+	<name>mariadb105-client</name>
+	<range><lt>10.5.16</lt></range>
+      </package>
+      <package>
+	<name>mariadb105-server</name>
+	<range><lt>10.5.16</lt></range>
+      </package>
+      <package>
+	<name>mariadb106-client</name>
+	<range><lt>10.6.8</lt></range>
+      </package>
+      <package>
+	<name>mariadb106-server</name>
+	<range><lt>10.6.8</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>The MariaDB project reports:</p>
+	<blockquote cite="https://mariadb.com/kb/en/security/#full-list-of-cves-fixed-in-mariadb">
+	  <p>MariaDB fixed 23 vulnerabilities across all supported versions</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2021-46669</cvename>
+      <cvename>CVE-2022-27376</cvename>
+      <cvename>CVE-2022-27377</cvename>
+      <cvename>CVE-2022-27378</cvename>
+      <cvename>CVE-2022-27379</cvename>
+      <cvename>CVE-2022-27380</cvename>
+      <cvename>CVE-2022-27381</cvename>
+      <cvename>CVE-2022-27382</cvename>
+      <cvename>CVE-2022-27383</cvename>
+      <cvename>CVE-2022-27384</cvename>
+      <cvename>CVE-2022-27386</cvename>
+      <cvename>CVE-2022-27387</cvename>
+      <cvename>CVE-2022-27444</cvename>
+      <cvename>CVE-2022-27445</cvename>
+      <cvename>CVE-2022-27446</cvename>
+      <cvename>CVE-2022-27447</cvename>
+      <cvename>CVE-2022-27448</cvename>
+      <cvename>CVE-2022-27449</cvename>
+      <cvename>CVE-2022-27451</cvename>
+      <cvename>CVE-2022-27452</cvename>
+      <cvename>CVE-2022-27455</cvename>
+      <cvename>CVE-2022-27456</cvename>
+      <cvename>CVE-2022-27457</cvename>
+      <cvename>CVE-2022-27458</cvename>
+      <url>https://mariadb.com/kb/en/security/#full-list-of-cves-fixed-in-mariadb</url>
+    </references>
+    <dates>
+      <discovery>2022-05-20</discovery>
+      <entry>2022-05-23</entry>
+    </dates>
+  </vuln>
+
   <vuln vid="b2407db1-d79f-11ec-a15f-589cfc0f81b0">
     <topic>clamav -- Multiple vulnerabilities</topic>
     <affects>
@@ -868,10 +945,45 @@
     </description>
     <references>
       <url>https://www.oracle.com/security-alerts/cpuapr2022.html</url>
+      <cvename>CVE-2022-0778</cvename>
+      <cvename>CVE-2021-22570</cvename>
+      <cvename>CVE-2022-0778</cvename>
+      <cvename>CVE-2022-21454</cvename>
+      <cvename>CVE-2022-21482</cvename>
+      <cvename>CVE-2022-21483</cvename>
+      <cvename>CVE-2022-21489</cvename>
+      <cvename>CVE-2022-21490</cvename>
+      <cvename>CVE-2022-21457</cvename>
+      <cvename>CVE-2022-21425</cvename>
+      <cvename>CVE-2022-21440</cvename>
+      <cvename>CVE-2022-21459</cvename>
+      <cvename>CVE-2022-21478</cvename>
+      <cvename>CVE-2022-21479</cvename>
+      <cvename>CVE-2022-21418</cvename>
+      <cvename>CVE-2022-21417</cvename>
+      <cvename>CVE-2022-21413</cvename>
+      <cvename>CVE-2022-21427</cvename>
+      <cvename>CVE-2022-21412</cvename>
+      <cvename>CVE-2022-21414</cvename>
+      <cvename>CVE-2022-21435</cvename>
+      <cvename>CVE-2022-21436</cvename>
+      <cvename>CVE-2022-21437</cvename>
+      <cvename>CVE-2022-21438</cvename>
+      <cvename>CVE-2022-21452</cvename>
+      <cvename>CVE-2022-21462</cvename>
+      <cvename>CVE-2022-21415</cvename>
+      <cvename>CVE-2022-21451</cvename>
+      <cvename>CVE-2022-21444</cvename>
+      <cvename>CVE-2022-21460</cvename>
+      <cvename>CVE-2022-21484</cvename>
+      <cvename>CVE-2022-21485</cvename>
+      <cvename>CVE-2022-21486</cvename>
+      <cvename>CVE-2022-21423</cvename>
     </references>
     <dates>
       <discovery>2022-04-16</discovery>
       <entry>2022-04-16</entry>
+      <modified>2022-05-23</modified>
     </dates>
   </vuln>
 
