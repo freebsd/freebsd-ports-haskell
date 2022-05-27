@@ -16,7 +16,8 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 ONLY_FOR_ARCHS=	amd64 i386 aarch64 armv6 armv7
 
 USES=			autoreconf compiler:c11 gmake iconv:patch,translit \
-			localbase:ldflags ncurses perl5 tar:xz
+			localbase:ldflags ncurses perl5 python:build shebangfix \
+			tar:xz
 
 USE_LOCALE=		en_US.UTF-8
 USE_PERL5=		build
@@ -63,7 +64,7 @@ BOOT_SUB_LIST_OFF=	HSC2HS=${BOOT_HSC2HS}
 PROFILE_SUB_LIST=	WITH_PROFILE="YES"
 PROFILE_SUB_LIST_OFF=	WITH_PROFILE="NO"
 
-GHC_VERSION=		9.2.2
+GHC_VERSION=		9.2.3
 LLVM_VERSION=		12
 BOOT_GHC_VERSION=	8.10.7
 # LLVM version that bootstrap compiler uses
@@ -71,8 +72,10 @@ BOOT_LLVM_VERSION=	10
 
 OPTIONS_SUB=		yes
 
-BASE_PACKAGES=		Cabal:3.6.3.0 array:0.5.4.0 base:4.16.1.0 binary:0.8.9.0 \
-			bytestring:0.11.3.0 containers:0.6.5.1 deepseq:1.4.6.1 \
+SHEBANG_FILES=		boot
+
+BASE_PACKAGES=		Cabal:3.6.3.0 array:0.5.4.0 base:4.16.2.0 binary:0.8.9.0 \
+			bytestring:0.11.3.1 containers:0.6.5.1 deepseq:1.4.6.1 \
 			directory:1.3.6.2 exceptions:0.10.4 filepath:1.4.2.2 \
 			ghc:${GHC_VERSION} ghc-bignum:1.2 ghc-boot:${GHC_VERSION} \
 			ghc-boot-th:${GHC_VERSION} ghc-compact:0.1.0.0 \
@@ -160,6 +163,8 @@ post-patch:
 pre-configure:
 	# Copy the subbed build.mk to the proper position
 	${CP} ${WRKDIR}/build.mk ${WRKSRC}/mk/build.mk
+	# Call the bootstrap script
+	cd ${WRKSRC}/ && ./boot
 
 # If we are using bootstrap compiler, configure and install it into ${BOOT_DIR}
 .if empty(PORT_OPTIONS:MBOOT)
