@@ -31,6 +31,8 @@ CABAL_PROJECT=		append
 SKIP_CABAL_PLIST=	yes
 CABAL_ENV=		HOME=${CABAL_HOME} PKG_CONFIG_PATH=${LIBSODIUM_PREFIX}${PREFIX}/libdata/pkgconfig/
 
+USERS=	cardano
+GROUPS=	cardano
 # setenv http_proxy http://10.10.7.1:3128/
 # git config --global http.proxy http://10.10.7.1:3128/
 

@@ -9,9 +9,20 @@
 # cardano_node_enable:      Set to YES to enable cardano-node.
 #                           Default: "NO"
 #
+# cardano_node_user (str)   Set to "cardano" by default.
+#
+# cardano_node_net:         Set to testnet to use testnet files from iohk.
+#                           Default: "mainnet"
+#
 # cardano_node_home:        An absolute path to the daemon home directory.
 #                           The directory will be created if not exists.
 #                           Default: "/var/db/cardano_node"
+#
+# cardano_node_cfg_dir:     An absolute path to the conf directory
+#                           Default: "${cardano_node_home}/conf"
+#
+# cardano_node_logs_dir:    An absolute path to the conf directory
+#                           Default: "${cardano_node_home}/conf"
 #
 # cardano_node_db:          An absolute path to the database directory.
 #                           Default: "${cardano_node_home}/db"
@@ -47,6 +58,8 @@
 name=cardano_node
 desc="Cardano Node daemon"
 rcvar=cardano_node_enable
+command=%%PREFIX%%/bin/cardano-node
+daemon_command="/usr/sbin/daemon"
 
 start_cmd="${name}_start"
 start_precmd="${name}_prestart"
@@ -57,18 +70,30 @@ extra_commands="status"
 
 load_rc_config $name
 : ${cardano_node_enable:=NO}
+: ${cardano_node_user:="%%USERS%%"}
+: ${cardano_node_group:="%%GROUPS%%"}
+: ${cardano_node_net:=mainnet}
 : ${cardano_node_home:="/var/db/cardano_node"}
 : ${cardano_node_db:="${cardano_node_home}/db"}
+: ${cardano_node_cfg_dir:="${cardano_node_home}/conf"}
+: ${cardano_node_logs_dir:="${cardano_node_home}/logs"}
 : ${cardano_node_host:="0.0.0.0"}
 : ${cardano_node_port:="6000"}
 : ${cardano_node_socket:="${cardano_node_home}/cardano-node.sock"}
-: ${cardano_node_topology:="mainnet-topology.json"}
-: ${cardano_node_config:="mainnet-config.json"}
+: ${cardano_node_topology:="${cardano_node_cfg_dir}/${cardano_node_net}-topology.json"}
+: ${cardano_node_config:="${cardano_node_cfg_dir}/${cardano_node_net}-config.json"}
 : ${cardano_node_rts_flags:="-N -A64m -n4m -F1.2 -qg1"}
 : ${cardano_node_flags:=""}
 
-topology_file="${cardano_node_home}/testnet-topology.json"
-config_file="${cardano_node_home}/testnet-config.json"
+# set up dependant variables
+procname="${command}"
+required_files="${cardano_node_config}"
+apply_cmd="/usr/bin/apply"
+fetch_cmd="/usr/bin/fetch -aq -o ${cardano_node_cfg_dir}"
+url="https://hydra.iohk.io/job/Cardano/cardano-node/cardano-deployment/latest-finished/download/1"
+latest_files="config byron-genesis shelley-genesis alonzo-genesis topology"
+
+
 pidfile="/var/run/cardano-node.pid"
 logfile="/var/log/cardano-node.log"
 flags="run +RTS ${cardano_node_rts_flags} -RTS \
@@ -82,11 +107,20 @@ flags="run +RTS ${cardano_node_rts_flags} -RTS \
 
 cardano_node_prestart()
 {
-    # Create Cardano home directory, if not exists
+    # Create Cardano home, conf, db & logs directory, if not exists
     if [ ! -d ${cardano_node_home} ]; then
-        mkdir -m 700 ${cardano_node_home}
-        mkdir -pm 700 ${cardano_node_home}/db
+        ${apply_cmd} 'mkdir -pm 700' ${cardano_node_home} ${cardano_node_db} \
+	    ${cardano_node_cfg_dir} ${cardano_node_logs_dir}
     fi
+
+    chown -R "${cardano_node_user}:${cardano_node_group}" "${cardano_node_home}"
+
+    # fetch node configs and store in ${cardano_node_cfg_dir}
+    if [ ! -s ${cardano_node_config} ]; then
+        cd ${cardano_node_home}
+	${apply_cmd} "${fetch_cmd} ${url}/${cardano_node_net}-%1.json" $latest_files
+    fi
+
     # Remove socket file, if there is no pid file
     if [ -S ${cardano_node_socket} -a ! -f $pidfile ]; then
         rm ${cardano_node_socket}
@@ -96,8 +130,9 @@ cardano_node_prestart()
 cardano_node_start()
 {
     check_startmsgs && echo "Starting ${name}."
-    cd $cardano_node_home && /usr/sbin/daemon -p $pidfile -o ${logfile} \
-        %%PREFIX%%/bin/cardano-node ${flags} 2>&1 > /dev/null
+    cd "${cardano_node_home}" || return 1
+    ${daemon_command} -u ${cardano_node_user} -p $pidfile -o ${logfile} \
+        -f ${command} ${flags}
 }
 
 cardano_node_stop()
@@ -106,11 +141,17 @@ cardano_node_stop()
         && /bin/kill -INT `cat $pidfile` \
         || echo ${name} not running? \(check ${pidfile}\)
 }
+
 cardano_node_status()
 {
-    [ -f $pidfile ] \
-        && echo ${name} is running as pid `cat $pidfile` \
-        || echo ${name} is not running.
+    local pid
+    pid=$(check_pidfile "${pidfile}" "${procname}")
+    if [ -z "${pid}" ]; then
+      echo "${name} is not running"
+      return 1
+    else
+      echo "${name} is running as ${pid}"
+    fi
 }
 
 run_rc_command "$1"
