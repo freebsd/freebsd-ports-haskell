@@ -21,8 +21,8 @@
 # cardano_node_cfg_dir:     An absolute path to the conf directory
 #                           Default: "${cardano_node_home}/conf"
 #
-# cardano_node_logs_dir:    An absolute path to the conf directory
-#                           Default: "${cardano_node_home}/conf"
+# cardano_node_logs_dir:    An absolute path to the logs directory
+#                           Default: "${cardano_node_home}/logs"
 #
 # cardano_node_db:          An absolute path to the database directory.
 #                           Default: "${cardano_node_home}/db"
