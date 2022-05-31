@@ -136,8 +136,6 @@
     SUBDIR += geary
     SUBDIR += gensig
     SUBDIR += getmail6
-    SUBDIR += gmime2
-    SUBDIR += gmime2-sharp
     SUBDIR += gmime26
     SUBDIR += gmime26-sharp
     SUBDIR += gmime30
@@ -192,6 +190,7 @@
     SUBDIR += lmtp2nntp
     SUBDIR += lookout
     SUBDIR += lurker
+    SUBDIR += mail-expire
     SUBDIR += mail2sms
     SUBDIR += mailagent
     SUBDIR += maildrop
@@ -334,7 +333,6 @@
     SUBDIR += p5-MIME-EcoEncode
     SUBDIR += p5-MIME-EncWords
     SUBDIR += p5-MIME-Explode
-    SUBDIR += p5-MIME-Fast
     SUBDIR += p5-MIME-Lite
     SUBDIR += p5-MIME-Lite-HTML
     SUBDIR += p5-MIME-Lite-TT
@@ -636,6 +634,7 @@
     SUBDIR += smtprc
     SUBDIR += smtprelay
     SUBDIR += smtptrapd
+    SUBDIR += snappymail
     SUBDIR += sortmail
     SUBDIR += spamass-ixhash
     SUBDIR += spamass-milter

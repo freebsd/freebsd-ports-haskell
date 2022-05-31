@@ -59,6 +59,7 @@
     SUBDIR += erlang-runtime22
     SUBDIR += erlang-runtime23
     SUBDIR += erlang-runtime24
+    SUBDIR += erlang-runtime25
     SUBDIR += erlang-wx
     SUBDIR += execline
     SUBDIR += expect
@@ -248,9 +249,9 @@
     SUBDIR += pbasic
     SUBDIR += pcc
     SUBDIR += perl5-devel
-    SUBDIR += perl5.30
     SUBDIR += perl5.32
     SUBDIR += perl5.34
+    SUBDIR += perl5.36
     SUBDIR += petite-chez
     SUBDIR += pfe
     SUBDIR += pharo

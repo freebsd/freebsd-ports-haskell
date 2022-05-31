@@ -112,6 +112,7 @@
     SUBDIR += dokuwiki
     SUBDIR += dolibarr
     SUBDIR += dolibarr13
+    SUBDIR += dolibarr14
     SUBDIR += domoticz
     SUBDIR += dooble
     SUBDIR += drupal7
@@ -1912,6 +1913,7 @@
     SUBDIR += rubygem-faraday-rack
     SUBDIR += rubygem-faraday-retry
     SUBDIR += rubygem-faraday0
+    SUBDIR += rubygem-faraday110
     SUBDIR += rubygem-faraday14
     SUBDIR += rubygem-faraday_middleware
     SUBDIR += rubygem-faraday_middleware0
@@ -2199,6 +2201,7 @@
     SUBDIR += smarty3
     SUBDIR += smb_auth
     SUBDIR += snarf
+    SUBDIR += so
     SUBDIR += sogo
     SUBDIR += sogo-activesync
     SUBDIR += sogo2
@@ -2256,6 +2259,7 @@
     SUBDIR += transproxy
     SUBDIR += tt-rss
     SUBDIR += ttf2eot
+    SUBDIR += tuifeed
     SUBDIR += tusc
     SUBDIR += tusd
     SUBDIR += twiki

@@ -194,7 +194,8 @@
     SUBDIR += gpgme
     SUBDIR += gpgme-cpp
     SUBDIR += gpgme-qt5
-    SUBDIR += greenbone-security-assistant
+    SUBDIR += gsa
+    SUBDIR += gsad
     SUBDIR += gsasl
     SUBDIR += gss
     SUBDIR += gstreamer1-plugins-dtls
@@ -257,6 +258,7 @@
     SUBDIR += krb5
     SUBDIR += krb5-118
     SUBDIR += krb5-119
+    SUBDIR += krb5-120
     SUBDIR += krb5-appl
     SUBDIR += krb5-devel
     SUBDIR += kstart
@@ -912,7 +914,6 @@
     SUBDIR += py-onlykey
     SUBDIR += py-openssl
     SUBDIR += py-oscrypto
-    SUBDIR += py-ospd
     SUBDIR += py-ospd-openvas
     SUBDIR += py-paramiko
     SUBDIR += py-pass-audit

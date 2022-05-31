@@ -1,7 +1,7 @@
 # Created by: Kris Moore <kris@pcbsd.org>
 
 PORTNAME=	qtcreator
-DISTVERSION=	7.0.1
+DISTVERSION=	7.0.2
 CATEGORIES=	devel
 MASTER_SITES=	QT/official_releases/qtcreator/${DISTVERSION:R}/${DISTVERSION}
 DISTNAME=	qt-creator-opensource-src-${DISTVERSION}
@@ -29,6 +29,10 @@ USE_QT=		buildtools concurrent core declarative designer gui help \
 		linguist location network printsupport qdoc qmake \
 		quick3d quickcontrols script serialport sql svg testlib \
 		webchannel widgets xml xmlpatterns
+
+# Workaround, KF5-5.94 moved header files to subfolder. Instead of using the bundled
+# syntax-highligher, just help it find the proper files.
+CFLAGS+=	-I${LOCALBASE}/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting
 
 SHEBANG_FILES=		tests/system/tools/objectsToTable.py \
 			tests/system/tools/findUnusedObjects.py \
