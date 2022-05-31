@@ -12,8 +12,6 @@ BUILD_DEPENDS=	bash:shells/bash \
 		git:devel/git \
 		jq:textproc/jq
 
-CONFLICTS_INSTALL=	libsodium
-
 USES=		autoreconf:build cabal gmake libtool pkgconfig
 
 USE_GITHUB=	yes
@@ -23,13 +21,13 @@ GH_TAGNAME=	${PORTVERSION} ${LIBSODIUM_HASH}:sodium
 
 USE_RC_SUBR=	cardano_node
 
-GHC_VERSION=		8.10.7
 LIBSODIUM_HASH=		66f017f16633f2060db25e17c170c2afa0f2a8a1
 LIBSODIUM_PREFIX=	${WRKDIR}/libsodium_install
 
 CABAL_PROJECT=		append
 SKIP_CABAL_PLIST=	yes
 CABAL_ENV=		HOME=${CABAL_HOME} PKG_CONFIG_PATH=${LIBSODIUM_PREFIX}${PREFIX}/libdata/pkgconfig/
+CABAL_ARGS=		--disable-benchmarks --disable-tests
 
 # setenv http_proxy http://10.10.7.1:3128/
 # git config --global http.proxy http://10.10.7.1:3128/
@@ -37,24 +35,23 @@ CABAL_ENV=		HOME=${CABAL_HOME} PKG_CONFIG_PATH=${LIBSODIUM_PREFIX}${PREFIX}/libd
 pre-build:
 	${RM} -rf ${CABAL_HOME}
 	${MKDIR} ${CABAL_HOME}
-	env ${CABAL_ENV} cabal update
+	${SETENV} ${CABAL_ENV} cabal update
 
 do-build:
 	cd ${WRKSRC_sodium} && ./autogen.sh
-	cd ${WRKSRC_sodium} && ./configure --prefix=${PREFIX} --with-pthreads
+	cd ${WRKSRC_sodium} && ./configure --prefix=${PREFIX} --with-pthreads --disable-shared
 	cd ${WRKSRC_sodium} && gmake -j${MAKE_JOBS_NUMBER} && gmake DESTDIR=${LIBSODIUM_PREFIX} install
 	${MKDIR} ${LIBSODIUM_PREFIX}${PREFIX}/libdata/pkgconfig
-	mv ${LIBSODIUM_PREFIX}${PREFIX}/lib/pkgconfig/libsodium.pc ${LIBSODIUM_PREFIX}${PREFIX}/libdata/pkgconfig/libsodium.pc
+	${MV} ${LIBSODIUM_PREFIX}${PREFIX}/lib/pkgconfig/libsodium.pc ${LIBSODIUM_PREFIX}${PREFIX}/libdata/pkgconfig/libsodium.pc
 
 	${ECHO} "package *" >> ${WRKSRC}/cabal.project.cardano-node
 	${ECHO} "  extra-include-dirs: ${LIBSODIUM_PREFIX}${PREFIX}/include" >> ${WRKSRC}/cabal.project.cardano-node
 	${ECHO} "  extra-lib-dirs: ${LIBSODIUM_PREFIX}${PREFIX}/lib" >> ${WRKSRC}/cabal.project.cardano-node
-	mv ${WRKSRC}/cabal.project.cardano-node ${WRKSRC}/cabal.project
-	cd ${WRKSRC} && env ${CABAL_ENV} cabal configure --with-compiler=ghc-${GHC_VERSION}
-	cd ${WRKSRC} && env ${CABAL_ENV} cabal build cardano-node cardano-cli
+	${MV} ${WRKSRC}/cabal.project.cardano-node ${WRKSRC}/cabal.project
+	cd ${WRKSRC} && ${SETENV} ${CABAL_ENV} cabal ${CABAL_ARGS} configure
+	cd ${WRKSRC} && ${SETENV} ${CABAL_ENV} cabal ${CABAL_ARGS} build cardano-node cardano-cli
 
 do-install:
-	cd ${WRKSRC_sodium} && gmake DESTDIR=${STAGEDIR} install
 	cd ${WRKSRC} && ${INSTALL_PROGRAM} `./scripts/bin-path.sh cardano-node` ${STAGEDIR}${PREFIX}/bin
 	cd ${WRKSRC} && ${INSTALL_PROGRAM} `./scripts/bin-path.sh cardano-cli` ${STAGEDIR}${PREFIX}/bin
 
