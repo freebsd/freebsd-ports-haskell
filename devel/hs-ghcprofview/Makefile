@@ -1,6 +1,5 @@
 PORTNAME=	ghcprofview
-PORTVERSION=	0.1.0.1
-PORTREVISION=	3
+PORTVERSION=	0.1.0.2
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org
@@ -12,7 +11,7 @@ LIB_DEPENDS=	libharfbuzz.so:print/harfbuzz
 
 USES=		cabal gnome pkgconfig
 
-USE_GNOME=	atk cairo gdkpixbuf2 glib20 gtk30 gtk40 introspection pango
+USE_GNOME=	atk cairo gdkpixbuf2 glib20 gtk30 introspection pango
 
 USE_CABAL=	OneTuple-0.3.1_2 \
 		QuickCheck-2.14.2 \
@@ -29,7 +28,7 @@ USE_CABAL=	OneTuple-0.3.1_2 \
 		blaze-builder-0.4.2.2_1 \
 		blaze-html-0.9.1.2_2 \
 		blaze-markup-0.8.2.8_2 \
-		cabal-doctest-1.0.9 \
+		cabal-doctest-1.0.9_1 \
 		colour-2.3.6 \
 		comonad-5.0.8_1 \
 		conduit-1.3.4.2 \
@@ -64,10 +63,10 @@ USE_CABAL=	OneTuple-0.3.1_2 \
 		mono-traversable-1.0.15.3 \
 		network-3.1.2.7 \
 		pretty-show-1.10 \
-		primitive-0.7.3.0 \
+		primitive-0.7.4.0 \
 		random-1.2.1.1 \
-		regex-base-0.94.0.2 \
-		regex-tdfa-1.3.1.2 \
+		regex-base-0.94.0.2_1 \
+		regex-tdfa-1.3.1.2_1 \
 		resourcet-1.2.5 \
 		safe-0.3.19 \
 		scientific-0.3.7.0_2 \
@@ -87,11 +86,11 @@ USE_CABAL=	OneTuple-0.3.1_2 \
 		unliftio-core-0.2.0.1_2 \
 		unordered-containers-0.2.19.1 \
 		uuid-types-1.0.5_2 \
-		vector-0.12.3.1_1 \
+		vector-0.12.3.1_2 \
 		vector-algorithms-0.8.0.4_1 \
 		witherable-0.4.2_2 \
 		xdg-basedir-0.2.2 \
-		xml-conduit-1.9.1.1 \
+		xml-conduit-1.9.1.1_1 \
 		xml-types-0.3.8 \
 		zlib-0.6.3.0
 
