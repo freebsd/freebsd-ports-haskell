@@ -343,6 +343,7 @@
     SUBDIR += py-spaghetti
     SUBDIR += py-spglib
     SUBDIR += py-tensorflow
+    SUBDIR += py-thewalrus
     SUBDIR += py-tobler
     SUBDIR += py-trainstation
     SUBDIR += py-veusz
@@ -355,6 +356,7 @@
     SUBDIR += qmcpack
     SUBDIR += quantum-espresso
     SUBDIR += quantum-espresso-pseudopotentials
+    SUBDIR += quantum-jet
     SUBDIR += qwalk
     SUBDIR += rdkit
     SUBDIR += rmf
