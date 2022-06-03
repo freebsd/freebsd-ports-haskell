@@ -105,7 +105,9 @@ cardano_node_stop()
     [ -f $pidfile ] \
         && /bin/kill -INT `cat $pidfile` \
         || echo ${name} not running? \(check ${pidfile}\)
+    wait_for_pids `cat $pidfile`
 }
+
 cardano_node_status()
 {
     [ -f $pidfile ] \
