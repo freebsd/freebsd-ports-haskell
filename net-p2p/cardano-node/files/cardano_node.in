@@ -13,8 +13,10 @@
 #                           The directory will be created if not exists.
 #                           Default: "/var/db/cardano_node"
 #
-# cardano_node_db:          An absolute path to the database directory.
-#                           Default: "${cardano_node_home}/db"
+# cardano_node_net:         A network name to connect to.
+#                           Default: "mainnet"
+#
+# Advanced settings that usually don't need to be changed for simple usage cases:
 #
 # cardano_node_host:        Host address to bind to.
 #                           Default: "0.0.0.0"
@@ -25,13 +27,16 @@
 # cardano_node_socket:      An absolute path to the daemon socket file.
 #                           Default: "${cardano_node_home}/cardano-node.sock"
 #
+# cardano_node_db:          An absolute path to the database directory.
+#                           Default: "${cardano_node_home}/${cardano_node_net}-db"
+#
 # cardano_node_topology:    An absolute or a relative to ${cardano_node_home} path
 #                           to the topology JSON file.
-#                           Default: "mainnet-topology.json"
+#                           Default: "${cardano_node_net}-configs/${cardano_node_net}-topology.json"
 #
 # cardano_node_config:      An absolute or a relative to ${cardano_node_home} path
 #                           to the cardano-node config.json file.
-#                           Default: "mainnet-config.json"
+#                           Default: "${cardano_node_net}-configs/${cardano_node_net}-config.json"
 #
 # cardano_node_rts_flags:   GHC runtime flags to be passed between "+RTS" and "-RTS".
 #                           See https://downloads.haskell.org/ghc/latest/docs/html/users_guide/runtime_control.html
@@ -47,28 +52,33 @@
 name=cardano_node
 desc="Cardano Node daemon"
 rcvar=cardano_node_enable
+command=%%PREFIX%%/bin/cardano-node
+
+cardano_deployment_url="https://hydra.iohk.io/job/Cardano/cardano-node/cardano-deployment/latest-finished/download/1"
+cardano_config_files="config byron-genesis shelley-genesis alonzo-genesis topology"
+cardano_networks="mainnet testnet"
 
 start_cmd="${name}_start"
 start_precmd="${name}_prestart"
 stop_cmd="${name}_stop"
 status_cmd="${name}_status"
+fetch_cmd="${name}_fetch"
 
-extra_commands="status"
+extra_commands="status fetch"
 
 load_rc_config $name
 : ${cardano_node_enable:=NO}
 : ${cardano_node_home:="/var/db/cardano_node"}
-: ${cardano_node_db:="${cardano_node_home}/db"}
+: ${cardano_node_net:="mainnet"}
 : ${cardano_node_host:="0.0.0.0"}
 : ${cardano_node_port:="6000"}
 : ${cardano_node_socket:="${cardano_node_home}/cardano-node.sock"}
-: ${cardano_node_topology:="mainnet-topology.json"}
-: ${cardano_node_config:="mainnet-config.json"}
+: ${cardano_node_db:="${cardano_node_home}/${cardano_node_net}-db"}
+: ${cardano_node_topology:="${cardano_node_net}-configs/${cardano_node_net}-topology.json"}
+: ${cardano_node_config:="${cardano_node_net}-configs/${cardano_node_net}-config.json"}
 : ${cardano_node_rts_flags:="-N -A64m -n4m -F1.2 -qg1"}
 : ${cardano_node_flags:=""}
 
-topology_file="${cardano_node_home}/testnet-topology.json"
-config_file="${cardano_node_home}/testnet-config.json"
 pidfile="/var/run/cardano-node.pid"
 logfile="/var/log/cardano-node.log"
 flags="run +RTS ${cardano_node_rts_flags} -RTS \
@@ -79,6 +89,23 @@ flags="run +RTS ${cardano_node_rts_flags} -RTS \
         --topology ${cardano_node_topology} \
         --config ${cardano_node_config} \
         ${cardano_node_flags}"
+
+sanity_check()
+{
+    if [ ! -f "${cardano_node_home}/${cardano_node_topology}" ]
+    then
+        echo "Invalid value for cardano_node_topology: missing file ${cardano_node_topology}"
+        echo "You might want to run service cardano_node onefetch"
+        exit 1
+    fi
+    if [ ! -f "${cardano_node_home}/${cardano_node_config}" ]
+    then
+        echo "Invalid value for cardano_node_config: missing file ${cardano_node_config}"
+        echo "You might want to run service cardano_node onefetch"
+        exit 1
+    fi
+    return 0
+}
 
 cardano_node_prestart()
 {
@@ -91,28 +118,52 @@ cardano_node_prestart()
     if [ -S ${cardano_node_socket} -a ! -f $pidfile ]; then
         rm ${cardano_node_socket}
     fi
+
+    sanity_check
 }
 
 cardano_node_start()
 {
-    check_startmsgs && echo "Starting ${name}."
+    startmsg "Starting ${name}"
     cd $cardano_node_home && /usr/sbin/daemon -p $pidfile -o ${logfile} \
-        %%PREFIX%%/bin/cardano-node ${flags} 2>&1 > /dev/null
+        ${command} ${flags} 2>&1 > /dev/null
 }
 
 cardano_node_stop()
 {
-    [ -f $pidfile ] \
-        && /bin/kill -INT `cat $pidfile` \
-        || echo ${name} not running? \(check ${pidfile}\)
-    wait_for_pids `cat $pidfile`
+    pid=$(check_pidfile "${pidfile}" "${command}")
+    if [ -z "${pid}" ]
+    then
+        echo "${name} is not running"
+        return 1
+    else
+        echo "Stopping ${name}:"
+        /bin/kill -INT "$pid"
+        wait_for_pids "$pid"
+    fi
 }
 
 cardano_node_status()
 {
-    [ -f $pidfile ] \
-        && echo ${name} is running as pid `cat $pidfile` \
-        || echo ${name} is not running.
+    pid=$(check_pidfile "${pidfile}" "${command}")
+    if [ -z "${pid}" ]
+    then
+        echo "${name} is not running"
+        return 1
+    else
+        echo ${name} is running as pid $pid
+    fi
+}
+
+cardano_node_fetch()
+{
+    for net in ${cardano_networks}
+    do
+        echo "Fetching configuration files for ${net}"
+        mkdir -pm 700 "${cardano_node_home}/${net}-configs"
+        mkdir -pm 700 "${cardano_node_home}/${net}-db"
+        /usr/bin/apply "/usr/bin/fetch -a -o ${cardano_node_home}/${net}-configs ${cardano_deployment_url}/${net}-%1.json" $cardano_config_files
+    done
 }
 
 run_rc_command "$1"
