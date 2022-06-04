@@ -2,7 +2,7 @@
 
 PORTNAME=	gitlab-ce
 PORTVERSION=	15.0.0
-PORTREVISION=	0
+PORTREVISION=	3
 CATEGORIES=	www devel
 
 MAINTAINER=	mfechner@FreeBSD.org
@@ -28,7 +28,7 @@ MY_DEPENDS=	git>=2.32.0:devel/git \
 	gtar>0:archivers/gtar \
 	bash>0:shells/bash \
 	rubygem-rails61>=6.1.6.0<6.1.7:www/rubygem-rails61 \
-	rubygem-bootsnap>=1.9.4<1.12:devel/rubygem-bootsnap \
+	rubygem-bootsnap111>=1.9.4<1.12:devel/rubygem-bootsnap111 \
 	rubygem-responders-rails61>=3.0<4.0:www/rubygem-responders-rails61 \
 	rubygem-sprockets3>=3.7<3.8:devel/rubygem-sprockets3 \
 	rubygem-view_component-rails61>=2.50.0<2.51:devel/rubygem-view_component-rails61 \
@@ -36,7 +36,7 @@ MY_DEPENDS=	git>=2.32.0:devel/git \
 	rubygem-pg>=1.2.3<2:databases/rubygem-pg \
 	rubygem-rugged>=1.2<2:devel/rubygem-rugged \
 	rubygem-grape-path-helpers>=1.7.0<1.8:devel/rubygem-grape-path-helpers \
-	rubygem-faraday110>=1.10.0<2:www/rubygem-faraday110 \
+	rubygem-faraday1>=1.10.0<2:www/rubygem-faraday1 \
 	rubygem-marginalia>=1.10.0<1.11:databases/rubygem-marginalia \
 	rubygem-declarative_policy>=1.1.0<1.2:security/rubygem-declarative_policy \
 	rubygem-devise47-rails61>=4.7.2<4.8:devel/rubygem-devise47-rails61 \
@@ -69,7 +69,6 @@ MY_DEPENDS=	git>=2.32.0:devel/git \
 	rubygem-rack-oauth2>=1.16.0<1.17.0:security/rubygem-rack-oauth2 \
 	rubygem-jwt21>=2.1.0<2.2.0:www/rubygem-jwt21 \
 	rubygem-gssapi>0:security/rubygem-gssapi \
-	rubygem-timfel-krb5-auth>=0.8<1:security/rubygem-timfel-krb5 \
 	rubygem-recaptcha>=4.11<5.0:devel/rubygem-recaptcha \
 	rubygem-akismet>=3.0<4.0:devel/rubygem-akismet \
 	rubygem-invisible_captcha>=1.1.0<1.2.0:graphics/rubygem-invisible_captcha \
@@ -290,6 +289,13 @@ GROUPS=	git
 NO_BUILD=	yes
 
 NO_ARCH=	yes
+
+OPTIONS_DEFINE=			KERBEROS
+OPTIONS_DEFAULT=		KERBEROS
+
+KERBEROS_BUILD_DEPENDS=		rubygem-timfel-krb5-auth>=0.8<1:security/rubygem-timfel-krb5
+KERBEROS_RUN_DEPENDS=		rubygem-timfel-krb5-auth>=0.8<1:security/rubygem-timfel-krb5
+KERBEROS_EXTRA_PATCHES_OFF=	${FILESDIR}/extra-patch-Gemfile-kerberos-off
 
 post-patch:
 	${REINPLACE_CMD} -e "s|%%PREFIX%%|${PREFIX}|" ${WRKSRC}/config/gitlab.yml.example \

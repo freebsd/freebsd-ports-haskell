@@ -45,7 +45,7 @@ FIREBIRD_DEFAULT?=	2.5
 FORTRAN_DEFAULT?=	gfortran
 # Possible values: 3.2.2
 FPC_DEFAULT?=		3.2.2
-# Possible values: 8 (last to support powerpcspe), 9, 10, 11
+# Possible values: 8 (last to support powerpcspe), 9, 10, 11, 12
 # (Any other version is completely unsupported and not meant for general use.)
 .  if ${ARCH} == "powerpcspe"
 GCC_DEFAULT?=		8
@@ -163,7 +163,7 @@ TCLTK_DEFAULT?=		8.6
 # Possible values: 4, 6
 VARNISH_DEFAULT?=	4
 
-# Possible value: 14, 16, 17, lts, current
+# Possible value: 14, 16, 18, lts, current
 NODEJS_DEFAULT?=    lts
 
 .endif
