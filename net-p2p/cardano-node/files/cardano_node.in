@@ -92,13 +92,13 @@ flags="run +RTS ${cardano_node_rts_flags} -RTS \
 
 sanity_check()
 {
-    if [ ! -f "${cardano_node_home}/${cardano_node_topology}" ]
+    if [ ! -f "${cardano_node_home}/${cardano_node_topology}" -a ! -f "/${cardano_node_topology}" ]
     then
         echo "Invalid value for cardano_node_topology: missing file ${cardano_node_topology}"
         echo "You might want to run service cardano_node onefetch"
         exit 1
     fi
-    if [ ! -f "${cardano_node_home}/${cardano_node_config}" ]
+    if [ ! -f "${cardano_node_home}/${cardano_node_config}" -a ! -f "/${cardano_node_config}" ]
     then
         echo "Invalid value for cardano_node_config: missing file ${cardano_node_config}"
         echo "You might want to run service cardano_node onefetch"
@@ -112,7 +112,6 @@ cardano_node_prestart()
     # Create Cardano home directory, if not exists
     if [ ! -d ${cardano_node_home} ]; then
         mkdir -m 700 ${cardano_node_home}
-        mkdir -pm 700 ${cardano_node_home}/db
     fi
     # Remove socket file, if there is no pid file
     if [ -S ${cardano_node_socket} -a ! -f $pidfile ]; then
@@ -124,7 +123,7 @@ cardano_node_prestart()
 
 cardano_node_start()
 {
-    startmsg "Starting ${name}"
+    startmsg "Starting ${name}."
     cd $cardano_node_home && /usr/sbin/daemon -p $pidfile -o ${logfile} \
         ${command} ${flags} 2>&1 > /dev/null
 }
@@ -137,7 +136,7 @@ cardano_node_stop()
         echo "${name} is not running"
         return 1
     else
-        echo "Stopping ${name}:"
+        echo "Stopping ${name}."
         /bin/kill -INT "$pid"
         wait_for_pids "$pid"
     fi
