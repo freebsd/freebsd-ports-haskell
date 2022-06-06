@@ -180,7 +180,7 @@ cardano_node_prestart()
 
 cardano_node_start()
 {
-    startmsg "Starting ${name}."
+    check_startmsgs && echo "Starting ${name}."
 
     create_jail
     if [ "$?" != "0" ]
