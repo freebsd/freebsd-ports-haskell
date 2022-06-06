@@ -79,15 +79,21 @@ load_rc_config $name
 : ${cardano_node_rts_flags:="-N -A64m -n4m -F1.2 -qg1"}
 : ${cardano_node_flags:=""}
 
+cardano_node_jail="${cardano_node_home}/jail"
+jail_topology="/topology_dir/`basename ${cardano_node_topology}`"
+jail_config="/config_dir/`basename ${cardano_node_config}`"
+# TODO: exec.jail_user=cardano
+jail_cmd="jail -c name=${name}_jail path=${cardano_node_jail} ip4=inherit ip6=inherit host=inherit"
+
 pidfile="/var/run/cardano-node.pid"
 logfile="/var/log/cardano-node.log"
 flags="run +RTS ${cardano_node_rts_flags} -RTS \
-        --database-path ${cardano_node_db} \
+        --database-path /db \
         --host-addr ${cardano_node_host} \
         --port ${cardano_node_port} \
-        --socket-path ${cardano_node_socket} \
-        --topology ${cardano_node_topology} \
-        --config ${cardano_node_config} \
+        --socket-path /cardano-node.sock \
+        --topology ${jail_topology} \
+        --config ${jail_config} \
         ${cardano_node_flags}"
 
 sanity_check()
@@ -107,15 +113,65 @@ sanity_check()
     return 0
 }
 
+_jail_dirs="/bin /etc /lib /libexec"
+_jail_mount_points="/dev /config_dir /topology_dir /db"
+
+create_jail()
+{
+    destroy_jail
+
+    for d in ${_jail_dirs} ${_jail_mount_points}
+    do
+        mkdir -pm 700 "${cardano_node_jail}${d}"
+    done
+
+    cp /etc/resolv.conf "${cardano_node_jail}/etc/"
+    cp /etc/services "${cardano_node_jail}/etc/"
+
+    echo "cardano:*:100:100::0:0:Cardano Node daemon:/nonexistent:/nologin" > "${cardano_node_jail}/etc/master.passwd"
+    pwd_mkdb -d "${cardano_node_jail}/etc" -p "${cardano_node_jail}/etc/master.passwd"
+
+    cp "$command" "${cardano_node_jail}/bin/"
+    ldd "$command" | cut -s -d " " -f 3 | grep -E '^(/lib|/usr)' | sort -u | xargs -I % cp % "${cardano_node_jail}/lib/"
+    cp /libexec/ld-elf.so.1 "${cardano_node_jail}/libexec"
+
+    # change directory because $cardano_node_{config,topology} may be relative paths
+    cd ${cardano_node_home}
+    mount_nullfs `dirname ${cardano_node_config}` "${cardano_node_jail}/config_dir"
+    mount_nullfs `dirname ${cardano_node_topology}` "${cardano_node_jail}/topology_dir"
+    mount_nullfs "${cardano_node_db}" "${cardano_node_jail}/db"
+    mount -o ruleset=4 -t devfs devfs "${cardano_node_jail}/dev"
+}
+
+destroy_jail()
+{
+    for d in ${_jail_mount_points}
+    do
+        if [ -d "${cardano_node_jail}${d}" ]; then
+            umount -f "${cardano_node_jail}${d}" 2> /dev/null
+        fi
+    done
+    for d in ${_jail_dirs}
+    do
+        rm -rf "${cardano_node_jail}${d}"
+    done
+    for d in ${_jail_mount_points}
+    do
+        rmdir "${cardano_node_jail}${d}" 2> /dev/null
+    done
+
+    rmdir "${cardano_node_jail}" 2> /dev/null
+}
+
 cardano_node_prestart()
 {
     # Create Cardano home directory, if not exists
-    if [ ! -d ${cardano_node_home} ]; then
-        mkdir -m 700 ${cardano_node_home}
+    if [ ! -d "${cardano_node_home}" ]; then
+        mkdir -m 700 "${cardano_node_home}"
     fi
     # Remove socket file, if there is no pid file
-    if [ -S ${cardano_node_socket} -a ! -f $pidfile ]; then
-        rm ${cardano_node_socket}
+    if [ -L "${cardano_node_socket}" -a ! -f $pidfile ]; then
+        rm "${cardano_node_socket}"
     fi
 
     sanity_check
@@ -124,27 +180,39 @@ cardano_node_prestart()
 cardano_node_start()
 {
     startmsg "Starting ${name}."
+
+    create_jail
+    if [ "$?" != "0" ]
+    then
+        echo "Failed to start ${name}: jail creation error"
+        return 1
+    fi
     cd $cardano_node_home && /usr/sbin/daemon -p $pidfile -o ${logfile} \
-        ${command} ${flags} 2>&1 > /dev/null
+        ${jail_cmd} command=/bin/cardano-node ${flags} 2>&1 > /dev/null
+        # ${jail_cmd} persist
+    ln -s "${cardano_node_jail}/cardano-node.sock" "${cardano_node_socket}"
 }
 
 cardano_node_stop()
 {
-    pid=$(check_pidfile "${pidfile}" "${command}")
+    pid=$(check_pidfile "${pidfile}" jail)
     if [ -z "${pid}" ]
     then
         echo "${name} is not running"
+        destroy_jail
         return 1
     else
         echo "Stopping ${name}."
-        /bin/kill -INT "$pid"
+        killall -j ${name}_jail -INT
         wait_for_pids "$pid"
+        destroy_jail
+        rm ${cardano_node_socket}
     fi
 }
 
 cardano_node_status()
 {
-    pid=$(check_pidfile "${pidfile}" "${command}")
+    pid=$(check_pidfile "${pidfile}" jail)
     if [ -z "${pid}" ]
     then
         echo "${name} is not running"
