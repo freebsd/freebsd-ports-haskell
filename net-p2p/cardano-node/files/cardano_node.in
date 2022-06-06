@@ -138,8 +138,8 @@ create_jail()
 
     # change directory because $cardano_node_{config,topology} may be relative paths
     cd ${cardano_node_home}
-    mount_nullfs `dirname ${cardano_node_config}` "${cardano_node_jail}/config_dir"
-    mount_nullfs `dirname ${cardano_node_topology}` "${cardano_node_jail}/topology_dir"
+    mount_nullfs -o ro `dirname ${cardano_node_config}` "${cardano_node_jail}/config_dir"
+    mount_nullfs -o ro `dirname ${cardano_node_topology}` "${cardano_node_jail}/topology_dir"
     mount_nullfs "${cardano_node_db}" "${cardano_node_jail}/db"
     mount_nullfs "${cardano_node_home}/logs" "${cardano_node_jail}/logs"
     mount -o ruleset=4 -t devfs devfs "${cardano_node_jail}/dev"
