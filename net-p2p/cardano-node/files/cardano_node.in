@@ -115,7 +115,7 @@ sanity_check()
 }
 
 _jail_dirs="/bin /etc /lib /libexec"
-_jail_mount_points="/dev /config_dir /topology_dir /db"
+_jail_mount_points="/dev /config_dir /topology_dir /db /logs"
 
 create_jail()
 {
@@ -141,6 +141,7 @@ create_jail()
     mount_nullfs `dirname ${cardano_node_config}` "${cardano_node_jail}/config_dir"
     mount_nullfs `dirname ${cardano_node_topology}` "${cardano_node_jail}/topology_dir"
     mount_nullfs "${cardano_node_db}" "${cardano_node_jail}/db"
+    mount_nullfs "${cardano_node_home}/logs" "${cardano_node_jail}/logs"
     mount -o ruleset=4 -t devfs devfs "${cardano_node_jail}/dev"
 }
 
@@ -169,6 +170,7 @@ cardano_node_prestart()
     # Create Cardano home directory, if not exists
     if [ ! -d "${cardano_node_home}" ]; then
         mkdir -m 700 "${cardano_node_home}"
+        mkdir -m 700 "${cardano_node_home}/logs"
     fi
     # Remove socket file, if there is no pid file
     if [ -L "${cardano_node_socket}" -a ! -f $pidfile ]; then
