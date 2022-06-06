@@ -173,6 +173,10 @@ cardano_node_prestart()
         mkdir -m 700 "${cardano_node_home}/logs"
     fi
     # Remove socket file, if there is no pid file
+    if [ -S "${cardano_node_jail}/cardano-node.sock" -a ! -f $pidfile ]; then
+        rm "${cardano_node_jail}/cardano-node.sock"
+    fi
+    # Remove the symlink to the socket file too
     if [ -L "${cardano_node_socket}" -a ! -f $pidfile ]; then
         rm "${cardano_node_socket}"
     fi
