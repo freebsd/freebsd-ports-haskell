@@ -16,13 +16,14 @@
 # cardano_node_net:         A network name to connect to.
 #                           Default: "mainnet"
 #
+# cardano_node_port:        Port to listen for connections on.
+#                           Default: "6000"
+#
 # Advanced settings that usually don't need to be changed for simple usage cases:
 #
 # cardano_node_host:        Host address to bind to.
 #                           Default: "0.0.0.0"
 #
-# cardano_node_port:        Port to listen for connections on.
-#                           Default: "6000"
 #
 # cardano_node_socket:      An absolute path to the daemon socket file.
 #                           Default: "${cardano_node_home}/cardano-node.sock"
