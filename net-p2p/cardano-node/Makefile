@@ -1,7 +1,8 @@
 PORTNAME=	cardano-node
 PORTVERSION=	1.34.1
 CATEGORIES=	net-p2p
-EXTRACT_ONLY+=	${GH_ACCOUNT}-libsodium-${LIBSODIUM_HASH}_GH0${EXTRACT_SUFX}
+EXTRACT_ONLY+=	input-output-hk-libsodium-${LIBSODIUM_HASH}_GH0${EXTRACT_SUFX} \
+		bitcoin-core-secp256k1-${SECP256K1_HASH}_GH0${EXTRACT_SUFX}
 
 MAINTAINER=	arrowd@FreeBSD.org
 COMMENT=	Core component of the Cardano decentralized blockchain
@@ -15,18 +16,20 @@ BUILD_DEPENDS=	bash:shells/bash \
 USES=		autoreconf:build cabal gmake libtool pkgconfig
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	input-output-hk
-GH_PROJECT=	${PORTNAME} libsodium:sodium
-GH_TAGNAME=	${PORTVERSION} ${LIBSODIUM_HASH}:sodium
+GH_ACCOUNT=	input-output-hk bitcoin-core:secp
+GH_PROJECT=	${PORTNAME} libsodium:sodium secp256k1:secp
+GH_TAGNAME=	${PORTVERSION} ${LIBSODIUM_HASH}:sodium ${SECP256K1_HASH}:secp
 
 USE_RC_SUBR=	cardano_node
 
 LIBSODIUM_HASH=		66f017f16633f2060db25e17c170c2afa0f2a8a1
-LIBSODIUM_PREFIX=	${WRKDIR}/libsodium_install
+# Obtained from https://github.com/input-output-hk/cardano-node/blob/master/.github/workflows/github-page.yml#L21
+SECP256K1_HASH=		ac83be33d0956faf6b7f61a60ab524ef7d6a473a
+LIBS_PREFIX=		${WRKDIR}/libs_install
 
 CABAL_PROJECT=		append
 SKIP_CABAL_PLIST=	yes
-CABAL_ENV=		HOME=${CABAL_HOME} PKG_CONFIG_PATH=${LIBSODIUM_PREFIX}${PREFIX}/libdata/pkgconfig/
+CABAL_ENV=		HOME=${CABAL_HOME} PKG_CONFIG_PATH=${LIBS_PREFIX}${PREFIX}/libdata/pkgconfig/
 CABAL_ARGS=		--disable-benchmarks --disable-tests
 
 # setenv http_proxy http://10.10.7.1:3128/
@@ -40,13 +43,18 @@ pre-build:
 do-build:
 	cd ${WRKSRC_sodium} && ./autogen.sh
 	cd ${WRKSRC_sodium} && ./configure --prefix=${PREFIX} --with-pthreads --disable-shared
-	cd ${WRKSRC_sodium} && gmake -j${MAKE_JOBS_NUMBER} && gmake DESTDIR=${LIBSODIUM_PREFIX} install
-	${MKDIR} ${LIBSODIUM_PREFIX}${PREFIX}/libdata/pkgconfig
-	${MV} ${LIBSODIUM_PREFIX}${PREFIX}/lib/pkgconfig/libsodium.pc ${LIBSODIUM_PREFIX}${PREFIX}/libdata/pkgconfig/libsodium.pc
+	cd ${WRKSRC_sodium} && gmake -j${MAKE_JOBS_NUMBER} && gmake DESTDIR=${LIBS_PREFIX} install
+	${MKDIR} ${LIBS_PREFIX}${PREFIX}/libdata/pkgconfig
+	${MV} ${LIBS_PREFIX}${PREFIX}/lib/pkgconfig/libsodium.pc ${LIBS_PREFIX}${PREFIX}/libdata/pkgconfig/libsodium.pc
+
+	cd ${WRKSRC_secp} && ./autogen.sh
+	cd ${WRKSRC_secp} && ./configure --prefix=${PREFIX} --enable-module-schnorrsig --enable-experimental --disable-shared
+	cd ${WRKSRC_secp} && gmake -j${MAKE_JOBS_NUMBER} && gmake DESTDIR=${LIBS_PREFIX} install
+	${MV} ${LIBS_PREFIX}${PREFIX}/lib/pkgconfig/libsecp256k1.pc ${LIBS_PREFIX}${PREFIX}/libdata/pkgconfig/libsecp256k1.pc
 
 	${ECHO} "package *" >> ${WRKSRC}/cabal.project.cardano-node
-	${ECHO} "  extra-include-dirs: ${LIBSODIUM_PREFIX}${PREFIX}/include" >> ${WRKSRC}/cabal.project.cardano-node
-	${ECHO} "  extra-lib-dirs: ${LIBSODIUM_PREFIX}${PREFIX}/lib" >> ${WRKSRC}/cabal.project.cardano-node
+	${ECHO} "  extra-include-dirs: ${LIBS_PREFIX}${PREFIX}/include" >> ${WRKSRC}/cabal.project.cardano-node
+	${ECHO} "  extra-lib-dirs: ${LIBS_PREFIX}${PREFIX}/lib" >> ${WRKSRC}/cabal.project.cardano-node
 	${MV} ${WRKSRC}/cabal.project.cardano-node ${WRKSRC}/cabal.project
 	cd ${WRKSRC} && ${SETENV} ${CABAL_ENV} cabal ${CABAL_ARGS} configure
 	cd ${WRKSRC} && ${SETENV} ${CABAL_ENV} cabal ${CABAL_ARGS} build cardano-node cardano-cli
