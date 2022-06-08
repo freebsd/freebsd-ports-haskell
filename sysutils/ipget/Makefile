@@ -1,7 +1,7 @@
 PORTNAME=	ipget
 DISTVERSIONPREFIX=	v
 DISTVERSION=	0.8.0
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	sysutils
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -10,7 +10,7 @@ COMMENT=	Retrieve files over IPFS and save them locally
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		go:modules
+USES=		go:1.17,modules
 USE_GITHUB=	yes
 GH_ACCOUNT=	ipfs
 
