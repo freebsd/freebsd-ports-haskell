@@ -170,6 +170,9 @@ cardano_node_prestart()
     # Create Cardano home directory, if not exists
     if [ ! -d "${cardano_node_home}" ]; then
         mkdir -m 700 "${cardano_node_home}"
+    fi
+    # Do the same for the logs directory
+    if [ ! -d "${cardano_node_home}/logs" ]; then
         mkdir -m 700 "${cardano_node_home}/logs"
     fi
     # Remove socket file, if there is no pid file
