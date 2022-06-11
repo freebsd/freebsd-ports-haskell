@@ -1,2 +1,3 @@
 bin/cardano-cli
 bin/cardano-node
+bin/cardano-submit-api

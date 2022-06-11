@@ -28,6 +28,7 @@ SECP256K1_HASH=		ac83be33d0956faf6b7f61a60ab524ef7d6a473a
 LIBS_PREFIX=		${WRKDIR}/libs_install
 
 CABAL_PROJECT=		append
+EXECUTABLES=		exe:cardano-node exe:cardano-cli exe:cardano-submit-api
 SKIP_CABAL_PLIST=	yes
 CABAL_ENV=		HOME=${CABAL_HOME} PKG_CONFIG_PATH=${LIBS_PREFIX}${PREFIX}/libdata/pkgconfig/
 CABAL_ARGS=		--disable-benchmarks --disable-tests
@@ -56,11 +57,12 @@ do-build:
 	${ECHO} "  extra-include-dirs: ${LIBS_PREFIX}${PREFIX}/include" >> ${WRKSRC}/cabal.project.cardano-node
 	${ECHO} "  extra-lib-dirs: ${LIBS_PREFIX}${PREFIX}/lib" >> ${WRKSRC}/cabal.project.cardano-node
 	${MV} ${WRKSRC}/cabal.project.cardano-node ${WRKSRC}/cabal.project
-	cd ${WRKSRC} && ${SETENV} ${CABAL_ENV} cabal ${CABAL_ARGS} configure
-	cd ${WRKSRC} && ${SETENV} ${CABAL_ENV} cabal ${CABAL_ARGS} build cardano-node cardano-cli
+	cd ${WRKSRC} && ${SETENV} ${CABAL_ENV} cabal ${CABAL_ARGS} configure ${EXECUTABLES}
+	cd ${WRKSRC} && ${SETENV} ${CABAL_ENV} cabal ${CABAL_ARGS} build ${EXECUTABLES}
 
 do-install:
-	cd ${WRKSRC} && ${INSTALL_PROGRAM} `./scripts/bin-path.sh cardano-node` ${STAGEDIR}${PREFIX}/bin
-	cd ${WRKSRC} && ${INSTALL_PROGRAM} `./scripts/bin-path.sh cardano-cli` ${STAGEDIR}${PREFIX}/bin
+.for exe in ${EXECUTABLES:S/exe://}
+	cd ${WRKSRC} && ${INSTALL_PROGRAM} `./scripts/bin-path.sh ${exe}` ${STAGEDIR}${PREFIX}/bin
+.endfor
 
 .include <bsd.port.mk>
