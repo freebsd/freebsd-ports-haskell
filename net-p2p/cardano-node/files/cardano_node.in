@@ -123,7 +123,7 @@ create_jail()
 
     for d in ${_jail_dirs} ${_jail_mount_points}
     do
-        mkdir -pm 700 "${cardano_node_jail}${d}"
+        mkdir -p "${cardano_node_jail}${d}"
     done
 
     cp /etc/resolv.conf "${cardano_node_jail}/etc/"
@@ -169,11 +169,11 @@ cardano_node_prestart()
 {
     # Create Cardano home directory, if not exists
     if [ ! -d "${cardano_node_home}" ]; then
-        mkdir -m 700 "${cardano_node_home}"
+        mkdir -p "${cardano_node_home}"
     fi
     # Do the same for the logs directory
     if [ ! -d "${cardano_node_home}/logs" ]; then
-        mkdir -m 700 "${cardano_node_home}/logs"
+        mkdir -p "${cardano_node_home}/logs"
     fi
     # Remove socket file, if there is no pid file
     if [ -S "${cardano_node_jail}/cardano-node.sock" -a ! -f $pidfile ]; then
@@ -237,8 +237,8 @@ cardano_node_fetch()
     for net in ${cardano_networks}
     do
         echo "Fetching configuration files for ${net}"
-        mkdir -pm 700 "${cardano_node_home}/${net}-configs"
-        mkdir -pm 700 "${cardano_node_home}/${net}-db"
+        mkdir -p "${cardano_node_home}/${net}-configs"
+        mkdir -p "${cardano_node_home}/${net}-db"
         /usr/bin/apply "/usr/bin/fetch -a -o ${cardano_node_home}/${net}-configs ${cardano_deployment_url}/${net}-%1.json" $cardano_config_files
     done
 }
