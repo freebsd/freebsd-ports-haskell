@@ -10,8 +10,7 @@ COMMENT=	Core component of the Cardano decentralized blockchain
 LICENSE=	APACHE20
 
 BUILD_DEPENDS=	bash:shells/bash \
-		git:devel/git \
-		jq:textproc/jq
+		git:devel/git
 
 USES=		autoreconf:build cabal gmake libtool pkgconfig
 
@@ -62,7 +61,9 @@ do-build:
 
 do-install:
 .for exe in ${EXECUTABLES:S/exe://}
-	cd ${WRKSRC} && ${INSTALL_PROGRAM} `./scripts/bin-path.sh ${exe}` ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_PROGRAM} \
+		$$(find ${WRKSRC}/dist-newstyle -name ${exe} -type f -perm +111) \
+		${STAGEDIR}${PREFIX}/bin
 .endfor
 
 .include <bsd.port.mk>
