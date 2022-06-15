@@ -1,5 +1,5 @@
 PORTNAME=	cardano-node
-PORTVERSION=	1.34.1
+PORTVERSION=	1.35.0
 CATEGORIES=	net-p2p
 EXTRACT_ONLY+=	input-output-hk-libsodium-${LIBSODIUM_HASH}_GH0${EXTRACT_SUFX} \
 		bitcoin-core-secp256k1-${SECP256K1_HASH}_GH0${EXTRACT_SUFX}
@@ -17,7 +17,7 @@ USES=		autoreconf:build cabal gmake libtool pkgconfig
 USE_GITHUB=	yes
 GH_ACCOUNT=	input-output-hk bitcoin-core:secp
 GH_PROJECT=	${PORTNAME} libsodium:sodium secp256k1:secp
-GH_TAGNAME=	${PORTVERSION} ${LIBSODIUM_HASH}:sodium ${SECP256K1_HASH}:secp
+GH_TAGNAME=	${PORTVERSION}-rc3 ${LIBSODIUM_HASH}:sodium ${SECP256K1_HASH}:secp
 
 USE_RC_SUBR=	cardano_node
 
@@ -48,7 +48,7 @@ do-build:
 	${MV} ${LIBS_PREFIX}${PREFIX}/lib/pkgconfig/libsodium.pc ${LIBS_PREFIX}${PREFIX}/libdata/pkgconfig/libsodium.pc
 
 	cd ${WRKSRC_secp} && ./autogen.sh
-	cd ${WRKSRC_secp} && ./configure --prefix=${PREFIX} --enable-module-schnorrsig --enable-experimental --disable-shared
+	cd ${WRKSRC_secp} && ./configure --prefix=${PREFIX} --enable-module-schnorrsig --enable-experimental --with-pic --disable-shared
 	cd ${WRKSRC_secp} && gmake -j${MAKE_JOBS_NUMBER} && gmake DESTDIR=${LIBS_PREFIX} install
 	${MV} ${LIBS_PREFIX}${PREFIX}/lib/pkgconfig/libsecp256k1.pc ${LIBS_PREFIX}${PREFIX}/libdata/pkgconfig/libsecp256k1.pc
 
