@@ -10,6 +10,7 @@ include/tqslerrno.h
 include/tqsllib.h
 lib/libtqsllib.so
 share/TrustedQSL/cab_modes.dat
+share/TrustedQSL/cab_modes.dat
 share/TrustedQSL/config.xml
 share/TrustedQSL/help/tqslapp/BrokenCert.bmp
 share/TrustedQSL/help/tqslapp/CertProp.bmp
