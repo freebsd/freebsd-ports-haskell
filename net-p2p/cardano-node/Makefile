@@ -21,6 +21,7 @@ GH_TAGNAME=	${PORTVERSION}-rc3 ${LIBSODIUM_HASH}:sodium ${SECP256K1_HASH}:secp
 
 USE_RC_SUBR=	cardano_node
 
+CARDANO_NODE_HASH=	6471c31f8b61798df57a9f3345548703295cac9e
 LIBSODIUM_HASH=		66f017f16633f2060db25e17c170c2afa0f2a8a1
 # Obtained from https://github.com/input-output-hk/cardano-node/blob/master/.github/workflows/github-page.yml#L21
 SECP256K1_HASH=		ac83be33d0956faf6b7f61a60ab524ef7d6a473a
@@ -34,6 +35,9 @@ CABAL_ARGS=		--disable-benchmarks --disable-tests
 
 # setenv http_proxy http://10.10.7.1:3128/
 # git config --global http.proxy http://10.10.7.1:3128/
+
+post-patch:
+	${REINPLACE_CMD} -e 's/$$(gitRevFromGit)/"${CARDANO_NODE_HASH}"/' ${WRKSRC}/cardano-git-rev/src/Cardano/Git/Rev.hs
 
 pre-build:
 	${RM} -rf ${CABAL_HOME}
