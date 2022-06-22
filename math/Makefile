@@ -771,6 +771,7 @@
     SUBDIR += pari_elldata
     SUBDIR += pari_galdata
     SUBDIR += pari_galpol
+    SUBDIR += pari_nflistdata
     SUBDIR += pari_nftables
     SUBDIR += pari_seadata
     SUBDIR += paritwine
@@ -790,8 +791,8 @@
     SUBDIR += php80-bcmath
     SUBDIR += php80-gmp
     SUBDIR += php81-bcmath
-    SUBDIR += php82-bcmath
     SUBDIR += php81-gmp
+    SUBDIR += php82-bcmath
     SUBDIR += php82-gmp
     SUBDIR += physcalc
     SUBDIR += picosat
@@ -896,6 +897,7 @@
     SUBDIR += py-ndindex
     SUBDIR += py-networkx
     SUBDIR += py-nevergrad
+    SUBDIR += py-nlopt
     SUBDIR += py-numexpr
     SUBDIR += py-numpoly
     SUBDIR += py-numpy
