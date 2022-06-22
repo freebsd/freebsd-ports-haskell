@@ -17,11 +17,11 @@ USES=		autoreconf:build cabal gmake libtool pkgconfig
 USE_GITHUB=	yes
 GH_ACCOUNT=	input-output-hk bitcoin-core:secp
 GH_PROJECT=	${PORTNAME} libsodium:sodium secp256k1:secp
-GH_TAGNAME=	${PORTVERSION}-rc3 ${LIBSODIUM_HASH}:sodium ${SECP256K1_HASH}:secp
+GH_TAGNAME=	${PORTVERSION}-rc4 ${LIBSODIUM_HASH}:sodium ${SECP256K1_HASH}:secp
 
 USE_RC_SUBR=	cardano_node
 
-CARDANO_NODE_HASH=	6471c31f8b61798df57a9f3345548703295cac9e
+CARDANO_NODE_HASH=	43393ac88faa99986ecaa0be409e8b6353f5e9fe
 LIBSODIUM_HASH=		66f017f16633f2060db25e17c170c2afa0f2a8a1
 # Obtained from https://github.com/input-output-hk/cardano-node/blob/master/.github/workflows/github-page.yml#L21
 SECP256K1_HASH=		ac83be33d0956faf6b7f61a60ab524ef7d6a473a
