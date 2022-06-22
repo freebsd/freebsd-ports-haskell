@@ -37,7 +37,9 @@ CABAL_ARGS=		--disable-benchmarks --disable-tests
 # git config --global http.proxy http://10.10.7.1:3128/
 
 post-patch:
-	${REINPLACE_CMD} -e 's/$$(gitRevFromGit)/"${CARDANO_NODE_HASH}"/' ${WRKSRC}/cardano-git-rev/src/Cardano/Git/Rev.hs
+	${REINPLACE_CMD} -e 's/$$(gitRevFromGit)/"${CARDANO_NODE_HASH}"/' \
+			 -e '/Cardano.Git.RevFromGit/d' \
+			 ${WRKSRC}/cardano-git-rev/src/Cardano/Git/Rev.hs
 
 pre-build:
 	${RM} -rf ${CABAL_HOME}
