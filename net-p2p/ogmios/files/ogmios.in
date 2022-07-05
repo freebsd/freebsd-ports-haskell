@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # PROVIDE: ogmios
-# REQUIRE: DAEMON
+# REQUIRE: DAEMON cardano_node
 # KEYWORD: shutdown
 #
 # Add the following lines to /etc/rc.conf to enable this service:
@@ -164,7 +164,7 @@ ogmios_start()
         return 1
     fi
     cd $ogmios_home && /usr/sbin/daemon -p $pidfile -o ${logfile} \
-        ${jail_cmd} command=/bin/ogmios ${flags} 2>&1 > /dev/null
+        ${jail_cmd} command=/bin/ogmios ${flags} 2>&1 > /logs/ogmios.log
         # ${jail_cmd} persist
     ln -s "${ogmios_jail}/cardano-node.sock" "${ogmios_cnode_socket}"
 }
