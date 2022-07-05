@@ -6,7 +6,7 @@
 #
 # Add the following lines to /etc/rc.conf to enable this service:
 #
-# ogmios_enable:      Set to YES to enable cardano-node.
+# ogmios_enable:      Set to YES to enable ogmios.
 #                           Default: "NO"
 #
 # ogmios_home:        An absolute path to the daemon home directory.
