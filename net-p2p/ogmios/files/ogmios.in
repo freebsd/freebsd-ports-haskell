@@ -137,7 +137,7 @@ destroy_jail()
 
 ogmios_prestart()
 {
-    # Create Cardano home directory, if not exists
+    # Create Ogmios home directory, if not exists
     if [ ! -d "${ogmios_home}" ]; then
         mkdir -p "${ogmios_home}"
     fi
