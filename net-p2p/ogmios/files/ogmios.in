@@ -27,7 +27,7 @@
 # ogmios_cnode_config:      An absolute path to the cardano-node config.json file.
 #                           Default: "/var/db/cardano_node/mainnet-configs/mainnet-config.json"
 #
-# ogmios_flags:       Any additional command line flags to pass to cardano-node.
+# ogmios_flags:       Any additional command line flags to pass to ogmios.
 #                           Default: ""
 #
 
@@ -100,7 +100,7 @@ create_jail()
     cp /etc/resolv.conf "${ogmios_jail}/etc/"
     cp /etc/services "${ogmios_jail}/etc/"
 
-    echo "cardano:*:100:100::0:0:Cardano Node daemon:/nonexistent:/nologin" > "${ogmios_jail}/etc/master.passwd"
+    echo "cardano:*:100:100::0:0:Ogmios daemon:/nonexistent:/nologin" > "${ogmios_jail}/etc/master.passwd"
     pwd_mkdb -d "${ogmios_jail}/etc" -p "${ogmios_jail}/etc/master.passwd"
 
     cp "$command" "${ogmios_jail}/bin/"
