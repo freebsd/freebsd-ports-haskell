@@ -6,7 +6,7 @@ EXTRACT_ONLY+=  input-output-hk-libsodium-${LIBSODIUM_HASH}_GH0${EXTRACT_SUFX} \
                 bitcoin-core-secp256k1-${SECP256K1_HASH}_GH0${EXTRACT_SUFX}
 
 MAINTAINER=     arrowd@FreeBSD.org
-COMMENT=        Core component of the Cardano decentralized blockchain
+COMMENT=        Offers a WebSockets API that enables local clients to speak Ouroboros' mini-protocols via JSON/RPC.
 
 LICENSE=        APACHE20
 
