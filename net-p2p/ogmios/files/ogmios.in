@@ -86,7 +86,7 @@ sanity_check()
 }
 
 _jail_dirs="/bin /etc /lib /libexec"
-_jail_mount_points="/dev /config_dir /socket"
+_jail_mount_points="/config_dir /socket"  # Testing removing dev, original: _jail_mount_points="/dev /config_dir /socket"
 
 create_jail()
 {
@@ -100,7 +100,7 @@ create_jail()
     cp /etc/resolv.conf "${ogmios_jail}/etc/"
     cp /etc/services "${ogmios_jail}/etc/"
 
-    echo "cardano:*:100:100::0:0:Ogmios daemon:/nonexistent:/nologin" > "${ogmios_jail}/etc/master.passwd"
+    echo "ogmios:*:101:101::0:0:Ogmios daemon:/nonexistent:/nologin" > "${ogmios_jail}/etc/master.passwd"
     pwd_mkdb -d "${ogmios_jail}/etc" -p "${ogmios_jail}/etc/master.passwd"
 
     cp "$command" "${ogmios_jail}/bin/"
@@ -111,7 +111,7 @@ create_jail()
     cd ${ogmios_home}
     mount_nullfs -o ro `dirname ${ogmios_cnode_config}` "${ogmios_jail}/config_dir"
     mount_nullfs `dirname ${ogmios_cnode_socket}` "${ogmios_jail}/socket"
-    mount -o ruleset=4 -t devfs devfs "${ogmios_jail}/dev"
+    #mount -o ruleset=4 -t devfs devfs "${ogmios_jail}/dev"
 }
 
 destroy_jail()
@@ -156,8 +156,6 @@ ogmios_start()
     fi
     cd $ogmios_home && /usr/sbin/daemon -p $pidfile -o ${logfile} \
         ${jail_cmd} command=/bin/ogmios ${flags} 2>&1 > /dev/null
-
-        # ${jail_cmd} persist
 }
 
 ogmios_stop()
