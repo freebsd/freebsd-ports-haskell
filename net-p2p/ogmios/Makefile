@@ -1,12 +1,12 @@
 PORTNAME=       ogmios
-PORTVERSION=    5.5.0
+PORTVERSION=    5.5.1
 DISTVERSIONPREFIX=v
 CATEGORIES=     net-p2p
 EXTRACT_ONLY+=  input-output-hk-libsodium-${LIBSODIUM_HASH}_GH0${EXTRACT_SUFX} \
                 bitcoin-core-secp256k1-${SECP256K1_HASH}_GH0${EXTRACT_SUFX}
 
 MAINTAINER=     arrowd@FreeBSD.org
-COMMENT=        Offers a WebSockets API that enables local clients to speak Ouroboros' mini-protocols via JSON/RPC.
+COMMENT=        WebSockets API to Cardano Ouroboros' mini-protocols
 
 LICENSE=        APACHE20
 
@@ -31,7 +31,7 @@ WRKSRC_SUBDIR= server
 
 CABAL_PROJECT=          append
 EXECUTABLES=            exe:ogmios
-SKIP_CABAL_PLIST=       yes
+PLIST_FILES=            bin/ogmios
 CABAL_ENV=              HOME=${CABAL_HOME} PKG_CONFIG_PATH=${LIBS_PREFIX}${PREFIX}/libdata/pkgconfig/
 CABAL_ARGS=             --disable-benchmarks --disable-tests
 
