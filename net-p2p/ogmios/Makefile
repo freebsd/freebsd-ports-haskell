@@ -31,7 +31,7 @@ WRKSRC_SUBDIR= server
 
 CABAL_PROJECT=          append
 EXECUTABLES=            exe:ogmios
-PLIST_FILES=            bin/ogmios
+SKIP_CABAL_PLIST=       yes
 CABAL_ENV=              HOME=${CABAL_HOME} PKG_CONFIG_PATH=${LIBS_PREFIX}${PREFIX}/libdata/pkgconfig/
 CABAL_ARGS=             --disable-benchmarks --disable-tests
 
