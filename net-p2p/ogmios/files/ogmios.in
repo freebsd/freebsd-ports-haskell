@@ -86,7 +86,7 @@ sanity_check()
 }
 
 _jail_dirs="/bin /etc /lib /libexec"
-_jail_mount_points="/config_dir /socket"  # Testing removing dev, original: _jail_mount_points="/dev /config_dir /socket"
+_jail_mount_points="/config_dir /socket"
 
 create_jail()
 {
@@ -111,7 +111,6 @@ create_jail()
     cd ${ogmios_home}
     mount_nullfs -o ro `dirname ${ogmios_cnode_config}` "${ogmios_jail}/config_dir"
     mount_nullfs `dirname ${ogmios_cnode_socket}` "${ogmios_jail}/socket"
-    #mount -o ruleset=4 -t devfs devfs "${ogmios_jail}/dev"
 }
 
 destroy_jail()
