@@ -22,16 +22,10 @@
 #
 #
 # ogmios_cnode_socket:      An absolute path to the cardano-node socket file.
-#                           Default: "/var/db/cardano_node/cardano-node.sock"
-#
+#                           Default: "/var/db/cardano_node/jail/socket/cardano-node.sock"
 #
 # ogmios_cnode_config:      An absolute path to the cardano-node config.json file.
 #                           Default: "/var/db/cardano_node/mainnet-configs/mainnet-config.json"
-#
-# ogmios_rts_flags:   GHC runtime flags to be passed between "+RTS" and "-RTS".
-#                           See https://downloads.haskell.org/ghc/latest/docs/html/users_guide/runtime_control.html
-#                           for the meaning of these flags.
-#                           Default: "-N1 -A16m"
 #
 # ogmios_flags:       Any additional command line flags to pass to cardano-node.
 #                           Default: ""
@@ -56,22 +50,21 @@ load_rc_config $name
 : ${ogmios_home:="/var/db/ogmios"}
 : ${ogmios_host:="0.0.0.0"}
 : ${ogmios_port:="1337"}
-: ${ogmios_cnode_socket:="/var/db/cardano_node/cardano-node.sock"}
+: ${ogmios_cnode_socket:="/var/db/cardano_node/jail/socket/cardano-node.sock"}
 : ${ogmios_cnode_config:="/var/db/cardano_node/mainnet-configs/mainnet-config.json"}
-: ${ogmios_rts_flags:="-N1 -A16m"}
 : ${ogmios_flags:=""}
 
 ogmios_jail="${ogmios_home}/jail"
 jail_config="/config_dir/`basename ${ogmios_cnode_config}`"
+jail_socket="/socket/`basename ${ogmios_cnode_socket}`"
 # TODO: exec.jail_user=cardano???
 jail_cmd="jail -c name=${name}_jail path=${ogmios_jail} ip4=inherit ip6=inherit host=inherit"
 
 pidfile="/var/run/ogmios.pid"
 logfile="/var/log/ogmios.log"
-flags="run +RTS ${ogmios_rts_flags} -RTS \
-        --host ${ogmios_host} \
+flags=" --host ${ogmios_host} \
         --port ${ogmios_port} \
-        --node-socket /cardano-node.sock \
+        --node-socket ${jail_socket} \
         --node-config ${jail_config} \
         ${ogmios_flags}"
 
@@ -83,11 +76,17 @@ sanity_check()
         echo "You might want to add correct path to cardano-node config file"
         exit 1
     fi
+    if [ ! -d `dirname ${ogmios_cnode_socket}` ]
+    then
+        echo "The directory for the socket file ${ogmios_cnode_socket} is missing"
+        echo "Cardano-node is not running and/or wrong path specified for /jail/socket/ dir"
+        exit 1
+    fi
     return 0
 }
 
 _jail_dirs="/bin /etc /lib /libexec"
-_jail_mount_points="/dev /config_dir /logs"
+_jail_mount_points="/dev /config_dir /socket"
 
 create_jail()
 {
@@ -111,7 +110,7 @@ create_jail()
     # change directory because $ogmios_{config,topology} may be relative paths ( TODO: is this needed? )
     cd ${ogmios_home}
     mount_nullfs -o ro `dirname ${ogmios_cnode_config}` "${ogmios_jail}/config_dir"
-    mount_nullfs "${ogmios_home}/logs" "${ogmios_jail}/logs"
+    mount_nullfs `dirname ${ogmios_cnode_socket}` "${ogmios_jail}/socket"
     mount -o ruleset=4 -t devfs devfs "${ogmios_jail}/dev"
 }
 
@@ -141,15 +140,7 @@ ogmios_prestart()
     if [ ! -d "${ogmios_home}" ]; then
         mkdir -p "${ogmios_home}"
     fi
-    # Do the same for the logs directory
-    if [ ! -d "${ogmios_home}/logs" ]; then
-        mkdir -p "${ogmios_home}/logs"
-    fi
-    # Remove symlink to socket file, if there is no pid file
-    if [ -S "${ogmios_jail}/cardano-node.sock" -a ! -f $pidfile ]; then
-        rm "${ogmios_jail}/cardano-node.sock"
-    fi
-   
+
     sanity_check
 }
 
@@ -164,9 +155,9 @@ ogmios_start()
         return 1
     fi
     cd $ogmios_home && /usr/sbin/daemon -p $pidfile -o ${logfile} \
-        ${jail_cmd} command=/bin/ogmios ${flags} 2>&1 > /logs/ogmios.log
+        ${jail_cmd} command=/bin/ogmios ${flags} 2>&1 > /dev/null
+
         # ${jail_cmd} persist
-    ln -s "${ogmios_jail}/cardano-node.sock" "${ogmios_cnode_socket}"
 }
 
 ogmios_stop()
