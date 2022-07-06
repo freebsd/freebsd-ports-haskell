@@ -177,8 +177,8 @@ cardano_node_prestart()
         mkdir -p "${cardano_node_home}/logs"
     fi
     # Remove socket file, if there is no pid file
-    if [ -S "${jail_socket}" -a ! -f $pidfile ]; then
-        rm "${jail_socket}"
+    if [ -S "${cardano_node_jail}/${jail_socket}" -a ! -f $pidfile ]; then
+        rm "${cardano_node_jail}/${jail_socket}"
     fi
     # Remove the symlink to the socket file too
     if [ -L "${cardano_node_socket}" -a ! -f $pidfile ]; then
@@ -201,7 +201,7 @@ cardano_node_start()
     cd $cardano_node_home && /usr/sbin/daemon -p $pidfile -o ${logfile} \
         ${jail_cmd} command=/bin/cardano-node ${flags} 2>&1 > /dev/null
         # ${jail_cmd} persist
-    ln -s "${jail_socket}" "${cardano_node_socket}"
+    ln -s "${cardano_node_jail}/${jail_socket}" "${cardano_node_socket}"
 }
 
 cardano_node_stop()
