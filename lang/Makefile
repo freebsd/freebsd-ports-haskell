@@ -30,8 +30,6 @@
     SUBDIR += clojure
     SUBDIR += clojure-mode.el
     SUBDIR += clover
-    SUBDIR += cmucl
-    SUBDIR += cmucl-extra
     SUBDIR += cocor
     SUBDIR += coffeescript
     SUBDIR += cparser
@@ -102,6 +100,7 @@
     SUBDIR += gcc9
     SUBDIR += gforth
     SUBDIR += ghc
+    SUBDIR += ghc810
     SUBDIR += gjs
     SUBDIR += gleam
     SUBDIR += gnatcross-binutils-aarch64

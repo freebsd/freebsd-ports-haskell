@@ -169,14 +169,14 @@
     SUBDIR += cfengine-devel
     SUBDIR += cfengine-masterfiles
     SUBDIR += cfengine-masterfiles-devel
-    SUBDIR += cfengine-masterfiles316
     SUBDIR += cfengine-masterfiles317
     SUBDIR += cfengine-masterfiles318
     SUBDIR += cfengine-masterfiles319
-    SUBDIR += cfengine316
+    SUBDIR += cfengine-masterfiles320
     SUBDIR += cfengine317
     SUBDIR += cfengine318
     SUBDIR += cfengine319
+    SUBDIR += cfengine320
     SUBDIR += chaoskube
     SUBDIR += checkrestart
     SUBDIR += chezmoi
@@ -372,7 +372,6 @@
     SUBDIR += finfo
     SUBDIR += firstboot-cloudsetup
     SUBDIR += firstboot-freebsd-update
-    SUBDIR += firstboot-growfs
     SUBDIR += firstboot-pkgs
     SUBDIR += flasher
     SUBDIR += flashrom
@@ -454,6 +453,7 @@
     SUBDIR += garcon
     SUBDIR += gather
     SUBDIR += gconf-editor
+    SUBDIR += gcp-ops-agent
     SUBDIR += gdisk
     SUBDIR += gdmap
     SUBDIR += gdu
@@ -478,7 +478,6 @@
     SUBDIR += gnome-settings-daemon
     SUBDIR += gnome-system-monitor
     SUBDIR += gnome_subr
-    SUBDIR += go-btfs
     SUBDIR += go-wtf
     SUBDIR += goaccess
     SUBDIR += goawk
@@ -965,7 +964,6 @@
     SUBDIR += pefs-kmod
     SUBDIR += perp
     SUBDIR += personality
-    SUBDIR += pesign
     SUBDIR += pfetch
     SUBDIR += pflogx
     SUBDIR += pfstat
@@ -1586,7 +1584,6 @@
     SUBDIR += xpipe
     SUBDIR += xstow
     SUBDIR += xsysstats
-    SUBDIR += xvidcap
     SUBDIR += yadf
     SUBDIR += yadm
     SUBDIR += yank

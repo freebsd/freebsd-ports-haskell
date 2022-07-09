@@ -7,7 +7,6 @@
     SUBDIR += admiral
     SUBDIR += alacritty
     SUBDIR += albert
-    SUBDIR += alltray
     SUBDIR += alttab
     SUBDIR += aminal
     SUBDIR += antimicro
@@ -51,7 +50,6 @@
     SUBDIR += deskmenu
     SUBDIR += disman
     SUBDIR += dmenu
-    SUBDIR += dmenu-wayland
     SUBDIR += docker-tray
     SUBDIR += dsbautostart
     SUBDIR += dsbxinput
@@ -97,7 +95,6 @@
     SUBDIR += gskrab
     SUBDIR += gstreamer1-plugins-x
     SUBDIR += gstreamer1-plugins-ximagesrc
-    SUBDIR += gsynaptics
     SUBDIR += gtk-app-menu
     SUBDIR += gtk-theme-switch2
     SUBDIR += gtkchtheme
@@ -105,14 +102,11 @@
     SUBDIR += guake
     SUBDIR += gxkb
     SUBDIR += hamclock
-    SUBDIR += havoc
     SUBDIR += hhpc
     SUBDIR += hs-xmobar
     SUBDIR += hsetroot
     SUBDIR += i3blocks
-    SUBDIR += i3lock
     SUBDIR += i3lock-color
-    SUBDIR += i3status
     SUBDIR += iceauth
     SUBDIR += ico
     SUBDIR += idesk
@@ -333,7 +327,6 @@
     SUBDIR += setxkbmap
     SUBDIR += showkeys
     SUBDIR += showmethekey
-    SUBDIR += simdock
     SUBDIR += simplestroke
     SUBDIR += sirula
     SUBDIR += slick-greeter
@@ -447,7 +440,6 @@
     SUBDIR += xcb-util-renderutil
     SUBDIR += xcb-util-wm
     SUBDIR += xcb-util-xrm
-    SUBDIR += xcbautolock
     SUBDIR += xclickroot
     SUBDIR += xclip
     SUBDIR += xclipboard

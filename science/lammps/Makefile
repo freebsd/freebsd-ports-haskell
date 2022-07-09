@@ -1,6 +1,6 @@
 PORTNAME=	lammps
 PORTVERSION=	${GH_TAGNAME:C/(stable|patch)_([0-9]{1,2})([A-Z][a-z][a-z])([0-9]{4})/\4.\3.\2/S/Jan/01/S/Feb/02/S/Mar/03/S/Apr/04/S/May/05/S/Jun/06/S/Jul/07/S/Aug/08/S/Sep/09/S/Oct/10/S/Nov/11/S/Dec/12/}
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	science
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -10,7 +10,6 @@ LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BROKEN_i386=	undefined reference to `__atomic_load'
-CONFLICTS_BUILD=	ga mpich mpich2 # conflicts with include/error.h from ga, already fixed in the head
 
 LIB_DEPENDS=	libevent.so:devel/libevent \
 		libfftw3.so:math/fftw3 \
@@ -26,7 +25,7 @@ USE_LDCONFIG=	yes
 USE_PYTHON=	cython
 
 USE_GITHUB=	yes
-GH_TAGNAME=	patch_2Jun2022
+GH_TAGNAME=	stable_23Jun2022
 
 SHEBANG_GLOB=	*.sh *.bash
 SHEBANG_FILES=	lib/kokkos/bin/nvcc_wrapper
@@ -63,7 +62,7 @@ EXCEPTIONS_DESC=	Enable the use of C++ exceptions
 EXCEPTIONS_CMAKE_BOOL=	LAMMPS_EXCEPTIONS
 
 MPI_CMAKE_BOOL=		BUILD_MPI PKG_MPIIO PKG_USER-LB
-MPI_LIB_DEPENDS=	libmpi.so:net/openmpi
+MPI_LIB_DEPENDS=	libmpi.so:net/mpich
 MPI_USES=		compiler:c11
 
 FFMPEG_CMAKE_BOOL=	WITH_FFMPEG
@@ -112,7 +111,7 @@ VORONOI_LIB_DEPENDS=	libvoro++.so:science/voro++
 
 VTK_DESC=		USER-VTK package based on the external vtk package
 VTK_CMAKE_BOOL=		PKG_USER-VTK
-VTK_CMAKE_ON=		-DVTK_DIR:PATH=${LOCALBASE}/lib/vtk-8.2/cmake/vtk-8.2
+VTK_CMAKE_ON=		-DVTK_DIR:PATH=${LOCALBASE}/lib/cmake/vtk-9.1
 VTK_USES=		qt:5 xorg
 VTK_USE=		qt=core,gui,sql,widgets xorg=ice,sm,x11,xext,xt
 VTK_LIB_DEPENDS=	libvtkImagingMath-8.2.so:math/vtk8 \

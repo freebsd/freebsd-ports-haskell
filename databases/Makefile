@@ -52,18 +52,9 @@
     SUBDIR += dbow
     SUBDIR += dbtool
     SUBDIR += dbview
+    SUBDIR += duckdb
     SUBDIR += ejdb
-    SUBDIR += elixir-calecto
-    SUBDIR += elixir-db_connection
-    SUBDIR += elixir-ecto
-    SUBDIR += elixir-geo
-    SUBDIR += elixir-mariaex
-    SUBDIR += elixir-postgrex
-    SUBDIR += elixir-timex_ecto
     SUBDIR += emacsql
-    SUBDIR += erlang-couchbeam
-    SUBDIR += erlang-epgsql
-    SUBDIR += erlang-eredis
     SUBDIR += erlfdb
     SUBDIR += evolution-data-server
     SUBDIR += fastdb
@@ -138,7 +129,6 @@
     SUBDIR += libdrizzle
     SUBDIR += libdrizzle-redux
     SUBDIR += libgda5
-    SUBDIR += libgda5-bdb
     SUBDIR += libgda5-jdbc
     SUBDIR += libgda5-ldap
     SUBDIR += libgda5-mdb
@@ -213,8 +203,6 @@
     SUBDIR += mysql-q4m
     SUBDIR += mysql-udf
     SUBDIR += mysql2pgsql
-    SUBDIR += mysql55-client
-    SUBDIR += mysql55-server
     SUBDIR += mysql56-client
     SUBDIR += mysql56-server
     SUBDIR += mysql57-client
@@ -559,8 +547,6 @@
     SUBDIR += pecl-rrd
     SUBDIR += percona-pam-for-mysql
     SUBDIR += percona-toolkit
-    SUBDIR += percona56-client
-    SUBDIR += percona56-server
     SUBDIR += percona57-client
     SUBDIR += percona57-pam-for-mysql
     SUBDIR += percona57-server
@@ -580,6 +566,7 @@
     SUBDIR += pg_tileserv
     SUBDIR += pgaccess
     SUBDIR += pgadmin3
+    SUBDIR += pgagroal
     SUBDIR += pgbackrest
     SUBDIR += pgbadger
     SUBDIR += pgbarman
@@ -590,7 +577,6 @@
     SUBDIR += pglogical
     SUBDIR += pgmetrics
     SUBDIR += pgmodeler
-    SUBDIR += pgpool-II-36
     SUBDIR += pgpool-II-37
     SUBDIR += pgpool-II-40
     SUBDIR += pgpool-II-41
@@ -773,6 +759,7 @@
     SUBDIR += py-databases
     SUBDIR += py-dbf
     SUBDIR += py-dbutils
+    SUBDIR += py-duckdb
     SUBDIR += py-fakeredis
     SUBDIR += py-fastapi-users-db-ormar
     SUBDIR += py-fdb
@@ -977,6 +964,7 @@
     SUBDIR += rubygem-openid-redis-store
     SUBDIR += rubygem-paranoia
     SUBDIR += rubygem-pg
+    SUBDIR += rubygem-pg13
     SUBDIR += rubygem-pg_array_parser
     SUBDIR += rubygem-pg_query
     SUBDIR += rubygem-pghero

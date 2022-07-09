@@ -2,8 +2,8 @@
 
 PORTNAME=	krill
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.9.5
-PORTREVISION=	2
+DISTVERSION=	0.9.6
+PORTREVISION=	1
 CATEGORIES=	net
 
 MAINTAINER=	jaap@NLnetLabs.nl
@@ -20,6 +20,10 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	NLnetLabs
 
 USE_RC_SUBR=	${PORTNAME}
+
+# SUB_FILES=	pkg-message
+USERS=		${PORTNAME}
+GROUPS=		${PORTNAME}
 
 CARGO_CRATES=	addr2line-0.17.0 \
 		adler-1.0.2 \
@@ -257,10 +261,6 @@ CARGO_CRATES=	addr2line-0.17.0 \
 		winapi-x86_64-pc-windows-gnu-0.4.0 \
 		winreg-0.7.0 \
 		xml-rs-0.8.4
-
-# SUB_FILES=	pkg-message
-USERS=		${PORTNAME}
-GROUPS=		${PORTNAME}
 
 post-install:
 		${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/krill

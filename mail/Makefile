@@ -263,6 +263,7 @@
     SUBDIR += notmuch-emacs
     SUBDIR += notmuch-mutt
     SUBDIR += nullmailer
+    SUBDIR += openarc
     SUBDIR += opendkim
     SUBDIR += opendmarc
     SUBDIR += opensmtpd
@@ -610,7 +611,6 @@
     SUBDIR += rubygem-roadie-rails-rails52
     SUBDIR += rubygem-roadie3
     SUBDIR += rubygem-ruby-qmail
-    SUBDIR += rubygem-tmail
     SUBDIR += rubygem-valid_email
     SUBDIR += rubygem-vmail
     SUBDIR += s-nail

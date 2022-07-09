@@ -24,7 +24,6 @@
     SUBDIR += drg2sbg
     SUBDIR += dumpasn1
     SUBDIR += enca
-    SUBDIR += erlang-base64url
     SUBDIR += fconv
     SUBDIR += fix-mime-charset
     SUBDIR += fondu
@@ -36,7 +35,6 @@
     SUBDIR += hs-dhall-bash
     SUBDIR += hs-dhall-json
     SUBDIR += hs-dhall-yaml
-    SUBDIR += htx
     SUBDIR += i18ntools
     SUBDIR += ical2html
     SUBDIR += iconv

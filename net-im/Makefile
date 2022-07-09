@@ -63,13 +63,9 @@
     SUBDIR += libqtelegram-ae
     SUBDIR += libquotient
     SUBDIR += libsignal-client
+    SUBDIR += libsignal-node
     SUBDIR += libsignon-glib
     SUBDIR += libstrophe
-    SUBDIR += licq
-    SUBDIR += licq-icq
-    SUBDIR += licq-jabber
-    SUBDIR += licq-osd
-    SUBDIR += licq-qt-gui
     SUBDIR += loudmouth
     SUBDIR += matterbridge
     SUBDIR += matterhorn
@@ -130,7 +126,6 @@
     SUBDIR += py-punjab
     SUBDIR += py-python-telegram-bot
     SUBDIR += py-slack-sdk
-    SUBDIR += py-slackclient
     SUBDIR += py-slixmpp
     SUBDIR += py-telepot
     SUBDIR += py-toxcore-c
@@ -151,6 +146,7 @@
     SUBDIR += scudcloud
     SUBDIR += sendxmpp
     SUBDIR += signal-cli
+    SUBDIR += signal-desktop
     SUBDIR += signald
     SUBDIR += slack-term
     SUBDIR += spectral

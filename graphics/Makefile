@@ -284,7 +284,6 @@
     SUBDIR += gnome-color-manager
     SUBDIR += gnome-video-effects
     SUBDIR += gocr
-    SUBDIR += goocanvas
     SUBDIR += goocanvas2
     SUBDIR += goocanvas3
     SUBDIR += goocanvasmm2
@@ -413,6 +412,7 @@
     SUBDIR += kontrast
     SUBDIR += kooka
     SUBDIR += kphotoalbum
+    SUBDIR += kplot
     SUBDIR += kqtquickcharts
     SUBDIR += kquickimageeditor
     SUBDIR += krita
@@ -909,6 +909,7 @@
     SUBDIR += py-pyvips
     SUBDIR += py-pyvista
     SUBDIR += py-pyx
+    SUBDIR += py-qpageview
     SUBDIR += py-qrencode
     SUBDIR += py-railroad-diagrams
     SUBDIR += py-rasterio

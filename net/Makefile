@@ -136,12 +136,9 @@
     SUBDIR += dual-dhclient-daemon
     SUBDIR += easysoap
     SUBDIR += echoping
-    SUBDIR += elixir-kafka_ex
-    SUBDIR += elixir-oauth2
     SUBDIR += empty
     SUBDIR += endlessh
     SUBDIR += enet
-    SUBDIR += erlang-ranch
     SUBDIR += eternalterminal
     SUBDIR += evans
     SUBDIR += eventviews
@@ -170,6 +167,8 @@
     SUBDIR += frp
     SUBDIR += frr7
     SUBDIR += frr7-pythontools
+    SUBDIR += frr8
+    SUBDIR += frr8-pythontools
     SUBDIR += fspclient
     SUBDIR += fspd
     SUBDIR += fsplib
@@ -189,6 +188,7 @@
     SUBDIR += gmid
     SUBDIR += gnet2
     SUBDIR += gnetcat
+    SUBDIR += gnome-connections
     SUBDIR += gnome-nettool
     SUBDIR += gnome-online-accounts
     SUBDIR += gnome-online-miners
@@ -241,13 +241,14 @@
     SUBDIR += haproxy22
     SUBDIR += haproxy23
     SUBDIR += haproxy24
+    SUBDIR += haproxy25
     SUBDIR += hblock
     SUBDIR += hexinject
     SUBDIR += hlmaster
     SUBDIR += honeyd
     SUBDIR += hostapd
-    SUBDIR += hostapd29
     SUBDIR += hostapd-devel
+    SUBDIR += hostapd29
     SUBDIR += hping3
     SUBDIR += hsflowd
     SUBDIR += htpdate
@@ -317,7 +318,6 @@
     SUBDIR += kimap
     SUBDIR += kio-gdrive
     SUBDIR += kippo
-    SUBDIR += kissd
     SUBDIR += kitinerary
     SUBDIR += kldap
     SUBDIR += kmailtransport
@@ -417,6 +417,7 @@
     SUBDIR += libvncserver
     SUBDIR += libwebsockets
     SUBDIR += libyang
+    SUBDIR += libyang2
     SUBDIR += libzapojit
     SUBDIR += libzmq2
     SUBDIR += libzmq3
@@ -1321,6 +1322,7 @@
     SUBDIR += rubygem-no_proxy_fix
     SUBDIR += rubygem-oauth
     SUBDIR += rubygem-oauth2
+    SUBDIR += rubygem-oauth21
     SUBDIR += rubygem-octokit
     SUBDIR += rubygem-octopress-deploy
     SUBDIR += rubygem-omniauth-auth0
@@ -1335,6 +1337,7 @@
     SUBDIR += rubygem-omniauth-kerberos
     SUBDIR += rubygem-omniauth-oauth
     SUBDIR += rubygem-omniauth-oauth2
+    SUBDIR += rubygem-omniauth-oauth2-v1
     SUBDIR += rubygem-omniauth-openid
     SUBDIR += rubygem-omniauth-salesforce
     SUBDIR += rubygem-omniauth-twitter
@@ -1391,6 +1394,7 @@
     SUBDIR += ryu
     SUBDIR += s5cmd
     SUBDIR += sacc
+    SUBDIR += sakisafecli
     SUBDIR += samba412
     SUBDIR += samba413
     SUBDIR += samplicator
@@ -1422,6 +1426,7 @@
     SUBDIR += sipsak
     SUBDIR += skstream
     SUBDIR += sl2tps
+    SUBDIR += slackcat
     SUBDIR += smb4k
     SUBDIR += smcroute
     SUBDIR += smm++
