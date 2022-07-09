@@ -63,6 +63,7 @@ start_cmd="${name}_start"
 start_precmd="${name}_prestart"
 stop_cmd="${name}_stop"
 status_cmd="${name}_status"
+reload_cmd="${name}_reload"
 fetch_cmd="${name}_fetch"
 
 extra_commands="status fetch"
@@ -176,7 +177,7 @@ cardano_node_prestart()
     if [ ! -d "${cardano_node_home}/logs" ]; then
         mkdir -p "${cardano_node_home}/logs"
     fi
-    
+
     # Remove the symlink to the socket file if there is no pid file
     if [ -L "${cardano_node_socket}" -a ! -f $pidfile ]; then
         rm "${cardano_node_socket}"
@@ -226,6 +227,18 @@ cardano_node_status()
         return 1
     else
         echo ${name} is running as pid $pid
+    fi
+}
+
+cardano_node_reload()
+{
+    pid=$(check_pidfile "${pidfile}" jail)
+    if [ -z "${pid}" ]
+    then
+        echo "${name} is not running"
+        return 1
+    else
+        killall -j ${name}_jail -HUP
     fi
 }
 
