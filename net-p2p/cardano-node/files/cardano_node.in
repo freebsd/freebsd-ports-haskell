@@ -53,7 +53,7 @@
 name=cardano_node
 desc="Cardano Node daemon"
 rcvar=cardano_node_enable
-command=%%PREFIX%%/bin/cardano-node
+command=%%PREFIX%%/libexec/cabal/cardano-node
 
 cardano_deployment_url="https://hydra.iohk.io/job/Cardano/cardano-node/cardano-deployment/latest-finished/download/1"
 cardano_config_files="config byron-genesis shelley-genesis alonzo-genesis topology"

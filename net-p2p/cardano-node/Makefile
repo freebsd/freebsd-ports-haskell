@@ -44,7 +44,7 @@ post-patch:
 pre-build:
 	${RM} -rf ${CABAL_HOME}
 	${MKDIR} ${CABAL_HOME}
-	${SETENV} ${CABAL_ENV} git config --global http.proxy http://10.10.7.1:3128/
+#	${SETENV} ${CABAL_ENV} git config --global http.proxy http://10.10.7.1:3128/
 	${SETENV} ${CABAL_ENV} cabal update
 
 do-build:
