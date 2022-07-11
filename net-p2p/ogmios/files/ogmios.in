@@ -107,8 +107,6 @@ create_jail()
     ldd "$command" | cut -s -d " " -f 3 | grep -E '^(/lib|/usr)' | sort -u | xargs -I % cp % "${ogmios_jail}/lib/"
     cp /libexec/ld-elf.so.1 "${ogmios_jail}/libexec"
 
-    # change directory because $ogmios_{config,topology} may be relative paths ( TODO: is this needed? )
-    cd ${ogmios_home}
     mount_nullfs -o ro `dirname ${ogmios_cnode_config}` "${ogmios_jail}/config_dir"
     mount_nullfs `dirname ${ogmios_cnode_socket}` "${ogmios_jail}/socket"
 }
