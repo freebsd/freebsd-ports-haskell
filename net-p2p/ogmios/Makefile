@@ -11,7 +11,10 @@ COMMENT=        WebSockets API to Cardano Ouroboros' mini-protocols
 LICENSE=        APACHE20
 
 BUILD_DEPENDS=  bash:shells/bash \
-                git:devel/git
+                git:devel/git \
+                ghc-8.10.7:lang/ghc810
+
+RUN_DEPENDS=    cardano-node:net-p2p/cardano-node
 
 USES=           autoreconf:build cabal gmake libtool pkgconfig
 
@@ -27,13 +30,12 @@ LIBSODIUM_HASH=         66f017f16633f2060db25e17c170c2afa0f2a8a1
 SECP256K1_HASH=         ac83be33d0956faf6b7f61a60ab524ef7d6a473a
 LIBS_PREFIX=            ${WRKDIR}/libs_install
 
-WRKSRC_SUBDIR= server
+WRKSRC_SUBDIR=  server
 
 CABAL_PROJECT=          append
-EXECUTABLES=            exe:ogmios
-SKIP_CABAL_PLIST=       yes
+EXECUTABLES=            ogmios
 CABAL_ENV=              HOME=${CABAL_HOME} PKG_CONFIG_PATH=${LIBS_PREFIX}${PREFIX}/libdata/pkgconfig/
-CABAL_ARGS=             --disable-benchmarks --disable-tests
+CABAL_ARGS=             --disable-benchmarks --disable-tests ${CABAL_WITH_ARGS}
 
 # setenv http_proxy http://10.10.7.1:3128/
 # git config --global http.proxy http://10.10.7.1:3128/
@@ -54,19 +56,12 @@ do-build:
         cd ${WRKSRC_secp} && ./configure --prefix=${PREFIX} --enable-module-schnorrsig --enable-experimental --with-pic --disable-shared
         cd ${WRKSRC_secp} && gmake -j${MAKE_JOBS_NUMBER} && gmake DESTDIR=${LIBS_PREFIX} install
         ${MV} ${LIBS_PREFIX}${PREFIX}/lib/pkgconfig/libsecp256k1.pc ${LIBS_PREFIX}${PREFIX}/libdata/pkgconfig/libsecp256k1.pc
-
+        
         ${ECHO} "package *" >> ${WRKSRC}/cabal.project.ogmios
         ${ECHO} "  extra-include-dirs: ${LIBS_PREFIX}${PREFIX}/include" >> ${WRKSRC}/cabal.project.ogmios
         ${ECHO} "  extra-lib-dirs: ${LIBS_PREFIX}${PREFIX}/lib" >> ${WRKSRC}/cabal.project.ogmios
         ${MV} ${WRKSRC}/cabal.project.ogmios ${WRKSRC}/cabal.project
-        cd ${WRKSRC} && ${SETENV} ${CABAL_ENV} cabal ${CABAL_ARGS} configure ${EXECUTABLES}
-        cd ${WRKSRC} && ${SETENV} ${CABAL_ENV} cabal ${CABAL_ARGS} build ${EXECUTABLES}
-
-do-install:
-.for exe in ${EXECUTABLES:S/exe://}
-        ${INSTALL_PROGRAM} \
-                $$(find ${WRKSRC}/dist-newstyle -name ${exe} -type f -perm +111) \
-                ${STAGEDIR}${PREFIX}/bin
-.endfor
+        cd ${WRKSRC} && ${SETENV} ${CABAL_ENV} cabal ${CABAL_ARGS} configure ${EXECUTABLES:S/^/exe:&/}
+        cd ${WRKSRC} && ${SETENV} ${CABAL_ENV} cabal ${CABAL_ARGS} build ${EXECUTABLES:S/^/exe:&/}
 
 .include <bsd.port.mk>
