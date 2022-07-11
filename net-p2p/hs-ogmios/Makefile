@@ -14,7 +14,7 @@ BUILD_DEPENDS=  bash:shells/bash \
                 git:devel/git \
                 ghc-8.10.7:lang/ghc810
 
-RUN_DEPENDS=    cardano-node:net-p2p/hs-cardano-node
+RUN_DEPENDS=    cardano-node:net-p2p/cardano-node
 
 USES=           autoreconf:build cabal gmake libtool pkgconfig
 
