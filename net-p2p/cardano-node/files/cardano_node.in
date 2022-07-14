@@ -55,8 +55,8 @@ desc="Cardano Node daemon"
 rcvar=cardano_node_enable
 command=%%PREFIX%%/libexec/cabal/cardano-node
 
-cardano_deployment_url="https://hydra.iohk.io/job/Cardano/cardano-node/cardano-deployment/latest-finished/download/1"
-cardano_config_files="config byron-genesis shelley-genesis alonzo-genesis topology"
+cardano_deployment_url="https://raw.githubusercontent.com/cardano-bsd-alliance/freebsd-ports-cardano-artifacts/master/cardano-node"
+cardano_config_files="config byron-genesis shelley-genesis alonzo-genesis topology submit-api-config"
 cardano_networks="mainnet testnet"
 
 start_cmd="${name}_start"
@@ -249,7 +249,8 @@ cardano_node_fetch()
         echo "Fetching configuration files for ${net}"
         mkdir -p "${cardano_node_home}/${net}-configs"
         mkdir -p "${cardano_node_home}/${net}-db"
-        /usr/bin/apply "/usr/bin/fetch -a -o ${cardano_node_home}/${net}-configs ${cardano_deployment_url}/${net}-%1.json" $cardano_config_files
+        /usr/bin/apply "/usr/bin/fetch -a -o \
+        ${cardano_node_home}/${net}-configs ${cardano_deployment_url}/${net}-configs/%1.json" $cardano_config_files
     done
 }
 
