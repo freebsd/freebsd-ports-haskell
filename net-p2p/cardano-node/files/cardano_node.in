@@ -33,11 +33,11 @@
 #
 # cardano_node_topology:    An absolute or a relative to ${cardano_node_home} path
 #                           to the topology JSON file.
-#                           Default: "${cardano_node_net}-configs/${cardano_node_net}-topology.json"
+#                           Default: "${cardano_node_net}-configs/topology.json"
 #
 # cardano_node_config:      An absolute or a relative to ${cardano_node_home} path
 #                           to the cardano-node config.json file.
-#                           Default: "${cardano_node_net}-configs/${cardano_node_net}-config.json"
+#                           Default: "${cardano_node_net}-configs/config.json"
 #
 # cardano_node_rts_flags:   GHC runtime flags to be passed between "+RTS" and "-RTS".
 #                           See https://downloads.haskell.org/ghc/latest/docs/html/users_guide/runtime_control.html
@@ -76,8 +76,8 @@ load_rc_config $name
 : ${cardano_node_port:="6000"}
 : ${cardano_node_socket:="${cardano_node_home}/cardano-node.sock"}
 : ${cardano_node_db:="${cardano_node_home}/${cardano_node_net}-db"}
-: ${cardano_node_topology:="${cardano_node_net}-configs/${cardano_node_net}-topology.json"}
-: ${cardano_node_config:="${cardano_node_net}-configs/${cardano_node_net}-config.json"}
+: ${cardano_node_topology:="${cardano_node_net}-configs/topology.json"}
+: ${cardano_node_config:="${cardano_node_net}-configs/config.json"}
 : ${cardano_node_rts_flags:="-N -A64m -n4m -F1.2 -qg1"}
 : ${cardano_node_flags:=""}
 
