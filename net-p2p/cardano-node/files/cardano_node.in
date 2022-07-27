@@ -85,11 +85,9 @@ cardano_node_jail="${cardano_node_home}/jail"
 jail_topology="/topology_dir/`basename ${cardano_node_topology}`"
 jail_config="/config_dir/`basename ${cardano_node_config}`"
 jail_socket="/socket/`basename ${cardano_node_socket}`"
-# TODO: exec.jail_user=cardano
-jail_cmd="jail -c name=${name}_jail path=${cardano_node_jail} ip4=inherit ip6=inherit host=inherit"
+jail_cmd="jail -c name=${name}_jail path=${cardano_node_jail} exec.jail_user=cardano exec.system_jail_user ip4=inherit ip6=inherit host=inherit"
 
 pidfile="/var/run/cardano-node.pid"
-logfile="/var/log/cardano-node.log"
 flags="run +RTS ${cardano_node_rts_flags} -RTS \
         --database-path /db \
         --host-addr ${cardano_node_host} \
@@ -131,11 +129,11 @@ create_jail()
     cp /etc/resolv.conf "${cardano_node_jail}/etc/"
     cp /etc/services "${cardano_node_jail}/etc/"
 
-    echo "cardano:*:100:100::0:0:Cardano Node daemon:/nonexistent:/nologin" > "${cardano_node_jail}/etc/master.passwd"
-    pwd_mkdb -d "${cardano_node_jail}/etc" -p "${cardano_node_jail}/etc/master.passwd"
-
     cp "$command" "${cardano_node_jail}/bin/"
     ldd "$command" | cut -s -d " " -f 3 | grep -E '^(/lib|/usr)' | sort -u | xargs -I % cp % "${cardano_node_jail}/lib/"
+#    TODO: daemon fails with "Network.Socket.bind: permission denied" without suid
+    chmod +s "${cardano_node_jail}/bin/cardano-node"
+    cp /usr/sbin/nologin "${cardano_node_jail}/bin/"
     cp /libexec/ld-elf.so.1 "${cardano_node_jail}/libexec"
 
     # change directory because $cardano_node_{config,topology} may be relative paths
@@ -172,10 +170,12 @@ cardano_node_prestart()
     # Create Cardano home directory, if not exists
     if [ ! -d "${cardano_node_home}" ]; then
         mkdir -p "${cardano_node_home}"
+        chown cardano:cardano "${cardano_node_home}"
     fi
     # Do the same for the logs directory
     if [ ! -d "${cardano_node_home}/logs" ]; then
         mkdir -p "${cardano_node_home}/logs"
+        chown cardano:cardano "${cardano_node_home}/logs"
     fi
 
     # Remove the symlink to the socket file if there is no pid file
@@ -196,7 +196,7 @@ cardano_node_start()
         echo "Failed to start ${name}: jail creation error"
         return 1
     fi
-    cd $cardano_node_home && /usr/sbin/daemon -p $pidfile -o ${logfile} \
+    cd $cardano_node_home && /usr/sbin/daemon -p $pidfile \
         ${jail_cmd} command=/bin/cardano-node ${flags} 2>&1 > /dev/null
     ln -s "${cardano_node_jail}/${jail_socket}" "${cardano_node_socket}"
 }
@@ -246,11 +246,13 @@ cardano_node_fetch()
 {
     for net in ${cardano_networks}
     do
-        echo "Fetching configuration files for ${net}"
+        echo "===> Fetching configuration files for ${net}"
         mkdir -p "${cardano_node_home}/${net}-configs"
         mkdir -p "${cardano_node_home}/${net}-db"
         /usr/bin/apply "/usr/bin/fetch -a -o \
         ${cardano_node_home}/${net}-configs ${cardano_deployment_url}/${net}-configs/%1.json" $cardano_config_files
+        chown -R cardano:cardano "${cardano_node_home}/${net}-configs"
+        chown -R cardano:cardano "${cardano_node_home}/${net}-db"
     done
 }
 

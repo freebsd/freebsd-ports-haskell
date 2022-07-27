@@ -7,9 +7,7 @@ COMMENT=	Core component of the Cardano decentralized blockchain
 
 LICENSE=	APACHE20
 
-BUILD_DEPENDS=	bash:shells/bash \
-		git:devel/git \
-		ghc-8.10.7:lang/ghc810
+BUILD_DEPENDS=	ghc-8.10.7:lang/ghc810
 
 USES=		autoreconf:build cabal gmake libtool pkgconfig
 
@@ -46,6 +44,9 @@ USE_RC_SUBR=		cardano_node
 MAKE_ENV=		PKG_CONFIG_PATH=${LIBS_PREFIX}${PREFIX}/libdata/pkgconfig/
 LIBS_PREFIX=		${WRKDIR}/libs_install
 BINARY_ALIAS=		git=true
+
+USERS=		cardano
+GROUPS=		cardano
 
 USE_CABAL=	Diff-0.4.1 \
 		Glob-0.10.2_3 \
