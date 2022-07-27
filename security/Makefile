@@ -40,7 +40,6 @@
     SUBDIR += aws-vault
     SUBDIR += barnyard2
     SUBDIR += barnyard2-sguil
-    SUBDIR += base-audit
     SUBDIR += bastillion
     SUBDIR += bcrypt
     SUBDIR += bcwipe
@@ -171,7 +170,6 @@
     SUBDIR += gnome-keyring
     SUBDIR += gnome-keyring-sharp
     SUBDIR += gnome-ssh-askpass
-    SUBDIR += gnomint
     SUBDIR += gnupg
     SUBDIR += gnupg-pkcs11-scd
     SUBDIR += gnupg1
@@ -286,6 +284,7 @@
     SUBDIR += libotr
     SUBDIR += libotr3
     SUBDIR += libp11
+    SUBDIR += libpki
     SUBDIR += libprelude
     SUBDIR += libpreludedb
     SUBDIR += libpwquality
@@ -379,6 +378,7 @@
     SUBDIR += onionscan
     SUBDIR += op
     SUBDIR += openbsm
+    SUBDIR += openca-ocspd
     SUBDIR += openconnect
     SUBDIR += openconnect-freebsd-daemon
     SUBDIR += openconnect-gui
@@ -1029,6 +1029,7 @@
     SUBDIR += rubygem-devise-two-factor
     SUBDIR += rubygem-devise-two-factor-rails5
     SUBDIR += rubygem-devise-two-factor-rails61
+    SUBDIR += rubygem-devise-two-factor-rails70
     SUBDIR += rubygem-devise_pam_authenticatable2
     SUBDIR += rubygem-digest
     SUBDIR += rubygem-digest-crc

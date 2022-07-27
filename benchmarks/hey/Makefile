@@ -1,9 +1,7 @@
-# Created by: Brad Davis <brd@FreeBSD.org>
-
 PORTNAME=	hey
 PORTVERSION=	0.1.4
 DISTVERSIONPREFIX=	v
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	benchmarks
 
 MAINTAINER=	dmgk@FreeBSD.org

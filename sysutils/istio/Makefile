@@ -1,8 +1,6 @@
-# Created by: Danilo Egea Gondolfo <danilo@FreeBSD.org>
-
 PORTNAME=	istio
 PORTVERSION=	1.7.4
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	sysutils
 
 MAINTAINER=	danilo@FreeBSD.org

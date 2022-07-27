@@ -1,8 +1,7 @@
-# Created by: Adam Weinberger
-
 PORTNAME=	cmus
 DISTVERSIONPREFIX=	v
 DISTVERSION=	2.10.0
+PORTREVISION=	1
 CATEGORIES=	audio
 
 MAINTAINER=	eduardo@FreeBSD.org

@@ -1,5 +1,3 @@
-# Created by: Po-Chuan Hsieh <sunpoet@FreeBSD.org>
-
 PORTNAME=	rocksdb
 PORTVERSION=	7.3.1
 DISTVERSIONPREFIX=	v
@@ -17,6 +15,7 @@ BROKEN_DragonFly=	does not build on DragonFly BSD using GCC with -Werror
 BROKEN_armv6?=		does not build: db/c.cc:2281:44: implicit conversion loses integer precision: 'uint64_t' (aka 'unsigned long long') to 'size_t' (aka 'unsigned int')
 BROKEN_armv7?=		does not build: /nxb-bin/usr/bin/ld: undefined reference to symbol `__gnu_Unwind_Find_exidx@@FBSD_1.4' (try adding -lc) #'`
 BROKEN_FreeBSD_12_powerpc64=	does not build: util/crc32c.cc:435:22: 'arch_ppc_probe' was not declared in this scope
+BROKEN=			does not build: util/cleanable.cc:126:16: no member named 'move' in namespace 'std'
 
 BUILD_DEPENDS=	bash:shells/bash
 LIB_DEPENDS=	libgflags.so:devel/gflags \
@@ -73,8 +72,10 @@ post-patch:
 post-install:
 	${MKDIR} ${STAGEDIR}${DATADIR}/
 	cd ${WRKSRC}/ && ${INSTALL_PROGRAM} ${BENCHMARKS} ${TOOLS} ${STAGEDIR}${PREFIX}/bin/
-	${INSTALL_DATA} ${WRKSRC}/librocksdb${PKGNAMESUFFIX}_tools.so ${STAGEDIR}${PREFIX}/lib/
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/librocksdb${PKGNAMESUFFIX}.so ${STAGEDIR}${PREFIX}/lib/librocksdb${PKGNAMESUFFIX}_tools.so
+	# Locate all shared libraries. The STRIP_CMD below failed on our package building clusters.
+	${FIND} ${WRKSRC} ${STAGEDIR}${PREFIX} -name '*.so*'
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/librocksdb.so
+	${INSTALL_LIB} ${WRKSRC}/librocksdb_tools.so ${STAGEDIR}${PREFIX}/lib/
 	${INSTALL_DATA} ${WRKSRC}/make_config.mk ${STAGEDIR}${DATADIR}/
 
 .include <bsd.port.post.mk>

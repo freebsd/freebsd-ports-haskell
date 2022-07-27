@@ -1545,10 +1545,12 @@
     SUBDIR += py-translationstring
     SUBDIR += py-transpopy
     SUBDIR += py-ttp
+    SUBDIR += py-ttp-templates
     SUBDIR += py-typogrify
     SUBDIR += py-ucl
     SUBDIR += py-ufal.udpipe
     SUBDIR += py-wcmatch
+    SUBDIR += py-whatthepatch
     SUBDIR += py-whoosh
     SUBDIR += py-wordcloud
     SUBDIR += py-wordnet
@@ -1632,7 +1634,6 @@
     SUBDIR += rubygem-asciidoctor-plantuml
     SUBDIR += rubygem-asciidoctor-plantuml00
     SUBDIR += rubygem-autoprefixer-rails
-    SUBDIR += rubygem-autoprefixer-rails-node16
     SUBDIR += rubygem-autoprefixer-rails1025
     SUBDIR += rubygem-babel-source
     SUBDIR += rubygem-babel-transpiler
@@ -1672,7 +1673,6 @@
     SUBDIR += rubygem-elasticsearch713
     SUBDIR += rubygem-emot
     SUBDIR += rubygem-escape_utils
-    SUBDIR += rubygem-escape_utils12
     SUBDIR += rubygem-extended-markdown-filter
     SUBDIR += rubygem-ezamar
     SUBDIR += rubygem-fast_xs
@@ -1964,6 +1964,7 @@
     SUBDIR += urlview
     SUBDIR += utf8proc
     SUBDIR += uz-aspell
+    SUBDIR += vale
     SUBDIR += vbindiff
     SUBDIR += ve-hunspell
     SUBDIR += vgrep

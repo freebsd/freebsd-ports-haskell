@@ -1,9 +1,7 @@
-# Created by: Alex Dupre <ale@FreeBSD.org>
-
 PORTNAME=	trezord
 DISTVERSIONPREFIX=	v
 DISTVERSION=	2.0.31
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	security
 
 MAINTAINER=	ale@FreeBSD.org

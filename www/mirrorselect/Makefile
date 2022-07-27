@@ -1,9 +1,7 @@
-# Created by: Aaron LI <aly@aaronly.me>
-
 PORTNAME=	mirrorselect
 DISTVERSIONPREFIX=	v
 DISTVERSION=	0.9.0
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	www ports-mgmt
 
 MAINTAINER=	aly@aaronly.me

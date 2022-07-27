@@ -1,5 +1,3 @@
-# Created by: Javier Martin Rueda <jmrueda@diatel.upm.es>
-
 PORTNAME=	moodle
 PORTVERSION=	3.10.11
 CATEGORIES=	www education
@@ -10,6 +8,9 @@ MAINTAINER=	wen@FreeBSD.org
 COMMENT=	Course management system based on social constructionism
 
 LICENSE=	GPLv3
+
+DEPRECATED=	Upstream no longer maintained
+EXPIRATION_DATE=	2022-09-12
 
 CONFLICTS=	moodle39-3.9.[0-9]* moodle311-3.11.[0-9]* moodle40-4.0.[0-9]*
 

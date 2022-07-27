@@ -1,8 +1,6 @@
-# Created by: Yonatan <onatan@gmail.com>
-
 PORTNAME=	metasploit
 DISTVERSION=	6.1.24
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	security
 
 MAINTAINER=	tanawts@gmail.com

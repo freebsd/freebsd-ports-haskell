@@ -1,7 +1,6 @@
-# Created by: Christer Edwards <christer.edwards@gmail.com>
-
 PORTNAME=	salt
 PORTVERSION=	3004.2
+PORTREVISION=	1
 CATEGORIES=	sysutils python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}

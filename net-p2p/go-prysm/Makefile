@@ -1,9 +1,7 @@
-# Created by: Ryan Steinmetz <zi@FreeBSD.org>
-
 PORTNAME=	go-prysm
 DISTVERSIONPREFIX=	v
 DISTVERSION=	1.3.7
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	net-p2p
 
 MAINTAINER=	zi@FreeBSD.org

@@ -1,11 +1,11 @@
-# Created by: frase@frase.id.au
-
 PORTNAME=	git-annex
 PORTVERSION=	10.20220525
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org
 COMMENT=	Manage files with git, without checking their contents into git
+
+BROKEN_aarch64=	Causes compiler to crash
 
 LICENSE=	GPLv3
 

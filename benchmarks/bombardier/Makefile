@@ -1,9 +1,7 @@
-# Created by: Danilo Egea Gondolfo <danilo@FreeBSD.org>
-
 PORTNAME=	bombardier
 PORTVERSION=	1.2.5
 DISTVERSIONPREFIX=	v
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	benchmarks
 
 MAINTAINER=	danilo@FreeBSD.org

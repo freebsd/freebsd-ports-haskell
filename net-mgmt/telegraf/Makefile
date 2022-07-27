@@ -1,8 +1,7 @@
-# Created by: Stefan Lambrev <cheffo@freebsd-bg.org>
-
 PORTNAME=	telegraf
 DISTVERSIONPREFIX=v
 DISTVERSION=	1.23.0
+PORTREVISION=	1
 CATEGORIES=	net-mgmt
 
 MAINTAINER=	girgen@FreeBSD.org

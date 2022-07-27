@@ -1,8 +1,6 @@
-# Created by: Ryan Steinmetz <zi@FreeBSD.org>
-
 PORTNAME=	nsd_exporter
 PORTVERSION=	0.1.0
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	net-mgmt
 
 MAINTAINER=	zi@FreeBSD.org

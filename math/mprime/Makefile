@@ -1,5 +1,3 @@
-# Created by: Mario Sergio Fujikawa Ferreira <lioux@FreeBSD.org>
-
 PORTNAME=	mprime
 PORTVERSION=	30.7b9
 CATEGORIES=	math benchmarks net
@@ -22,7 +20,7 @@ LIB_DEPENDS=	libcurl.so:ftp/curl					\
 		libhwloc.so.15:devel/hwloc2				\
 		libgmp.so:math/gmp
 
-USES=		zip
+USES=		localbase zip
 
 NO_WRKSUBDIR=	yes
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}

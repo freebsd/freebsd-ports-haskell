@@ -138,6 +138,7 @@
     SUBDIR += nagios
     SUBDIR += nagios-certexp-plugin
     SUBDIR += nagios-check_bacula11
+    SUBDIR += nagios-check_bacula13
     SUBDIR += nagios-check_bacula9
     SUBDIR += nagios-check_clamav
     SUBDIR += nagios-check_cpu_usage
@@ -311,6 +312,7 @@
     SUBDIR += py-napalm-logs
     SUBDIR += py-ncclient
     SUBDIR += py-netbox-plugin-extensions
+    SUBDIR += py-netutils
     SUBDIR += py-nxapi-plumbing
     SUBDIR += py-opn-cli
     SUBDIR += py-pdagent
@@ -408,5 +410,10 @@
     SUBDIR += zabbix6-java
     SUBDIR += zabbix6-proxy
     SUBDIR += zabbix6-server
+    SUBDIR += zabbix62-agent
+    SUBDIR += zabbix62-frontend
+    SUBDIR += zabbix62-java
+    SUBDIR += zabbix62-proxy
+    SUBDIR += zabbix62-server
 
 .include <bsd.port.subdir.mk>

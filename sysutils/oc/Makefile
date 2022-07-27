@@ -1,9 +1,7 @@
-# Created by: John Hixson <jhixson@freebsd.org>
-
 PORTNAME=	oc
 PORTVERSION=	4.9
 DISTVERSIONPREFIX=	release-
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	sysutils
 
 MAINTAINER=	jhixson@freebsd.org

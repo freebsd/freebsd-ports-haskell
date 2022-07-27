@@ -1,9 +1,7 @@
-# Created by: punkt.de Hosting Team <mops@punkt.de>
-
 PORTNAME=	mailhog
 DISTVERSIONPREFIX=	v
 DISTVERSION=	1.0.1
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	mail devel
 
 MAINTAINER=	mops@punkt.de

@@ -5,6 +5,7 @@
     SUBDIR += abiword-docs
     SUBDIR += aee
     SUBDIR += aewan
+    SUBDIR += amp
     SUBDIR += apel
     SUBDIR += asedit
     SUBDIR += beav
@@ -51,6 +52,7 @@
     SUBDIR += ghostwriter
     SUBDIR += gmanedit
     SUBDIR += gnome-latex
+    SUBDIR += gnome-text-editor
     SUBDIR += gobby
     SUBDIR += gomate
     SUBDIR += gummi

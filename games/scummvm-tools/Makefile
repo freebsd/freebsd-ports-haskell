@@ -1,8 +1,6 @@
-# Created by: Adam Weinberger <adamw@FreeBSD.org>
-
 PORTNAME=	scummvm-tools
 PORTVERSION=	2.5.0
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	games emulators
 MASTER_SITES=	https://downloads.scummvm.org/frs/${PORTNAME}/${PORTVERSION}/
 

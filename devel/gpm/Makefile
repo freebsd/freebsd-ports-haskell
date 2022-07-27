@@ -1,9 +1,7 @@
-# Created by: Luke Jee <lukejee@gmail.com>
-
 PORTNAME=	gpm
 PORTVERSION=	1.4.0
 DISTVERSIONPREFIX=	v
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	devel
 
 MAINTAINER=	lukejee@gmail.com

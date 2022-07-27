@@ -246,6 +246,7 @@
     SUBDIR += concorde
     SUBDIR += convertall
     SUBDIR += coq
+    SUBDIR += cosma
     SUBDIR += couenne
     SUBDIR += coxeter3
     SUBDIR += cppad
@@ -308,6 +309,7 @@
     SUBDIR += fastops
     SUBDIR += fcl
     SUBDIR += fcl05
+    SUBDIR += fenics-basix
     SUBDIR += fflas-ffpack
     SUBDIR += fftw
     SUBDIR += fftw-float
@@ -375,7 +377,6 @@
     SUBDIR += hexcalc
     SUBDIR += heyoka
     SUBDIR += highs
-    SUBDIR += hipmcl
     SUBDIR += hmat-oss
     SUBDIR += hpcombi
     SUBDIR += hpipm
@@ -387,7 +388,6 @@
     SUBDIR += ignition-math
     SUBDIR += igraph
     SUBDIR += iml
-    SUBDIR += intervaltree
     SUBDIR += intx
     SUBDIR += ipopt
     SUBDIR += ised
@@ -860,6 +860,9 @@
     SUBDIR += py-faiss
     SUBDIR += py-fastcluster
     SUBDIR += py-fastdtw
+    SUBDIR += py-fenics-basix
+    SUBDIR += py-fenics-ffcx
+    SUBDIR += py-fenics-ufl
     SUBDIR += py-flax
     SUBDIR += py-fpylll
     SUBDIR += py-fraction

@@ -1,7 +1,6 @@
     COMMENT = Development utilities
 
     SUBDIR += 9base
-    SUBDIR += ChipmunkPhysics
     SUBDIR += ElectricFence
     SUBDIR += R-cran-BH
     SUBDIR += R-cran-Defaults
@@ -189,6 +188,7 @@
     SUBDIR += arduino18
     SUBDIR += arduinoOTA
     SUBDIR += argdata
+    SUBDIR += argobots
     SUBDIR += argouml
     SUBDIR += argp-standalone
     SUBDIR += argparse
@@ -759,6 +759,7 @@
     SUBDIR += gearmand
     SUBDIR += generate
     SUBDIR += gengetopt
+    SUBDIR += genht
     SUBDIR += genie
     SUBDIR += genromfs
     SUBDIR += getoptions
@@ -793,6 +794,7 @@
     SUBDIR += git-merge-changelog
     SUBDIR += git-modes
     SUBDIR += git-p4
+    SUBDIR += git-prev-next
     SUBDIR += git-review
     SUBDIR += git-subrepo
     SUBDIR += git-svn
@@ -4019,6 +4021,7 @@
     SUBDIR += picojson
     SUBDIR += picprog
     SUBDIR += pijul
+    SUBDIR += pika
     SUBDIR += pipestatus
     SUBDIR += pire
     SUBDIR += pit
@@ -4143,6 +4146,7 @@
     SUBDIR += py-aws-requests-auth
     SUBDIR += py-aws-sam-translator
     SUBDIR += py-aws-xray-sdk
+    SUBDIR += py-awscrt
     SUBDIR += py-azure-appconfiguration
     SUBDIR += py-azure-batch
     SUBDIR += py-azure-core
@@ -4308,6 +4312,7 @@
     SUBDIR += py-circuitbreaker
     SUBDIR += py-circuits
     SUBDIR += py-ciso8601
+    SUBDIR += py-ckanapi
     SUBDIR += py-clang
     SUBDIR += py-cld
     SUBDIR += py-cle
@@ -4465,6 +4470,7 @@
     SUBDIR += py-fabric3
     SUBDIR += py-factory-boy
     SUBDIR += py-fam
+    SUBDIR += py-fastbencode
     SUBDIR += py-fastcache
     SUBDIR += py-fasteners
     SUBDIR += py-fastentrypoints
@@ -4484,6 +4490,7 @@
     SUBDIR += py-five.globalrequest
     SUBDIR += py-fixtures
     SUBDIR += py-flake8
+    SUBDIR += py-flake8-black
     SUBDIR += py-flake8-bugbear
     SUBDIR += py-flake8-builtins
     SUBDIR += py-flake8-docstrings
@@ -4539,6 +4546,7 @@
     SUBDIR += py-gitdb
     SUBDIR += py-gitless
     SUBDIR += py-gitpython
+    SUBDIR += py-giturlparse
     SUBDIR += py-glance-store
     SUBDIR += py-glob2
     SUBDIR += py-gobject3
@@ -5030,6 +5038,7 @@
     SUBDIR += py-pyperf
     SUBDIR += py-pyplusplus
     SUBDIR += py-pyproject-fmt
+    SUBDIR += py-pyproject-metadata
     SUBDIR += py-pypugjs
     SUBDIR += py-pyqtree
     SUBDIR += py-pyquery
@@ -5286,6 +5295,7 @@
     SUBDIR += py-subversion
     SUBDIR += py-sure
     SUBDIR += py-swagger-spec-validator
+    SUBDIR += py-synr
     SUBDIR += py-sysctl
     SUBDIR += py-sysv_ipc
     SUBDIR += py-tables
@@ -6303,6 +6313,7 @@
     SUBDIR += rubygem-devise-rails52
     SUBDIR += rubygem-devise-rails60
     SUBDIR += rubygem-devise-rails61
+    SUBDIR += rubygem-devise-rails70
     SUBDIR += rubygem-devise47-rails61
     SUBDIR += rubygem-did_you_mean
     SUBDIR += rubygem-dig_rb
@@ -6339,7 +6350,6 @@
     SUBDIR += rubygem-eventmachine
     SUBDIR += rubygem-excon
     SUBDIR += rubygem-execjs
-    SUBDIR += rubygem-execjs-node16
     SUBDIR += rubygem-extlib
     SUBDIR += rubygem-extras
     SUBDIR += rubygem-facets
@@ -7017,7 +7027,6 @@
     SUBDIR += rubygem-webfinger
     SUBDIR += rubygem-webpacker-rails60
     SUBDIR += rubygem-webpacker-rails61
-    SUBDIR += rubygem-webpacker-rails61-node16
     SUBDIR += rubygem-webpacker4-rails60
     SUBDIR += rubygem-will_paginate
     SUBDIR += rubygem-windows_error

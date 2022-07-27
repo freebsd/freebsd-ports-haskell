@@ -1,9 +1,7 @@
-# Created by: Pavel Timofeev <timp87@gmail.com>
-
 PORTNAME=		go-yq
 DISTVERSIONPREFIX=	v
 DISTVERSION=		4.25.1
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=		textproc
 
 MAINTAINER=	timp87@gmail.com

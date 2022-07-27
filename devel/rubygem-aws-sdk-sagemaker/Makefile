@@ -1,7 +1,5 @@
-# Created by: Po-Chuan Hsieh <sunpoet@FreeBSD.org>
-
 PORTNAME=	aws-sdk-sagemaker
-PORTVERSION=	1.129.0
+PORTVERSION=	1.131.0
 CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 

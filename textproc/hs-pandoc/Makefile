@@ -1,11 +1,11 @@
-# Created by: John MacFarlane <jgm@berkeley.edu>
-
 PORTNAME=	pandoc
 PORTVERSION=	2.18
 CATEGORIES=	textproc haskell
 
 MAINTAINER=	haskell@FreeBSD.org
 COMMENT=	Conversion between markup formats
+
+BROKEN_aarch64=	Causes compiler to crash
 
 LICENSE=	GPLv2
 

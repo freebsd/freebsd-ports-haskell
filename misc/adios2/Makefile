@@ -1,6 +1,6 @@
 PORTNAME=	adios2
 DISTVERSIONPREFIX=	v
-DISTVERSION=	2.8.1
+DISTVERSION=	2.8.2
 PORTREVISION=	1
 CATEGORIES=	misc science
 
@@ -53,5 +53,7 @@ OPTIONS_DEFINE=	DOCS
 
 DOCSDIR=	${PREFIX}/share/doc/ADIOS2
 PORTDOCS=	*
+
+# several tests fail, see https://github.com/ornladios/ADIOS2/issues/3286
 
 .include <bsd.port.mk>

@@ -1,9 +1,7 @@
-# Created by: Andy Kosela <akosela@andykosela.com>
-
 PORTNAME=	go-cs
 PORTVERSION=	0.9
 DISTVERSIONPREFIX=	v
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	net
 
 MAINTAINER=	akosela@andykosela.com

@@ -1,7 +1,6 @@
-# Created by: Kubilay Kocak <koobs@FreeBSD.org>
-
 PORTNAME=	boto3
 PORTVERSION=	1.18.61
+PORTREVISION=	1
 CATEGORIES=	www python devel
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 

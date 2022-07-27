@@ -1,8 +1,6 @@
-# Created by: Sascha Holzleiter <sascha@root-login.org>
-
 PORTNAME=	fzf
 DISTVERSION=	0.30.0
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	textproc
 
 MAINTAINER=	dmgk@FreeBSD.org

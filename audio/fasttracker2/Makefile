@@ -1,8 +1,6 @@
-# Created by: Emanuel Haupt <ehaupt@FreeBSD.org>
-
 PORTNAME=	fasttracker2
 DISTVERSIONPREFIX=	v
-DISTVERSION=	1.55
+DISTVERSION=	1.56
 CATEGORIES=	audio
 
 MAINTAINER=	ehaupt@FreeBSD.org

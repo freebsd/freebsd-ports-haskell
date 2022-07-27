@@ -1,8 +1,6 @@
-# Created by: fabian.freyer@physik.tu-berlin.de
-
 PORTNAME=	caddy
 DISTVERSIONPREFIX=	v
-DISTVERSION=	2.5.1
+DISTVERSION=	2.5.2
 PORTREVISION=	1
 CATEGORIES=	www
 DIST_SUBDIR=	caddy

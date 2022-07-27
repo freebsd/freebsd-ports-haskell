@@ -87,6 +87,9 @@
     SUBDIR += bacula11-client-static
     SUBDIR += bacula11-docs
     SUBDIR += bacula11-server
+    SUBDIR += bacula13-client
+    SUBDIR += bacula13-docs
+    SUBDIR += bacula13-server
     SUBDIR += bacula9-client
     SUBDIR += bacula9-client-static
     SUBDIR += bacula9-docs
@@ -470,7 +473,6 @@
     SUBDIR += gkrellm-trayicons
     SUBDIR += gkrellm2
     SUBDIR += gkrelltop
-    SUBDIR += gksu
     SUBDIR += glogg
     SUBDIR += glow
     SUBDIR += gnome-control-center
@@ -603,6 +605,7 @@
     SUBDIR += kio-fuse
     SUBDIR += kldfind
     SUBDIR += kldpatch
+    SUBDIR += kopia
     SUBDIR += kops
     SUBDIR += kpmcore
     SUBDIR += krename
@@ -627,7 +630,6 @@
     SUBDIR += libfvde
     SUBDIR += libg15
     SUBDIR += libg15render
-    SUBDIR += libgksu
     SUBDIR += libieee1284
     SUBDIR += libptytty
     SUBDIR += libretto-config
@@ -727,7 +729,6 @@
     SUBDIR += memtester
     SUBDIR += metalog
     SUBDIR += mfid
-    SUBDIR += mgeupsd
     SUBDIR += minikube
     SUBDIR += minimunin
     SUBDIR += minipot
@@ -892,6 +893,7 @@
     SUBDIR += p5-Proclet
     SUBDIR += p5-Quota
     SUBDIR += p5-Rex
+    SUBDIR += p5-RundeckAPI
     SUBDIR += p5-Samba-SIDhelper
     SUBDIR += p5-Schedule-At
     SUBDIR += p5-Schedule-Cron
@@ -1517,6 +1519,7 @@
     SUBDIR += virtualmin
     SUBDIR += vivid
     SUBDIR += vm-bhyve
+    SUBDIR += vm-bhyve-devel
     SUBDIR += vmdktool
     SUBDIR += vmtouch
     SUBDIR += vobcopy

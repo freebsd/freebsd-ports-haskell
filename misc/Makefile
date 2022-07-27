@@ -64,7 +64,6 @@
     SUBDIR += cstream
     SUBDIR += ctm
     SUBDIR += cuttlefish
-    SUBDIR += cxxmatrix
     SUBDIR += dahdi
     SUBDIR += dahdi-kmod
     SUBDIR += dahdi-kmod26
@@ -256,7 +255,6 @@
     SUBDIR += najitool
     SUBDIR += ncnn
     SUBDIR += netron
-    SUBDIR += ngraph
     SUBDIR += nms
     SUBDIR += nn-insight
     SUBDIR += nnn

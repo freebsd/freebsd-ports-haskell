@@ -1,8 +1,6 @@
-# Created by: Alexander Vereeken <Alexander88207@protonmail.com>
-
 PORTNAME=	win98se-icon-theme
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.2.12
+DISTVERSION=	0.2.13
 CATEGORIES=	x11-themes
 
 MAINTAINER=	Alexander88207@protonmail.com

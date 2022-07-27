@@ -1535,6 +1535,7 @@
     SUBDIR += py-django-registration-redux
     SUBDIR += py-django-reversion
     SUBDIR += py-django-reversion-compare
+    SUBDIR += py-django-rich
     SUBDIR += py-django-sekizai
     SUBDIR += py-django-simple-captcha
     SUBDIR += py-django-simple-history
@@ -2048,6 +2049,7 @@
     SUBDIR += rubygem-rack-test
     SUBDIR += rubygem-rack-timeout
     SUBDIR += rubygem-rack16
+    SUBDIR += rubygem-rack223
     SUBDIR += rubygem-rack_csrf
     SUBDIR += rubygem-rails-settings-cached
     SUBDIR += rubygem-rails-settings-cached-rails5
@@ -2058,7 +2060,6 @@
     SUBDIR += rubygem-rails52
     SUBDIR += rubygem-rails60
     SUBDIR += rubygem-rails61
-    SUBDIR += rubygem-rails61-node16
     SUBDIR += rubygem-rails70
     SUBDIR += rubygem-rails_12factor
     SUBDIR += rubygem-rails_autolink
@@ -2091,6 +2092,7 @@
     SUBDIR += rubygem-responders-rails52
     SUBDIR += rubygem-responders-rails60
     SUBDIR += rubygem-responders-rails61
+    SUBDIR += rubygem-responders-rails70
     SUBDIR += rubygem-rest-client
     SUBDIR += rubygem-rfacebook
     SUBDIR += rubygem-rfeedfinder
@@ -2134,7 +2136,6 @@
     SUBDIR += rubygem-turbolinks-source
     SUBDIR += rubygem-typhoeus
     SUBDIR += rubygem-uglifier
-    SUBDIR += rubygem-uglifier-node16
     SUBDIR += rubygem-underscore-rails
     SUBDIR += rubygem-unicorn
     SUBDIR += rubygem-unicorn-worker-killer

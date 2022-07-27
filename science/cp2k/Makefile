@@ -1,6 +1,6 @@
 PORTNAME=	cp2k
 DISTVERSIONPREFIX=	v
-DISTVERSION=	9.1.0
+DISTVERSION=	2022.1
 CATEGORIES=	science
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -8,6 +8,10 @@ COMMENT=	Quantum chemistry and solid state physics software package
 
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/LICENSE
+
+.if !exists(/usr/include/omp.h)
+BROKEN=		requires OpenMP support that is missing on this architecture
+.endif
 
 BUILD_DEPENDS=	fypp:devel/py-fypp@${PY_FLAVOR}
 LIB_DEPENDS=	libblas.so:math/blas \
@@ -19,7 +23,7 @@ TEST_DEPENDS=	bash:shells/bash
 USES=		fortran gmake localbase:ldflags python:build shebangfix tar:bz2
 
 USE_GITHUB=	yes
-GH_TUPLE=	cp2k:dbcsr:f4df17b:cp2k_dbcsr/exts/dbcsr \
+GH_TUPLE=	cp2k:dbcsr:c134996:cp2k_dbcsr/exts/dbcsr \
 		pseewald:fprettify:71781aa:pseewald_fprettify/tools/prettify/fprettify
 
 SHEBANG_FILES=	tools/regtesting/do_regtest
@@ -88,7 +92,7 @@ pre-configure:
 post-patch:
 	@${REINPLACE_CMD} -i '' 's|LIBS.*=.*|& ${LDFLAGS}|; s|^FCFLAGS.*=.*|& -I${LOCALBASE}/include|; s| -march=native||' ${WRKSRC}/arch/FreeBSD-*
 
-pre-build:
+xpre-build:
 	@${ECHO} ${PORTVERSION} > ${WRKSRC}/REVISION
 
 do-install:
@@ -101,8 +105,9 @@ do-install-SERIAL-on:
 	cd ${STAGEDIR}${PREFIX}/bin && ${LN} -s ${e}.${EFFECTIVE_VERSION} ${e}.${VERSION}
 .endfor
 
-do-test: # fails to run: some Linux-only commands are present
+do-test: # fails to run: some Linux-only commands are present, also /usr/local/bin/ar: invalid option -- /
 	@cd ${WRKSRC} && \
+		${TOUCH} arch/local.${EFFECTIVE_VERSION} && \
 		${SETENV} ${MAKE_ENV} ./tools/regtesting/do_regtest -maxtasks 8
 
 .include <bsd.port.pre.mk>
@@ -110,5 +115,7 @@ do-test: # fails to run: some Linux-only commands are present
 .  if ${GCC_DEFAULT} >= 10 # only needed when MPI is on, but flags aren't passed into DBCSR sub-project, see https://github.com/cp2k/cp2k/issues/2128
 FCFLAGS+=	-fallow-argument-mismatch
 .  endif
+
+# build instructions: https://github.com/cp2k/cp2k/blob/master/INSTALL.md
 
 .include <bsd.port.post.mk>

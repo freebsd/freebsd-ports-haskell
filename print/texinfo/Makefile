@@ -1,5 +1,3 @@
-# Created by: Mario Sergio Fujikawa Ferreira <lioux@FreeBSD.org>
-
 PORTNAME=	texinfo
 PORTVERSION=	6.8
 PORTREVISION=	3
@@ -34,6 +32,7 @@ USES=		charsetfix cpe gmake iconv:wchar_t libtool ncurses perl5 tar:xz
 CONFIGURE_ARGS=	--with-external-libintl-perl \
 		--with-external-Text-Unidecode \
 		--with-external-Unicode-EastAsianWidth
+CONFIGURE_ENV=	PERL_EXT_CC="${CC}"
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip install-tex
 MAKE_ARGS=	PERL=${PERL} TEXMF=${LOCALBASE}/${TEXMFDIR}
