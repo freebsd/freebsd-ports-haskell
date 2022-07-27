@@ -9,7 +9,6 @@ COMMENT=	WebSockets API to Cardano Ouroboros' mini-protocols
 LICENSE=	APACHE20
 
 BUILD_DEPENDS=	ghc-8.10.7:lang/ghc810
-
 RUN_DEPENDS=	cardano-node:net-p2p/cardano-node
 
 USES=		autoreconf:build cabal gmake libtool pkgconfig
@@ -383,7 +382,6 @@ USE_CABAL=	Glob-0.10.2_3 \
 		zlib-bindings-0.1.1.5_2
 
 CABAL_PROJECT=		append
-EXECUTABLES=		ogmios
 
 post-patch:
 	${ECHO_CMD} "package *" >> ${WRKSRC}/cabal.project.${PORTNAME}
