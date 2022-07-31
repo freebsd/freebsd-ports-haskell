@@ -1,4 +1,4 @@
-TIMESTAMP = 1658949587
+TIMESTAMP = 1659300964
 SHA256 (cabal/Glob-0.10.2/Glob-0.10.2.tar.gz) = 6af672ac8427d35cbd42d64142dc288feab266f0be92dae3c696e8860d8173c0
 SIZE (cabal/Glob-0.10.2/Glob-0.10.2.tar.gz) = 30226
 SHA256 (cabal/Glob-0.10.2/revision/3.cabal) = dd2ddbecae8f84e8f4cacb5b856901a19c25ceaa11f2525d3ee88d034acb0081
@@ -933,8 +933,8 @@ SHA256 (cabal/zlib-bindings-0.1.1.5/zlib-bindings-0.1.1.5.tar.gz) = c83bb438f9b6
 SIZE (cabal/zlib-bindings-0.1.1.5/zlib-bindings-0.1.1.5.tar.gz) = 54770
 SHA256 (cabal/zlib-bindings-0.1.1.5/revision/2.cabal) = 0c6f9f81832af2473281fd58631aff8c6bbad24191e00d2a5a6ae2479249043b
 SIZE (cabal/zlib-bindings-0.1.1.5/revision/2.cabal) = 1641
-SHA256 (cabal/cardanosolutions-ogmios-v5.5.1_GH0.tar.gz) = cc5454e1d6b23584768d0b8a6474a62acb469bd529528fa7fe2b30cfd1928ed5
-SIZE (cabal/cardanosolutions-ogmios-v5.5.1_GH0.tar.gz) = 1871911
+SHA256 (cabal/cardanosolutions-ogmios-v5.5.3_GH0.tar.gz) = 30edd20905392755612858a01729b50fe0d130f81e0837063dfe18428e91abde
+SIZE (cabal/cardanosolutions-ogmios-v5.5.3_GH0.tar.gz) = 1874060
 SHA256 (cabal/KtorZ-hjsonpointer-879f0e74d55eef76ceaec8f60ed07657ab84bad7_GH0.tar.gz) = 90cb7e264bc09c80740fba2cabf8e2809faf4f31469085b922cca0a3a5baa4bd
 SIZE (cabal/KtorZ-hjsonpointer-879f0e74d55eef76ceaec8f60ed07657ab84bad7_GH0.tar.gz) = 16755
 SHA256 (cabal/KtorZ-hjsonschema-35e0b05c3867463363e67f00a5092cd39fa33313_GH0.tar.gz) = 9e31858523031b1e551b9dc70860fe13d753bc302d8d48c626617cb78cfdeae5

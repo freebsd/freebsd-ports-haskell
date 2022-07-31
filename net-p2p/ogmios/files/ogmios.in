@@ -36,7 +36,7 @@
 name=ogmios
 desc="Ogmios daemon"
 rcvar=ogmios_enable
-command=%%PREFIX%%/libexec/cabal/ogmios
+command=%%PREFIX%%/bin/ogmios
 
 start_cmd="${name}_start"
 start_precmd="${name}_prestart"
