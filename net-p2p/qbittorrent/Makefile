@@ -1,6 +1,6 @@
 PORTNAME=	qbittorrent
 DISTVERSION=	4.4.3.1
-PORTREVISION=	1
+PORTREVISION=	3
 CATEGORIES=	net-p2p
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 
@@ -13,8 +13,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 BROKEN=		Crashes with boost-libs-1.79.0, see bug#264278
 BROKEN_FreeBSD_12_powerpc64=	fails to build: ./base/tristatebool.h:44:5: 'constexpr' constructor does not have empty body
 
-LIB_DEPENDS=	libtorrent-rasterbar.so:net-p2p/libtorrent-rasterbar \
-		libboost_system.so:devel/boost-libs
+LIB_DEPENDS=	libboost_system.so:devel/boost-libs
 
 FLAVORS=	default nox
 FLAVOR?=	${FLAVORS:[1]}
@@ -47,12 +46,23 @@ PLIST_SUB=		USER=${USERS} GROUP=${GROUPS}
 OPTIONS_EXCLUDE=	DBUS
 .endif
 
-OPTIONS_DEFINE=		DBUS PYTHON DEBUG
-OPTIONS_DEFAULT=	DBUS
+OPTIONS_DEFINE=			DBUS PYTHON DEBUG
+OPTIONS_RADIO=			LIBTORRENT
+OPTIONS_RADIO_LIBTORRENT=	LIBTORRENT1 LIBTORRENT2
+OPTIONS_DEFAULT=		DBUS LIBTORRENT1
+
+LIBTORRENT_DESC=	libtorrent version number to use
+LIBTORRENT1_DESC=	Version 1.x (default)
+LIBTORRENT2_DESC=	Version 2.x (unstable, has memory issues)
 
 DEBUG_CONFIGURE_ENABLE=	debug
 DBUS_CONFIGURE_ENABLE=	qt-dbus
 DBUS_USE=		qt=dbus
+
+LIBTORRENT1_BUILD_DEPENDS=	libtorrent-rasterbar>0:net-p2p/libtorrent-rasterbar
+LIBTORRENT1_RUN_DEPENDS=	libtorrent-rasterbar>0:net-p2p/libtorrent-rasterbar
+LIBTORRENT2_BUILD_DEPENDS=	libtorrent-rasterbar2>0:net-p2p/libtorrent-rasterbar2
+LIBTORRENT2_RUN_DEPENDS=	libtorrent-rasterbar2>0:net-p2p/libtorrent-rasterbar2
 
 PYTHON_DESC=		Install Python to support some plugin functionality
 PYTHON_USES=		python:3.6+,run
