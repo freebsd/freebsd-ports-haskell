@@ -14,7 +14,7 @@ USES=		autoreconf:build cabal gmake libtool pkgconfig
 USE_GITHUB=	yes
 GH_ACCOUNT=	input-output-hk
 
-GH_TUPLE=       denisshevchenko:threepenny-gui:4ec92ded05ccf59ba4a874be4b404ac1b6d666b6:threepenny_gui/dist-newstyle/src/threepenn_-bd6c9d7cf9bd56f0 \
+GH_TUPLE=	denisshevchenko:threepenny-gui:4ec92ded05ccf59ba4a874be4b404ac1b6d666b6:threepenny_gui/dist-newstyle/src/threepenn_-bd6c9d7cf9bd56f0 \
 		input-output-hk:Win32-network:3825d3abf75f83f406c1f7161883c438dac7277d:Win32_network/dist-newstyle/src/Win32-net_-5b9448ed2f179086 \
 		input-output-hk:cardano-base:0f3a867493059e650cda69e20a5cbf1ace289a57:cardano_base/dist-newstyle/src/cardano-b_-c8db9876882556ed \
 		input-output-hk:cardano-crypto:f73079303f663e028288f9f4a9e08bcca39a923e:cardano_crypto/dist-newstyle/src/cardano-c_-253fd88117badd8f \
@@ -48,7 +48,7 @@ BINARY_ALIAS=		git=true
 USERS=		cardano
 GROUPS=		cardano
 
-USE_CABAL=      Diff-0.4.1 \
+USE_CABAL=	Diff-0.4.1 \
 		Glob-0.10.2_3 \
 		HUnit-1.6.2.0 \
 		Histogram-0.1.0.2 \
