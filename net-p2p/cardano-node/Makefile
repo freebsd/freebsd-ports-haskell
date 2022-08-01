@@ -1,5 +1,5 @@
 PORTNAME=	cardano-node
-PORTVERSION=	1.35.1
+PORTVERSION=	1.35.2
 CATEGORIES=	net-p2p
 
 MAINTAINER=	arrowd@FreeBSD.org
@@ -14,11 +14,11 @@ USES=		autoreconf:build cabal gmake libtool pkgconfig
 USE_GITHUB=	yes
 GH_ACCOUNT=	input-output-hk
 
-GH_TUPLE=	denisshevchenko:threepenny-gui:4ec92ded05ccf59ba4a874be4b404ac1b6d666b6:threepenny_gui/dist-newstyle/src/threepenn_-bd6c9d7cf9bd56f0 \
+GH_TUPLE=       denisshevchenko:threepenny-gui:4ec92ded05ccf59ba4a874be4b404ac1b6d666b6:threepenny_gui/dist-newstyle/src/threepenn_-bd6c9d7cf9bd56f0 \
 		input-output-hk:Win32-network:3825d3abf75f83f406c1f7161883c438dac7277d:Win32_network/dist-newstyle/src/Win32-net_-5b9448ed2f179086 \
 		input-output-hk:cardano-base:0f3a867493059e650cda69e20a5cbf1ace289a57:cardano_base/dist-newstyle/src/cardano-b_-c8db9876882556ed \
 		input-output-hk:cardano-crypto:f73079303f663e028288f9f4a9e08bcca39a923e:cardano_crypto/dist-newstyle/src/cardano-c_-253fd88117badd8f \
-		input-output-hk:cardano-ledger:3be8a19083fc13d9261b1640e27dd389b51bb08e:cardano_ledger/dist-newstyle/src/cardano-l_-516df916d2b8a647 \
+		input-output-hk:cardano-ledger:ebcf1a8936dd84de0182d54004473f4ce66c7923:cardano_ledger/dist-newstyle/src/cardano-l_-516df916d2b8a647 \
 		input-output-hk:cardano-prelude:bb4ed71ba8e587f672d06edf9d2e376f4b055555:cardano_prelude/dist-newstyle/src/cardano-p_-cae013aee062332a \
 		input-output-hk:ekg-forward:297cd9db5074339a2fb2e5ae7d0780debb670c63:ekg_forward/dist-newstyle/src/ekg-forwa_-439c40ba89351585 \
 		input-output-hk:flat:ee59880f47ab835dbd73bea0847dab7869fc20d8:flat/dist-newstyle/src/flat-9eba9ae2d4d970a \
@@ -27,15 +27,15 @@ GH_TUPLE=	denisshevchenko:threepenny-gui:4ec92ded05ccf59ba4a874be4b404ac1b6d666b
 		input-output-hk:io-sim:f4183f274d88d0ad15817c7052df3a6a8b40e6dc:io_sim/dist-newstyle/src/io-sim-5409b7204b6dc065 \
 		input-output-hk:iohk-monitoring-framework:066f7002aac5a0efc20e49643fea45454f226caa:iohk_monitoring_framework/dist-newstyle/src/iohk-moni_-1defcf7452717dc5 \
 		input-output-hk:optparse-applicative:7497a29cb998721a9068d5725d49461f2bba0e7a:optparse_applicative/dist-newstyle/src/optparse-_-3cd678a226e0281a \
-		input-output-hk:ouroboros-network:a65c29b6a85e90d430c7f58d362b7eb097fd4949:ouroboros_network/dist-newstyle/src/ouroboros_-e51b1e265e7bb521 \
-		input-output-hk:plutus:f680ac6979e069fcc013e4389ee607ff5fa6672f:plutus/dist-newstyle/src/plutus-5e27fa0483bd0166 \
+		input-output-hk:ouroboros-network:cb9eba406ceb2df338d8384b35c8addfe2067201:ouroboros_network/dist-newstyle/src/ouroboros_-e51b1e265e7bb521 \
+		input-output-hk:plutus:a3fba9f4e776c38bc54cb9a1c1cae82d2338b718:plutus/dist-newstyle/src/plutus-5e27fa0483bd0166 \
 		input-output-hk:typed-protocols:181601bc3d9e9d21a671ce01e0b481348b3ca104:typed_protocols/dist-newstyle/src/typed-pro_-3f57698e3fbfd050 \
 		vshabanov:ekg-json:00ebe7211c981686e65730b7144fbf5350462608:ekg_json/dist-newstyle/src/ekg-json-e51d7dff12d02a95
 
 GH_TUPLE+=	input-output-hk:libsodium:${LIBSODIUM_HASH}:sodium \
 		bitcoin-core:secp256k1:${SECP256K1_HASH}:secp
 
-CARDANO_NODE_HASH=	c75451f0ffd7a60b5ad6c4263891e6c8acac105a
+CARDANO_NODE_HASH=	7612a245a6e2c51d0f1c3e0d65d7fe9363850043
 LIBSODIUM_HASH=		66f017f16633f2060db25e17c170c2afa0f2a8a1
 # Obtained from https://github.com/input-output-hk/cardano-node/blob/master/.github/workflows/github-page.yml#L21
 SECP256K1_HASH=		ac83be33d0956faf6b7f61a60ab524ef7d6a473a
@@ -48,7 +48,7 @@ BINARY_ALIAS=		git=true
 USERS=		cardano
 GROUPS=		cardano
 
-USE_CABAL=	Diff-0.4.1 \
+USE_CABAL=      Diff-0.4.1 \
 		Glob-0.10.2_3 \
 		HUnit-1.6.2.0 \
 		Histogram-0.1.0.2 \
@@ -315,7 +315,7 @@ USE_CABAL=	Diff-0.4.1 \
 		string-qq-0.0.4 \
 		syb-0.7.2.1 \
 		system-filepath-0.4.14_1 \
-		tagged-0.8.6.1_2 \
+		tagged-0.8.6.1_3 \
 		tasty-1.4.2.1_2 \
 		tasty-expected-failure-0.12.3 \
 		tasty-golden-2.3.5 \
@@ -333,7 +333,7 @@ USE_CABAL=	Diff-0.4.1 \
 		th-compat-0.1.3_1 \
 		th-expand-syns-0.4.9.0 \
 		th-extras-0.0.0.6 \
-		th-lift-0.8.2_1 \
+		th-lift-0.8.2_2 \
 		th-lift-instances-0.1.19 \
 		th-orphans-0.13.12_2 \
 		th-reify-many-0.1.10 \
@@ -365,7 +365,7 @@ USE_CABAL=	Diff-0.4.1 \
 		vault-0.3.1.5_1 \
 		vector-0.12.3.1_2 \
 		vector-algorithms-0.8.0.4_2 \
-		vector-binary-instances-0.2.5.2_1 \
+		vector-binary-instances-0.2.5.2_2 \
 		vector-th-unbox-0.2.2_1 \
 		void-0.7.3 \
 		wai-3.2.3 \
@@ -389,7 +389,7 @@ USE_CABAL=	Diff-0.4.1 \
 		zlib-bindings-0.1.1.5_2
 
 CABAL_PROJECT=		append
-EXECUTABLES=		cardano-node cardano-cli cardano-submit-api
+EXECUTABLES=		cardano-node cardano-cli cardano-submit-api cardano-tracer
 
 post-patch:
 	${REINPLACE_CMD} -e 's/$$(gitRevFromGit)/"${CARDANO_NODE_HASH}"/' \
