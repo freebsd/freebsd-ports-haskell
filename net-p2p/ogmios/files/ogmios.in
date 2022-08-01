@@ -25,7 +25,7 @@
 #                           Default: "/var/db/cardano_node/jail/socket/cardano-node.sock"
 #
 # ogmios_cnode_config:      An absolute path to the cardano-node config.json file.
-#                           Default: "/var/db/cardano_node/mainnet-configs/mainnet-config.json"
+#                           Default: "/var/db/cardano_node/mainnet-configs/config.json"
 #
 # ogmios_flags:       Any additional command line flags to pass to ogmios.
 #                           Default: ""
@@ -51,7 +51,7 @@ load_rc_config $name
 : ${ogmios_host:="0.0.0.0"}
 : ${ogmios_port:="1337"}
 : ${ogmios_cnode_socket:="/var/db/cardano_node/jail/socket/cardano-node.sock"}
-: ${ogmios_cnode_config:="/var/db/cardano_node/mainnet-configs/mainnet-config.json"}
+: ${ogmios_cnode_config:="/var/db/cardano_node/mainnet-configs/config.json"}
 : ${ogmios_flags:=""}
 
 ogmios_jail="${ogmios_home}/jail"
