@@ -53,7 +53,7 @@
 name=cardano_node
 desc="Cardano Node daemon"
 rcvar=cardano_node_enable
-command=%%PREFIX%%/libexec/cabal/cardano-node
+command=%%PREFIX%%/bin/cardano-node
 
 cardano_deployment_url="https://raw.githubusercontent.com/cardano-bsd-alliance/freebsd-ports-cardano-artifacts/master/cardano-node"
 cardano_config_files="config byron-genesis shelley-genesis alonzo-genesis topology submit-api-config"
